@@ -4,6 +4,7 @@ import NeuronGrid from "./components/NeuronGrid";
 import SovereigntyScroll from "./components/SovereigntyScroll";
 import DebtCalculator from "./components/DebtCalculator";
 import IntegrationWorkflow from "./components/IntegrationWorkflow";
+import LearnMoreButton from "./components/LearnMoreButton";
 
 export default function Home() {
   return (
@@ -60,9 +61,7 @@ export default function Home() {
             </p>
             
             <div className="mb-0">
-              <a href="#demo" className="inline-block bg-[#111111] !text-white font-medium text-lg px-10 py-4 hover:bg-[#2FCA54] hover:!text-[#111111] transition-colors duration-300">
-                Learn More
-              </a>
+              <LearnMoreButton />
             </div>
           </div>
 
