@@ -74,12 +74,12 @@ export default function Home() {
       <section className="py-32 md:py-40 border-b border-[#E0E0E0] bg-white">
         <div className="max-w-[1600px] mx-auto px-8 mt-32 text-center">
           <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tighter">
-            Stop guessing how your legacy systems work.
+            Modernize with confidence.
           </h2>
           <p className="text-2xl text-black/50 mb-12">
-            Recover your business logic and start modernizing with confidence.
+            Recover the business logic hidden inside your legacy systems.
           </p>
-          <a href="#demo" className="inline-block bg-[#2FCA54] text-[#111111] font-bold text-lg px-12 py-5 hover:bg-black hover:text-white transition-colors duration-300">
+          <a href="#demo" className="inline-block bg-[#2FCA54] !text-[#111111] font-bold text-lg px-12 py-5 hover:bg-black hover:!text-white transition-colors duration-300">
             Request a Demo
           </a>
         </div>
