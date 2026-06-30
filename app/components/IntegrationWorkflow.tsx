@@ -31,7 +31,7 @@ export default function IntegrationWorkflow() {
               Integrate with your toolchain.
             </h2>
             <p className="text-2xl text-[#555555] leading-relaxed">
-              The business logic we extract maps directly into your version control, issue trackers, and testing environments.
+              We extract business logic and map it directly into your version control, issue trackers, and testing environments.
             </p>
           </div>
 

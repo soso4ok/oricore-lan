@@ -12,7 +12,7 @@ const slides = [
   {
     id: "dora",
     title: "Cryptographic Traceability.",
-    content: "You always know the origin of a business rule. Every generated blueprint links directly back to the specific line of legacy code that produced it."
+    content: "You always know the origin of a business rule. Every generated blueprint links directly back to the specific line of legacy code produced by it."
   },
   {
     id: "residency",

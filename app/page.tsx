@@ -54,12 +54,12 @@ export default function Home() {
           {/* Main Headline & CTA overlaying the background grid */}
           <div className="max-w-4xl">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#111111] leading-[1.05] tracking-tighter mb-12 break-words">
-              Recover business logic from undocumented legacy systems without rewriting your code.
+              Digital Archaeology for enterprise legacy modernization.
             </h1>
             <p className="text-xl sm:text-2xl text-[#555555] leading-relaxed mb-12 max-w-2xl break-words">
-              Oricore analyzes undocumented enterprise codebases, maps dependencies, and recovers lost institutional knowledge. We generate deterministic architectural blueprints so your team can modernize safely.
+              Oricore analyzes undocumented enterprise codebases, maps dependencies, and recovers lost of institutional knowledge. We generate deterministic architectural blueprints so your team can modernize safely.
             </p>
-            
+
             <div className="mb-0">
               <LearnMoreButton />
             </div>
@@ -95,16 +95,16 @@ export default function Home() {
                 Technical debt costs enterprises <strong className="text-[#111111]">$370 billion</strong> annually. Yet, attempting to manually untangle systems that have evolved for decades is a gamble.
               </p>
             </div>
-            
+
             <div className="flex flex-col border-t-[8px] border-[#111111] pt-12 lg:pl-16 lg:border-t-0 lg:border-l-[8px] lg:pt-0 lg:pb-8">
               <div className="text-[clamp(4.5rem,10vw,10rem)] font-bold text-[#111111] leading-[0.8] tracking-tighter mb-8">
                 80<span className="text-[#2FCA54]">%</span>
               </div>
               <p className="text-xl sm:text-2xl md:text-[1.75rem] font-bold text-[#111111] leading-tight mb-6 break-words">
-                Of manual rewrites fail due to lost institutional knowledge.
+                Of manual rewrites fail due to lost of institutional knowledge.
               </p>
               <p className="text-base sm:text-lg md:text-xl text-[#555555] leading-relaxed break-words">
-                When dealing with million-line monoliths, the code itself isn't the primary issue—the undocumented business rules buried within it are. You cannot rewrite what your team no longer understands.
+                When dealing with million-line monoliths, the code itself isn't the primary issue—the undocumented business rules are. You cannot rewrite what your team no longer understands.
               </p>
             </div>
           </div>
@@ -150,7 +150,7 @@ export default function Home() {
                   Deterministic Output
                 </p>
                 <p className="text-base sm:text-lg md:text-xl text-[#555555] leading-relaxed break-words">
-                  We rely on static analysis and deterministic extraction. No stochastic guessing. We parse your system exactly as it executes.
+                  We rely on static analysis and deterministic extraction. No random  guessing. We parse your system exactly as it executes.
                 </p>
               </div>
               <div className="pl-6 md:pl-8 border-l-4 border-[#2FCA54]">
