@@ -29,12 +29,15 @@ export default function SovereigntyScroll() {
   });
 
   // 3 slides, we want to move left by 2 slides worth of width.
-  // We will map the vertical scroll progress [0, 1] to horizontal transform [0, -66.66%].
-  // Actually, -66.66% moves it by exactly 2 screen widths if total width is 300vw.
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-66.666%"]);
+  // We pause the translation while each slide is active, and only transition between them.
+  const x = useTransform(
+    scrollYProgress,
+    [0, 0.2, 0.4, 0.6, 0.8, 1.0],
+    ["0%", "0%", "-33.333%", "-33.333%", "-66.666%", "-66.666%"]
+  );
 
   return (
-    <section ref={targetRef} className="relative h-[300vh] bg-[#111111] text-white">
+    <section ref={targetRef} className="relative h-[500vh] bg-[#111111] text-white">
       <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
         
         {/* Static Header pinned at the top */}
@@ -78,10 +81,10 @@ function SlideItem({ slide, index, progress }: { slide: any; index: number; prog
   const titleBgPos = useTransform(
     progress,
     index === 0
-      ? [0, 0.2, 0.35]
+      ? [0, 0.2, 0.4]
       : index === 1
-      ? [0.35, 0.5, 0.65, 0.8]
-      : [0.8, 0.95, 1],
+      ? [0.2, 0.4, 0.6, 0.8]
+      : [0.6, 0.8, 1.0],
     index === 0
       ? ["50% 0%", "50% 0%", "0% 0%"]
       : index === 1
@@ -92,10 +95,10 @@ function SlideItem({ slide, index, progress }: { slide: any; index: number; prog
   const opacity = useTransform(
     progress,
     index === 0
-      ? [0, 0.2, 0.35, 1]
+      ? [0, 0.2, 0.4, 1]
       : index === 1
-      ? [0, 0.35, 0.5, 0.65, 0.8, 1]
-      : [0, 0.8, 0.95, 1],
+      ? [0, 0.2, 0.4, 0.6, 0.8, 1]
+      : [0, 0.6, 0.8, 1],
     index === 0
       ? [1, 1, 0, 0]
       : index === 1
@@ -106,10 +109,10 @@ function SlideItem({ slide, index, progress }: { slide: any; index: number; prog
   const y = useTransform(
     progress,
     index === 0
-      ? [0, 0.2, 0.35]
+      ? [0, 0.2, 0.4]
       : index === 1
-      ? [0.35, 0.5, 0.65, 0.8]
-      : [0.8, 0.95, 1],
+      ? [0.2, 0.4, 0.6, 0.8]
+      : [0.6, 0.8, 1.0],
     index === 0
       ? [0, 0, -30]
       : index === 1
