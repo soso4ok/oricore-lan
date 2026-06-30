@@ -84,7 +84,7 @@ export default function Home() {
       </section>
 
       {/* ─── THE MODERNIZATION PARADOX ─── */}
-      <section className="py-24 md:py-32 border-b border-[#E0E0E0] bg-[#F5F5F5]">
+      <section id="paradox" className="py-24 md:py-32 border-b border-[#E0E0E0] bg-[#F5F5F5]">
         <div className="max-w-[1600px] mx-auto px-6 sm:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div>

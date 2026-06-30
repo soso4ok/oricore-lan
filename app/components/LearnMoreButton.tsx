@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export default function LearnMoreButton() {
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    const target = document.getElementById("pipeline");
+    const target = document.getElementById("paradox");
     if (target) {
       target.scrollIntoView({ behavior: "smooth" });
     }
@@ -37,7 +37,7 @@ export default function LearnMoreButton() {
 
   return (
     <motion.a
-      href="#pipeline"
+      href="#paradox"
       onClick={handleScroll}
       initial="initial"
       whileHover="hover"
