@@ -25,6 +25,7 @@ export default function SovereigntyScroll() {
   const targetRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
+    offset: ["start start", "end end"],
   });
 
   // 3 slides, we want to move left by 2 slides worth of width.
@@ -51,7 +52,7 @@ export default function SovereigntyScroll() {
         <div className="absolute top-0 right-0 bottom-0 w-24 md:w-80 bg-gradient-to-l from-[#111111] to-transparent z-20 pointer-events-none" />
 
         {/* Horizontal Scrolling Track */}
-        <motion.div style={{ x }} className="flex w-[300vw] h-full items-center pt-48 md:pt-72">
+        <motion.div style={{ x }} className="flex w-[300vw] h-full items-center pt-20 md:pt-28">
           
           {slides.map((slide, index) => (
             <SlideItem key={slide.id} slide={slide} index={index} progress={scrollYProgress} />
@@ -73,26 +74,52 @@ export default function SovereigntyScroll() {
 }
 
 function SlideItem({ slide, index, progress }: { slide: any; index: number; progress: any }) {
-  // Center is at index * 0.5. 
-  // It hides to the left as we scroll down (progress increases).
-  // It hides to the right as we scroll up (progress decreases).
-  const centerP = index * 0.5;
-  const hideRightP = centerP - 0.35;
-  const hideLeftP = centerP + 0.35;
-  
-  // Animate background position:
-  // 100% = Hidden Right
-  // 50% = Centered (Pure White)
-  // 0% = Hidden Left
+  // Animate background position to light up text when centered and dim when leaving:
   const titleBgPos = useTransform(
     progress,
-    [hideRightP, centerP, hideLeftP],
-    ["100% 0%", "50% 0%", "0% 0%"]
+    index === 0
+      ? [0, 0.2, 0.35]
+      : index === 1
+      ? [0.35, 0.5, 0.65, 0.8]
+      : [0.8, 0.95, 1],
+    index === 0
+      ? ["50% 0%", "50% 0%", "0% 0%"]
+      : index === 1
+      ? ["100% 0%", "50% 0%", "50% 0%", "0% 0%"]
+      : ["100% 0%", "50% 0%", "50% 0%"]
+  );
+
+  const opacity = useTransform(
+    progress,
+    index === 0
+      ? [0, 0.2, 0.35, 1]
+      : index === 1
+      ? [0, 0.35, 0.5, 0.65, 0.8, 1]
+      : [0, 0.8, 0.95, 1],
+    index === 0
+      ? [1, 1, 0, 0]
+      : index === 1
+      ? [0, 0, 1, 1, 0, 0]
+      : [0, 0, 1, 1]
+  );
+
+  const y = useTransform(
+    progress,
+    index === 0
+      ? [0, 0.2, 0.35]
+      : index === 1
+      ? [0.35, 0.5, 0.65, 0.8]
+      : [0.8, 0.95, 1],
+    index === 0
+      ? [0, 0, -30]
+      : index === 1
+      ? [30, 0, 0, -30]
+      : [30, 0, 0]
   );
 
   return (
     <div className="w-[100vw] h-full flex items-center px-8 md:px-32 shrink-0">
-      <div className="w-full max-w-5xl pt-8">
+      <motion.div style={{ opacity, y }} className="w-full max-w-5xl pt-8">
         <motion.h3 
           style={{ 
             backgroundImage: "linear-gradient(to right, #111111 0%, #111111 15%, #FAFAFA 25%, #2FCA54 40%, #2FCA54 60%, #FAFAFA 75%, #111111 85%, #111111 100%)",
@@ -110,7 +137,7 @@ function SlideItem({ slide, index, progress }: { slide: any; index: number; prog
         <p className="text-2xl md:text-3xl text-[#999999] leading-relaxed max-w-3xl">
           {slide.content}
         </p>
-      </div>
+      </motion.div>
     </div>
   );
 }
