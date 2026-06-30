@@ -29,7 +29,7 @@ export default function NeuronGrid() {
   return (
     <div 
       ref={containerRef}
-      className="relative w-full h-full min-h-[500px] flex items-start justify-center bg-[#FAFAFA] border-l border-[#E0E0E0] overflow-hidden cursor-crosshair"
+      className="relative w-full h-full min-h-[400px] lg:min-h-[500px] flex items-start justify-center bg-[#FAFAFA] border-t lg:border-t-0 lg:border-l border-[#E0E0E0] overflow-hidden cursor-crosshair"
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}

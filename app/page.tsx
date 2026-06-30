@@ -1,4 +1,4 @@
-import GridAnimation from "./components/GridAnimation";
+import HeroBackground from "./components/HeroBackground";
 import PipelineCards from "./components/PipelineCards";
 import NeuronGrid from "./components/NeuronGrid";
 import SovereigntyScroll from "./components/SovereigntyScroll";
@@ -42,15 +42,16 @@ export default function Home() {
 
       {/* ─── HERO ─── */}
       <section className="relative pt-40 pb-0 md:pt-48 md:pb-0 border-b border-[#E0E0E0] overflow-hidden bg-[#FAFAFA]">
+        <HeroBackground />
 
         <div className="max-w-[1600px] mx-auto relative z-10 flex flex-col lg:flex-row items-stretch">
 
           {/* Left: Headline & CTA */}
-          <div className="lg:w-7/12 px-8 lg:pr-16 pb-20 md:pb-32 flex flex-col justify-center">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-[#111111] leading-[1.02] tracking-tighter mb-12 max-w-3xl">
+          <div className="lg:w-7/12 px-6 sm:px-8 lg:pr-16 pb-20 md:pb-32 flex flex-col justify-center">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-[#111111] leading-[1.05] tracking-tighter mb-12 max-w-3xl break-words">
               Recover business logic from undocumented legacy systems without rewriting your code.
             </h1>
-            <p className="text-2xl text-[#555555] leading-relaxed mb-12 max-w-2xl">
+            <p className="text-lg sm:text-xl md:text-2xl text-[#555555] leading-relaxed mb-12 max-w-2xl break-words">
               Oricore analyzes undocumented enterprise codebases, maps dependencies, and recovers lost institutional knowledge. We generate deterministic architectural blueprints so your team can modernize safely.
             </p>
             
@@ -71,12 +72,12 @@ export default function Home() {
       </section>
 
       {/* ─── VALUE PROPOSITION / EXTRACTION ─── */}
-      <section className="py-32 md:py-40 border-b border-[#E0E0E0] bg-white">
-        <div className="max-w-[1600px] mx-auto px-8 mt-32 text-center">
-          <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tighter">
+      <section className="py-24 md:py-32 border-b border-[#E0E0E0] bg-white">
+        <div className="max-w-[1600px] mx-auto px-6 sm:px-8 mt-16 text-center">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-8 tracking-tighter break-words">
             Modernize with confidence.
           </h2>
-          <p className="text-2xl text-black/50 mb-12">
+          <p className="text-lg sm:text-xl md:text-2xl text-black/50 mb-12 break-words">
             Recover the business logic hidden inside your legacy systems.
           </p>
           <a href="#demo" className="inline-block bg-[#2FCA54] !text-[#111111] font-bold text-lg px-12 py-5 hover:bg-black hover:!text-white transition-colors duration-300">
@@ -86,26 +87,26 @@ export default function Home() {
       </section>
 
       {/* ─── THE MODERNIZATION PARADOX ─── */}
-      <section className="py-32 md:py-40 border-b border-[#E0E0E0] bg-[#F5F5F5]">
-        <div className="max-w-[1600px] mx-auto px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+      <section className="py-24 md:py-32 border-b border-[#E0E0E0] bg-[#F5F5F5]">
+        <div className="max-w-[1600px] mx-auto px-6 sm:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div>
-              <h2 className="text-[clamp(3rem,5vw,4.5rem)] font-bold text-[#111111] leading-tight mb-8">
+              <h2 className="text-[clamp(2rem,5vw,4.5rem)] font-bold text-[#111111] leading-tight mb-8 break-words">
                 The Modernization Paradox.
               </h2>
-              <p className="text-2xl text-[#555555] leading-relaxed max-w-lg mb-8">
+              <p className="text-lg sm:text-xl md:text-2xl text-[#555555] leading-relaxed max-w-lg mb-8 break-words">
                 Technical debt costs enterprises <strong className="text-[#111111]">$370 billion</strong> annually. Yet, attempting to manually untangle systems that have evolved for decades is a gamble.
               </p>
             </div>
             
             <div className="flex flex-col border-t-[8px] border-[#111111] pt-12 lg:pl-16 lg:border-t-0 lg:border-l-[8px] lg:pt-0 lg:pb-8">
-              <div className="text-[clamp(6rem,10vw,10rem)] font-bold text-[#111111] leading-[0.8] tracking-tighter mb-8">
+              <div className="text-[clamp(4.5rem,10vw,10rem)] font-bold text-[#111111] leading-[0.8] tracking-tighter mb-8">
                 80<span className="text-[#2FCA54]">%</span>
               </div>
-              <p className="text-[1.75rem] font-bold text-[#111111] leading-tight mb-6">
+              <p className="text-xl sm:text-2xl md:text-[1.75rem] font-bold text-[#111111] leading-tight mb-6 break-words">
                 Of manual rewrites fail due to lost institutional knowledge.
               </p>
-              <p className="text-xl text-[#555555] leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl text-[#555555] leading-relaxed break-words">
                 When dealing with million-line monoliths, the code itself isn't the primary issue—the undocumented business rules buried within it are. You cannot rewrite what your team no longer understands.
               </p>
             </div>
@@ -114,10 +115,10 @@ export default function Home() {
       </section>
 
       {/* ─── PIPELINE ─── */}
-      <section id="pipeline" className="py-32 md:py-40 bg-[#F0F0F0] border-b border-[#E0E0E0]">
-        <div className="max-w-[1600px] mx-auto px-8">
-          <div className="mb-20">
-            <h2 className="text-[clamp(2.5rem,5vw,4.5rem)] font-bold text-[#111111] leading-tight">
+      <section id="pipeline" className="py-24 md:py-32 bg-[#F0F0F0] border-b border-[#E0E0E0]">
+        <div className="max-w-[1600px] mx-auto px-6 sm:px-8">
+          <div className="mb-12 md:mb-20">
+            <h2 className="text-[clamp(2rem,5vw,4.5rem)] font-bold text-[#111111] leading-tight break-words">
               Three autonomous phases.<br />
               One structured output.
             </h2>
@@ -134,32 +135,32 @@ export default function Home() {
       <SovereigntyScroll />
 
       {/* ─── ENGINEERING PRINCIPLES / TRUST ─── */}
-      <section id="clients" className="py-32 md:py-40 border-b border-[#E0E0E0] bg-white">
-        <div className="max-w-[1600px] mx-auto px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+      <section id="clients" className="py-24 md:py-32 border-b border-[#E0E0E0] bg-white">
+        <div className="max-w-[1600px] mx-auto px-6 sm:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
             <div>
-              <h2 className="text-[clamp(2.5rem,5vw,4.5rem)] font-bold text-[#111111] leading-tight mb-10">
+              <h2 className="text-[clamp(2rem,5vw,4.5rem)] font-bold text-[#111111] leading-tight mb-10 break-words">
                 Engineering Principles.
               </h2>
-              <p className="text-2xl text-[#555555] leading-relaxed max-w-xl">
+              <p className="text-lg sm:text-xl md:text-2xl text-[#555555] leading-relaxed max-w-xl break-words">
                 We design for stability, predictability, and human oversight. Our platform serves Fortune 500 engineering teams who cannot afford abstraction layers to hallucinate.
               </p>
             </div>
 
             <div className="space-y-16">
-              <div className="pl-8 border-l-4 border-[#2FCA54]">
-                <p className="text-3xl text-[#111111] font-bold leading-relaxed mb-4">
+              <div className="pl-6 md:pl-8 border-l-4 border-[#2FCA54]">
+                <p className="text-2xl sm:text-3xl text-[#111111] font-bold leading-relaxed mb-4 break-words">
                   Deterministic Output
                 </p>
-                <p className="text-xl text-[#555555] leading-relaxed">
+                <p className="text-base sm:text-lg md:text-xl text-[#555555] leading-relaxed break-words">
                   We rely on static analysis and deterministic extraction. No stochastic guessing. We parse your system exactly as it executes.
                 </p>
               </div>
-              <div className="pl-8 border-l-4 border-[#2FCA54]">
-                <p className="text-3xl text-[#111111] font-bold leading-relaxed mb-4">
+              <div className="pl-6 md:pl-8 border-l-4 border-[#2FCA54]">
+                <p className="text-2xl sm:text-3xl text-[#111111] font-bold leading-relaxed mb-4 break-words">
                   Architecture-First
                 </p>
-                <p className="text-xl text-[#555555] leading-relaxed">
+                <p className="text-base sm:text-lg md:text-xl text-[#555555] leading-relaxed break-words">
                   Generating code is trivial; understanding intent is hard. We focus on recovering the underlying architecture before a single line of modern code is written.
                 </p>
               </div>
@@ -192,7 +193,7 @@ export default function Home() {
                 Oricore.
               </span>
             </div>
-            <p className="text-xl text-white/60 max-w-sm">
+            <p className="text-base sm:text-lg md:text-xl text-white/60 max-w-sm break-words">
               Digital Archaeology for enterprise legacy modernization.
             </p>
           </div>
