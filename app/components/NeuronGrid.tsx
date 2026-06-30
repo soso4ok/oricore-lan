@@ -1,12 +1,11 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 
 export default function NeuronGrid() {
   const containerRef = useRef<HTMLDivElement>(null);
   
-  // We'll keep the node off-screen until hovered, or just park it.
   const [mousePos, setMousePos] = useState({ x: -100, y: -100 });
   const [isHovering, setIsHovering] = useState(false);
 
@@ -14,25 +13,36 @@ export default function NeuronGrid() {
   const snappedX = Math.round(mousePos.x / 40) * 40;
   const snappedY = Math.round(mousePos.y / 40) * 40;
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    
-    // Because we removed the SVG viewBox, the internal SVG coordinates 
-    // are exactly 1:1 with standard CSS pixels. No scaling math required!
-    setMousePos({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top
-    });
-  };
+  useEffect(() => {
+    const handleGlobalMouseMove = (e: MouseEvent) => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const padding = 100;
+      if (
+        x >= -padding &&
+        x <= rect.width + padding &&
+        y >= -padding &&
+        y <= rect.height + padding
+      ) {
+        setMousePos({ x, y });
+        setIsHovering(true);
+      } else {
+        setIsHovering(false);
+      }
+    };
+
+    window.addEventListener("mousemove", handleGlobalMouseMove);
+    return () => window.removeEventListener("mousemove", handleGlobalMouseMove);
+  }, []);
 
   return (
     <div 
       ref={containerRef}
-      className="relative w-full h-full min-h-[400px] lg:min-h-[500px] flex items-start justify-center bg-[#FAFAFA] border-t lg:border-t-0 lg:border-l border-[#E0E0E0] overflow-hidden cursor-crosshair"
-      onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => setIsHovering(false)}
+      className="relative w-full h-full flex items-start justify-center bg-transparent overflow-hidden"
     >
       <svg width="100%" height="100%" className="opacity-60">
         <defs>

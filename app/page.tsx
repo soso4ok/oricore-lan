@@ -41,31 +41,29 @@ export default function Home() {
       </nav>
 
       {/* ─── HERO ─── */}
-      <section className="relative pt-40 pb-0 md:pt-48 md:pb-0 border-b border-[#E0E0E0] overflow-hidden bg-[#FAFAFA]">
+      <section className="relative pt-40 pb-20 md:pt-48 md:pb-32 border-b border-[#E0E0E0] overflow-hidden bg-[#FAFAFA]">
+        {/* Background Animation & Grid */}
+        <div className="absolute inset-0 z-0">
+          <NeuronGrid />
+        </div>
         <HeroBackground />
 
-        <div className="max-w-[1600px] mx-auto relative z-10 flex flex-col lg:flex-row items-stretch">
+        <div className="max-w-[1600px] mx-auto relative z-10 px-6 sm:px-8 lg:px-16">
 
-          {/* Left: Headline & CTA */}
-          <div className="lg:w-7/12 px-6 sm:px-8 lg:pr-16 pb-20 md:pb-32 flex flex-col justify-center">
-            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-[#111111] leading-[1.05] tracking-tighter mb-12 max-w-3xl break-words">
+          {/* Main Headline & CTA overlaying the background grid */}
+          <div className="max-w-4xl">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#111111] leading-[1.05] tracking-tighter mb-12 break-words">
               Recover business logic from undocumented legacy systems without rewriting your code.
             </h1>
-            <p className="text-lg sm:text-xl md:text-2xl text-[#555555] leading-relaxed mb-12 max-w-2xl break-words">
+            <p className="text-xl sm:text-2xl text-[#555555] leading-relaxed mb-12 max-w-2xl break-words">
               Oricore analyzes undocumented enterprise codebases, maps dependencies, and recovers lost institutional knowledge. We generate deterministic architectural blueprints so your team can modernize safely.
             </p>
             
-            <div className="mb-16">
+            <div className="mb-0">
               <a href="#demo" className="inline-block bg-[#111111] !text-white font-medium text-lg px-10 py-4 hover:bg-[#2FCA54] hover:!text-[#111111] transition-colors duration-300">
                 Learn More
               </a>
             </div>
-
-          </div>
-
-          {/* Right: Neuron Grid Animation */}
-          <div className="lg:w-5/12 min-h-[400px] lg:min-h-full">
-            <NeuronGrid />
           </div>
 
         </div>
