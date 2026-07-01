@@ -32,7 +32,7 @@ export default function SovereigntyScroll() {
   // We pause the translation while each slide is active, and only transition between them.
   const x = useTransform(
     scrollYProgress,
-    [0, 0.2, 0.4, 0.6, 0.8, 1.0],
+    [0, 0.1, 0.45, 0.55, 0.9, 1.0],
     ["0%", "0%", "-33.333%", "-33.333%", "-66.666%", "-66.666%"]
   );
 
@@ -49,11 +49,11 @@ export default function SovereigntyScroll() {
             Enterprise-grade compliance requires absolute data control.
           </p>
         </div>
-
+ 
         {/* Left and Right Edge Fades (Pure Black to Transparent) */}
         <div className="absolute top-0 left-0 bottom-0 w-24 md:w-80 bg-gradient-to-r from-[#111111] to-transparent z-20 pointer-events-none" />
         <div className="absolute top-0 right-0 bottom-0 w-24 md:w-80 bg-gradient-to-l from-[#111111] to-transparent z-20 pointer-events-none" />
-
+ 
         {/* Horizontal Scrolling Track */}
         <motion.div style={{ x }} className="flex w-[300vw] h-full items-center pt-20 md:pt-28">
           
@@ -81,10 +81,10 @@ function SlideItem({ slide, index, progress }: { slide: any; index: number; prog
   const titleBgPos = useTransform(
     progress,
     index === 0
-      ? [0, 0.2, 0.4]
+      ? [0, 0.1, 0.45]
       : index === 1
-      ? [0.2, 0.4, 0.6, 0.8]
-      : [0.6, 0.8, 1.0],
+      ? [0.1, 0.45, 0.55, 0.9]
+      : [0.55, 0.9, 1.0],
     index === 0
       ? ["50% 0%", "50% 0%", "0% 0%"]
       : index === 1
@@ -95,10 +95,10 @@ function SlideItem({ slide, index, progress }: { slide: any; index: number; prog
   const opacity = useTransform(
     progress,
     index === 0
-      ? [0, 0.2, 0.4, 1]
+      ? [0, 0.1, 0.45, 1.0]
       : index === 1
-      ? [0, 0.2, 0.4, 0.6, 0.8, 1]
-      : [0, 0.6, 0.8, 1],
+      ? [0, 0.1, 0.45, 0.55, 0.9, 1.0]
+      : [0, 0.55, 0.9, 1.0],
     index === 0
       ? [1, 1, 0, 0]
       : index === 1
@@ -109,10 +109,10 @@ function SlideItem({ slide, index, progress }: { slide: any; index: number; prog
   const y = useTransform(
     progress,
     index === 0
-      ? [0, 0.2, 0.4]
+      ? [0, 0.1, 0.45]
       : index === 1
-      ? [0.2, 0.4, 0.6, 0.8]
-      : [0.6, 0.8, 1.0],
+      ? [0.1, 0.45, 0.55, 0.9]
+      : [0.55, 0.9, 1.0],
     index === 0
       ? [0, 0, -30]
       : index === 1
