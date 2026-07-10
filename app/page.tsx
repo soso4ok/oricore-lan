@@ -1,5 +1,6 @@
 import PipelineCards from "./components/PipelineCards";
 import IntegrationWorkflow from "./components/IntegrationWorkflow";
+import LearnMoreButton from "./components/LearnMoreButton";
 import {
   DynamicSovereigntyScroll,
   DynamicDebtCalculator,
@@ -173,12 +174,7 @@ export default function Home() {
             </p>
 
             <div className="mb-0">
-              <a
-                href="#paradox"
-                className="inline-flex items-center justify-center bg-[#111111] text-white font-medium text-lg px-10 py-5 transition-colors hover:bg-[#1C1C1C]"
-              >
-                Learn More
-              </a>
+              <LearnMoreButton />
             </div>
           </div>
         </div>
