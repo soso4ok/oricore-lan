@@ -70,7 +70,7 @@ export default function SovereigntyScroll() {
           {/* Horizontal Track */}
           <motion.div
             style={{ x }}
-            className="flex w-[300vw] h-full items-start pt-4 md:pt-8"
+            className="flex w-[300vw] h-full items-center"
           >
             {slides.map((slide, index) => (
               <SlideItem
@@ -149,7 +149,7 @@ function SlideItem({
   );
 
   return (
-    <div className="w-[100vw] h-full flex items-start px-8 md:px-32 shrink-0">
+    <div className="w-[100vw] h-full flex items-center px-8 md:px-32 shrink-0">
       <motion.div style={{ opacity, y }} className="w-full max-w-4xl">
         <motion.h3
           style={{
