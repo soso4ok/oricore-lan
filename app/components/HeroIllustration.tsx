@@ -1,248 +1,459 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, useAnimation, useReducedMotion } from "framer-motion";
+
+/* ─────────────────────────────────────────────────────────
+ *  HERO ILLUSTRATION
+ *  A native-web recreation of the original Catalyst video:
+ *  three floating columns of abstract cards/pills connected
+ *  by SVG bezier paths with glowing particles flowing along them.
+ *
+ *  Animation hierarchy (orchestrated entrance):
+ *    1. Columns fade-slide in (staggered L→R, 0.15s offset)
+ *    2. SVG paths draw themselves in (stroke-dashoffset)
+ *    3. Particles begin flowing after paths finish drawing
+ *    4. Dot grid begins its cycling pulse
+ *    5. Skeleton bars begin shimmer
+ *    6. Columns enter a slow, organic float loop
+ * ──────────────────────────────────────────────────────── */
+
+/* ── Shared easing ── */
+const EASE_OUT_EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1];
+
+/* ── Column entrance variants ── */
+const columnVariants = {
+  hidden: (custom: { x: number; y: number }) => ({
+    opacity: 0,
+    x: custom.x,
+    y: custom.y,
+    scale: 0.92,
+    filter: "blur(6px)",
+  }),
+  visible: {
+    opacity: 1,
+    x: 0,
+    y: 0,
+    scale: 1,
+    filter: "blur(0px)",
+    transition: {
+      duration: 1.4,
+      ease: EASE_OUT_EXPO,
+    },
+  },
+};
+
+/* ── Card entrance (children stagger inside each column) ── */
+const cardVariants = {
+  hidden: { opacity: 0, y: 30, scale: 0.9 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.8, ease: EASE_OUT_EXPO },
+  },
+};
+
+const staggerContainer = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.1,
+    },
+  },
+};
 
 export default function HeroIllustration() {
+  const prefersReduced = useReducedMotion();
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
   return (
     <div className="relative w-full h-full min-h-[500px] md:min-h-[700px] flex items-center justify-center select-none overflow-hidden">
-      {/* ── CSS Animations style block ── */}
+      {/* ── Keyframes injected once ── */}
       <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes float-column-1 {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-20px); }
+        /* Organic float loops — each column has unique amplitude, period, and slight X sway */
+        @keyframes hero-float-1 {
+          0%   { transform: translate(0px, 0px) rotate(0deg); }
+          25%  { transform: translate(3px, -12px) rotate(0.3deg); }
+          50%  { transform: translate(-2px, -22px) rotate(-0.2deg); }
+          75%  { transform: translate(4px, -8px) rotate(0.15deg); }
+          100% { transform: translate(0px, 0px) rotate(0deg); }
         }
-        @keyframes float-column-2 {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-35px); }
+        @keyframes hero-float-2 {
+          0%   { transform: translate(0px, 0px) rotate(0deg); }
+          33%  { transform: translate(-4px, -30px) rotate(-0.4deg); }
+          66%  { transform: translate(3px, -14px) rotate(0.25deg); }
+          100% { transform: translate(0px, 0px) rotate(0deg); }
         }
-        @keyframes float-column-3 {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-15px); }
+        @keyframes hero-float-3 {
+          0%   { transform: translate(0px, 0px) rotate(0deg); }
+          20%  { transform: translate(2px, -8px) rotate(0.2deg); }
+          50%  { transform: translate(-3px, -18px) rotate(-0.35deg); }
+          80%  { transform: translate(1px, -6px) rotate(0.1deg); }
+          100% { transform: translate(0px, 0px) rotate(0deg); }
         }
-        .float-1 {
-          animation: float-column-1 12s ease-in-out infinite;
+        .hero-float-1 { animation: hero-float-1 14s cubic-bezier(0.37, 0, 0.63, 1) infinite; }
+        .hero-float-2 { animation: hero-float-2 18s cubic-bezier(0.37, 0, 0.63, 1) infinite; }
+        .hero-float-3 { animation: hero-float-3 12s cubic-bezier(0.37, 0, 0.63, 1) infinite; }
+
+        /* Skeleton shimmer */
+        @keyframes skel-shimmer {
+          0%   { background-position: -200% 0; }
+          100% { background-position: 200% 0; }
         }
-        .float-2 {
-          animation: float-column-2 16s ease-in-out infinite;
+        .skel-bar {
+          background: linear-gradient(90deg, #E5E5E5 25%, #F0F0F0 50%, #E5E5E5 75%);
+          background-size: 200% 100%;
+          animation: skel-shimmer 2.4s ease-in-out infinite;
         }
-        .float-3 {
-          animation: float-column-3 10s ease-in-out infinite;
+
+        /* Dot grid cycling pulse */
+        @keyframes dot-pulse {
+          0%, 100% { opacity: 0.35; transform: scale(0.8); }
+          50%      { opacity: 1; transform: scale(1.15); }
+        }
+
+        /* SVG glow filter fallback */
+        .particle-glow {
+          filter: drop-shadow(0 0 6px rgba(47, 202, 84, 0.8)) drop-shadow(0 0 12px rgba(47, 202, 84, 0.4));
+        }
+
+        /* Path draw-in */
+        @keyframes path-draw {
+          to { stroke-dashoffset: 0; }
         }
       `}} />
 
-      {/* Main Coordinate Wrapper (Fixed internal coordinate system 1000 x 800) */}
-      <div className="relative w-[1000px] h-[800px] scale-[0.6] sm:scale-[0.7] md:scale-[0.8] lg:scale-[1.0] transition-transform duration-300 origin-center">
-        
-        {/* ── SVG Connection Paths (drawn in background) ── */}
-        <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" viewBox="0 0 1000 800">
+      {/* ── Main Coordinate System (1000×800 internal) ── */}
+      <div className="relative w-[1000px] h-[800px] scale-[0.55] sm:scale-[0.65] md:scale-[0.75] lg:scale-[0.95] transition-transform duration-500 origin-center">
+
+        {/* ── SVG Layer: Connection paths + particles ── */}
+        <svg
+          className="absolute inset-0 w-full h-full pointer-events-none z-0"
+          viewBox="0 0 1000 800"
+          aria-hidden="true"
+        >
           <defs>
-            <linearGradient id="line-grad-1" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#E0E0E0" stopOpacity="0.5" />
-              <stop offset="100%" stopColor="#2FCA54" stopOpacity="0.8" />
+            {/* Gradient: grey → green */}
+            <linearGradient id="lg-grey-green" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#CCCCCC" stopOpacity="0.4" />
+              <stop offset="100%" stopColor="#2FCA54" stopOpacity="0.7" />
             </linearGradient>
-            <linearGradient id="line-grad-2" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#E0E0E0" stopOpacity="0.5" />
-              <stop offset="100%" stopColor="#E0E0E0" stopOpacity="0.5" />
+            {/* Gradient: subtle grey */}
+            <linearGradient id="lg-grey" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#D0D0D0" stopOpacity="0.25" />
+              <stop offset="100%" stopColor="#D0D0D0" stopOpacity="0.35" />
             </linearGradient>
+            {/* Particle glow filter (proper SVG glow, not CSS box-shadow) */}
+            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+            <filter id="glow-soft" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
           </defs>
 
-          {/* Connection Lines (Bezier Curves) */}
-          {/* Path 1: Column 2 Gradient Pill to Column 3 Dot Grid */}
-          <path
-            id="path1"
-            d="M 490 190 C 640 190, 640 370, 790 370"
-            fill="none"
-            stroke="url(#line-grad-2)"
-            strokeWidth="1.5"
-            strokeDasharray="4 4"
-          />
+          {/* ── Connection Paths (draw-in on mount) ── */}
+          {hasMounted && (
+            <>
+              {/* Path A: Col2 gradient pill → Col3 dot grid (dashed, subtle) */}
+              <path
+                id="pathA"
+                d="M 490 200 C 620 200, 660 360, 790 360"
+                fill="none"
+                stroke="url(#lg-grey)"
+                strokeWidth="1.2"
+                strokeDasharray="5 5"
+                style={{
+                  strokeDashoffset: prefersReduced ? 0 : 600,
+                  animation: prefersReduced ? "none" : "path-draw 2.5s cubic-bezier(0.65, 0, 0.35, 1) 1.2s forwards",
+                }}
+              />
+              {/* Path B: Col2 center face → Col3 top face (solid, primary) */}
+              <path
+                id="pathB"
+                d="M 490 380 C 600 380, 680 160, 790 155"
+                fill="none"
+                stroke="url(#lg-grey-green)"
+                strokeWidth="1.5"
+                style={{
+                  strokeDasharray: 500,
+                  strokeDashoffset: prefersReduced ? 0 : 500,
+                  animation: prefersReduced ? "none" : "path-draw 2s cubic-bezier(0.65, 0, 0.35, 1) 1.4s forwards",
+                }}
+              />
+              {/* Path C: Col2 center face → Col3 dot grid (solid) */}
+              <path
+                id="pathC"
+                d="M 490 380 C 620 380, 660 360, 790 360"
+                fill="none"
+                stroke="url(#lg-grey-green)"
+                strokeWidth="1.5"
+                style={{
+                  strokeDasharray: 400,
+                  strokeDashoffset: prefersReduced ? 0 : 400,
+                  animation: prefersReduced ? "none" : "path-draw 1.8s cubic-bezier(0.65, 0, 0.35, 1) 1.6s forwards",
+                }}
+              />
+              {/* Path D: Col2 center face → Col3 green pill (solid, sweeping) */}
+              <path
+                id="pathD"
+                d="M 490 380 C 600 380, 680 600, 790 595"
+                fill="none"
+                stroke="url(#lg-grey-green)"
+                strokeWidth="1.5"
+                style={{
+                  strokeDasharray: 500,
+                  strokeDashoffset: prefersReduced ? 0 : 500,
+                  animation: prefersReduced ? "none" : "path-draw 2.2s cubic-bezier(0.65, 0, 0.35, 1) 1.5s forwards",
+                }}
+              />
+              {/* Path E: Col2 bottom face → Col3 green pill (dashed, subtle) */}
+              <path
+                id="pathE"
+                d="M 490 710 C 620 710, 660 595, 790 595"
+                fill="none"
+                stroke="url(#lg-grey)"
+                strokeWidth="1.2"
+                strokeDasharray="5 5"
+                style={{
+                  strokeDashoffset: prefersReduced ? 0 : 600,
+                  animation: prefersReduced ? "none" : "path-draw 2.5s cubic-bezier(0.65, 0, 0.35, 1) 1.8s forwards",
+                }}
+              />
 
-          {/* Path 2: Column 2 Middle Face to Column 3 Top Face */}
-          <path
-            id="path2"
-            d="M 490 370 C 640 370, 640 160, 790 160"
-            fill="none"
-            stroke="url(#line-grad-1)"
-            strokeWidth="1.5"
-          />
+              {/* ── Flowing Particles ── */}
+              {/* They start with a delay so paths finish drawing first */}
+              {!prefersReduced && (
+                <>
+                  {/* Path B particles (primary flow: face → top face) */}
+                  <circle r="3" fill="#2FCA54" filter="url(#glow)" opacity="0">
+                    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="3.4s" fill="freeze" />
+                    <animateMotion dur="5s" repeatCount="indefinite" begin="3.4s" calcMode="spline" keySplines="0.45 0 0.55 1">
+                      <mpath href="#pathB" />
+                    </animateMotion>
+                  </circle>
+                  <circle r="2.5" fill="#2FCA54" filter="url(#glow-soft)" opacity="0">
+                    <animate attributeName="opacity" values="0;0.7" dur="0.3s" begin="5.9s" fill="freeze" />
+                    <animateMotion dur="5s" repeatCount="indefinite" begin="5.9s" calcMode="spline" keySplines="0.45 0 0.55 1">
+                      <mpath href="#pathB" />
+                    </animateMotion>
+                  </circle>
 
-          {/* Path 3: Column 2 Middle Face to Column 3 Dot Grid */}
-          <path
-            id="path3"
-            d="M 490 370 C 640 370, 640 370, 790 370"
-            fill="none"
-            stroke="url(#line-grad-1)"
-            strokeWidth="1.5"
-          />
+                  {/* Path C particle (face → dot grid) */}
+                  <circle r="2.5" fill="#2FCA54" filter="url(#glow-soft)" opacity="0">
+                    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="4s" fill="freeze" />
+                    <animateMotion dur="4.5s" repeatCount="indefinite" begin="4s" calcMode="spline" keySplines="0.45 0 0.55 1">
+                      <mpath href="#pathC" />
+                    </animateMotion>
+                  </circle>
 
-          {/* Path 4: Column 2 Middle Face to Column 3 Green Gradient Pill */}
-          <path
-            id="path4"
-            d="M 490 370 C 640 370, 640 600, 790 600"
-            fill="none"
-            stroke="url(#line-grad-1)"
-            strokeWidth="1.5"
-          />
+                  {/* Path D particles (face → green pill, slower) */}
+                  <circle r="3" fill="#2FCA54" filter="url(#glow)" opacity="0">
+                    <animate attributeName="opacity" values="0;1" dur="0.3s" begin="3.8s" fill="freeze" />
+                    <animateMotion dur="6s" repeatCount="indefinite" begin="3.8s" calcMode="spline" keySplines="0.45 0 0.55 1">
+                      <mpath href="#pathD" />
+                    </animateMotion>
+                  </circle>
+                  <circle r="2" fill="#2FCA54" filter="url(#glow-soft)" opacity="0">
+                    <animate attributeName="opacity" values="0;0.6" dur="0.3s" begin="6.8s" fill="freeze" />
+                    <animateMotion dur="6s" repeatCount="indefinite" begin="6.8s" calcMode="spline" keySplines="0.45 0 0.55 1">
+                      <mpath href="#pathD" />
+                    </animateMotion>
+                  </circle>
 
-          {/* Path 5: Column 2 Bottom Face to Column 3 Green Gradient Pill */}
-          <path
-            id="path5"
-            d="M 490 700 C 640 700, 640 600, 790 600"
-            fill="none"
-            stroke="url(#line-grad-2)"
-            strokeWidth="1.5"
-            strokeDasharray="4 4"
-          />
+                  {/* Path A particle (grey, slow, subtle) */}
+                  <circle r="2" fill="#CCCCCC" filter="url(#glow-soft)" opacity="0">
+                    <animate attributeName="opacity" values="0;0.5" dur="0.3s" begin="4.5s" fill="freeze" />
+                    <animateMotion dur="7s" repeatCount="indefinite" begin="4.5s" calcMode="spline" keySplines="0.45 0 0.55 1">
+                      <mpath href="#pathA" />
+                    </animateMotion>
+                  </circle>
 
-          {/* ── Flow Particles traveling along paths ── */}
-          {/* Path 2 Particles (Middle Face to Top Face) */}
-          <circle r="3.5" fill="#2FCA54" className="shadow-[0_0_8px_#2FCA54]">
-            <animateMotion dur="6s" repeatCount="indefinite" begin="0s">
-              <mpath href="#path2" />
-            </animateMotion>
-          </circle>
-          <circle r="3.5" fill="#2FCA54" className="shadow-[0_0_8px_#2FCA54]">
-            <animateMotion dur="6s" repeatCount="indefinite" begin="3s">
-              <mpath href="#path2" />
-            </animateMotion>
-          </circle>
-
-          {/* Path 3 Particles (Middle Face to Dot Grid) */}
-          <circle r="3" fill="#2FCA54">
-            <animateMotion dur="5s" repeatCount="indefinite" begin="1s">
-              <mpath href="#path3" />
-            </animateMotion>
-          </circle>
-
-          {/* Path 4 Particles (Middle Face to Green Gradient Pill) */}
-          <circle r="3.5" fill="#2FCA54" className="shadow-[0_0_8px_#2FCA54]">
-            <animateMotion dur="7s" repeatCount="indefinite" begin="0.5s">
-              <mpath href="#path4" />
-            </animateMotion>
-          </circle>
-          <circle r="3.5" fill="#2FCA54" className="shadow-[0_0_8px_#2FCA54]">
-            <animateMotion dur="7s" repeatCount="indefinite" begin="4s">
-              <mpath href="#path4" />
-            </animateMotion>
-          </circle>
-
-          {/* Path 1 Particles (Gradient Pill to Dot Grid - Slow grey flow) */}
-          <circle r="2.5" fill="#E0E0E0">
-            <animateMotion dur="8s" repeatCount="indefinite" begin="2s">
-              <mpath href="#path1" />
-            </animateMotion>
-          </circle>
+                  {/* Path E particle (grey, slow) */}
+                  <circle r="2" fill="#CCCCCC" filter="url(#glow-soft)" opacity="0">
+                    <animate attributeName="opacity" values="0;0.5" dur="0.3s" begin="5s" fill="freeze" />
+                    <animateMotion dur="8s" repeatCount="indefinite" begin="5s" calcMode="spline" keySplines="0.45 0 0.55 1">
+                      <mpath href="#pathE" />
+                    </animateMotion>
+                  </circle>
+                </>
+              )}
+            </>
+          )}
         </svg>
 
-        {/* ── Column 1 (Left-most) ── */}
-        <div className="absolute left-[150px] top-[120px] w-[140px] flex flex-col gap-8 float-1 z-10">
-          {/* Portrait Card */}
-          <div className="w-[120px] h-[120px] bg-white p-2.5 rounded-[24px] shadow-md border border-[#EBEBEB] overflow-hidden">
-            <img
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&h=200&q=80"
-              alt="Portrait 1"
-              className="w-full h-full rounded-[18px] object-cover filter grayscale opacity-90"
-              loading="lazy"
-            />
-          </div>
+        {/* ── Column 1 (Left) ── */}
+        <motion.div
+          className="absolute left-[150px] top-[120px] w-[140px] z-10 hero-float-1"
+          custom={{ x: -60, y: 40 }}
+          initial="hidden"
+          animate="visible"
+          variants={columnVariants}
+          transition={{ delay: 0.1 }}
+        >
+          <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="flex flex-col gap-8">
+            {/* Portrait Card */}
+            <motion.div variants={cardVariants} className="w-[120px] h-[120px] bg-white p-2.5 rounded-[24px] shadow-[0_4px_24px_rgba(0,0,0,0.06)] border border-[#EBEBEB] overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&h=200&q=80"
+                alt=""
+                className="w-full h-full rounded-[18px] object-cover grayscale opacity-85"
+                loading="lazy"
+              />
+            </motion.div>
 
-          {/* Solid Black Capsule */}
-          <div className="w-[80px] h-[180px] bg-[#111111] rounded-full shadow-md ml-5" />
+            {/* Solid Black Capsule */}
+            <motion.div variants={cardVariants} className="w-[80px] h-[180px] bg-[#111111] rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.15)] ml-5" />
 
-          {/* Skeleton Pill Card */}
-          <div className="w-[90px] h-[130px] border border-[#E0E0E0] bg-white/70 backdrop-blur-sm rounded-[30px] p-4 flex flex-col gap-2 justify-center ml-4">
-            <div className="h-2 w-10 bg-[#E5E5E5] rounded-full" />
-            <div className="h-2 w-6 bg-[#E5E5E5] rounded-full" />
-            <div className="h-2 w-8 bg-[#E5E5E5] rounded-full" />
-          </div>
-        </div>
+            {/* Skeleton Pill Card */}
+            <motion.div variants={cardVariants} className="w-[90px] h-[130px] border border-[#E0E0E0] bg-white/80 backdrop-blur-sm rounded-[30px] p-4 flex flex-col gap-2.5 justify-center ml-4">
+              <div className="h-2 w-10 skel-bar rounded-full" />
+              <div className="h-2 w-6 skel-bar rounded-full" style={{ animationDelay: "0.3s" }} />
+              <div className="h-2 w-8 skel-bar rounded-full" style={{ animationDelay: "0.6s" }} />
+            </motion.div>
+          </motion.div>
+        </motion.div>
 
-        {/* ── Column 2 (Middle) ── */}
-        <div className="absolute left-[420px] top-[80px] w-[140px] flex flex-col gap-7 float-2 z-10">
-          {/* Vertical Abstract Gradient Capsule */}
-          <div className="w-[64px] h-[180px] bg-gradient-to-b from-[#DEC3B2] via-[#BACDB0] to-[#7FA99B] rounded-full shadow-sm mx-auto" />
+        {/* ── Column 2 (Middle — connection hub) ── */}
+        <motion.div
+          className="absolute left-[420px] top-[80px] w-[140px] z-10 hero-float-2"
+          custom={{ x: 0, y: 60 }}
+          initial="hidden"
+          animate="visible"
+          variants={columnVariants}
+          transition={{ delay: 0.25 }}
+        >
+          <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="flex flex-col gap-7">
+            {/* Vertical Abstract Gradient Capsule */}
+            <motion.div variants={cardVariants} className="w-[64px] h-[180px] bg-gradient-to-b from-[#DEC3B2] via-[#BACDB0] to-[#7FA99B] rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.06)] mx-auto" />
 
-          {/* Small Gradient Square */}
-          <div className="w-[60px] h-[60px] bg-gradient-to-br from-[#BACDB0] to-[#7FA99B] rounded-[18px] shadow-sm mx-auto" />
+            {/* Small Gradient Square */}
+            <motion.div variants={cardVariants} className="w-[60px] h-[60px] bg-gradient-to-br from-[#BACDB0] to-[#7FA99B] rounded-[18px] shadow-sm mx-auto" />
 
-          {/* Middle Portrait Card (Connecting Node) */}
-          <div className="w-[96px] h-[96px] bg-white p-2 rounded-[20px] shadow-md border border-[#EBEBEB] overflow-hidden mx-auto">
-            <img
-              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&h=150&q=80"
-              alt="Portrait 2"
-              className="w-full h-full rounded-[14px] object-cover filter grayscale opacity-90"
-              loading="lazy"
-            />
-          </div>
+            {/* Middle Portrait Card (Main connection node) */}
+            <motion.div variants={cardVariants} className="w-[96px] h-[96px] bg-white p-2 rounded-[20px] shadow-[0_4px_24px_rgba(0,0,0,0.08)] border border-[#EBEBEB] overflow-hidden mx-auto">
+              <img
+                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&h=150&q=80"
+                alt=""
+                className="w-full h-full rounded-[14px] object-cover grayscale opacity-85"
+                loading="lazy"
+              />
+            </motion.div>
 
-          {/* Skeleton Pill Card */}
-          <div className="w-[96px] h-[120px] border border-[#E0E0E0] bg-white/70 backdrop-blur-sm rounded-[24px] p-4 flex flex-col gap-2 justify-center mx-auto">
-            <div className="h-2 w-full bg-[#E5E5E5] rounded-full" />
-            <div className="h-2 w-2/3 bg-[#E5E5E5] rounded-full" />
-            <div className="h-2 w-4/5 bg-[#E5E5E5] rounded-full" />
-          </div>
+            {/* Skeleton Pill Card */}
+            <motion.div variants={cardVariants} className="w-[96px] h-[120px] border border-[#E0E0E0] bg-white/80 backdrop-blur-sm rounded-[24px] p-4 flex flex-col gap-2.5 justify-center mx-auto">
+              <div className="h-2 w-full skel-bar rounded-full" />
+              <div className="h-2 w-2/3 skel-bar rounded-full" style={{ animationDelay: "0.2s" }} />
+              <div className="h-2 w-4/5 skel-bar rounded-full" style={{ animationDelay: "0.4s" }} />
+            </motion.div>
 
-          {/* Black / White Gradient Capsule */}
-          <div className="w-[64px] h-[140px] bg-gradient-to-b from-[#111111] to-[#FAFAFA] border border-[#E5E5E5] rounded-full shadow-sm mx-auto" />
+            {/* Black / White Gradient Capsule */}
+            <motion.div variants={cardVariants} className="w-[64px] h-[140px] bg-gradient-to-b from-[#111111] to-[#FAFAFA] border border-[#E5E5E5] rounded-full shadow-sm mx-auto" />
 
-          {/* Bottom Portrait Card */}
-          <div className="w-[84px] h-[84px] bg-white p-1.5 rounded-[18px] shadow-md border border-[#EBEBEB] overflow-hidden mx-auto">
-            <img
-              src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&h=150&q=80"
-              alt="Portrait 3"
-              className="w-full h-full rounded-[12px] object-cover filter grayscale opacity-90"
-              loading="lazy"
-            />
-          </div>
-        </div>
+            {/* Bottom Portrait Card */}
+            <motion.div variants={cardVariants} className="w-[84px] h-[84px] bg-white p-1.5 rounded-[18px] shadow-[0_4px_24px_rgba(0,0,0,0.08)] border border-[#EBEBEB] overflow-hidden mx-auto">
+              <img
+                src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&h=150&q=80"
+                alt=""
+                className="w-full h-full rounded-[12px] object-cover grayscale opacity-85"
+                loading="lazy"
+              />
+            </motion.div>
+          </motion.div>
+        </motion.div>
 
-        {/* ── Column 3 (Right-most) ── */}
-        <div className="absolute left-[730px] top-[100px] w-[140px] flex flex-col gap-8 float-3 z-10">
-          {/* Top Portrait Card */}
-          <div className="w-[84px] h-[84px] bg-white p-1.5 rounded-[18px] shadow-md border border-[#EBEBEB] overflow-hidden mx-auto">
-            <img
-              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150&q=80"
-              alt="Portrait 4"
-              className="w-full h-full rounded-[12px] object-cover filter grayscale opacity-90"
-              loading="lazy"
-            />
-          </div>
+        {/* ── Column 3 (Right — output targets) ── */}
+        <motion.div
+          className="absolute left-[730px] top-[100px] w-[140px] z-10 hero-float-3"
+          custom={{ x: 60, y: 30 }}
+          initial="hidden"
+          animate="visible"
+          variants={columnVariants}
+          transition={{ delay: 0.4 }}
+        >
+          <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="flex flex-col gap-8">
+            {/* Top Portrait Card */}
+            <motion.div variants={cardVariants} className="w-[84px] h-[84px] bg-white p-1.5 rounded-[18px] shadow-[0_4px_24px_rgba(0,0,0,0.08)] border border-[#EBEBEB] overflow-hidden mx-auto">
+              <img
+                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150&q=80"
+                alt=""
+                className="w-full h-full rounded-[12px] object-cover grayscale opacity-85"
+                loading="lazy"
+              />
+            </motion.div>
 
-          {/* Dot Grid Card */}
-          <div className="w-[96px] h-[140px] bg-white border border-[#EBEBEB] rounded-[24px] shadow-md p-4 flex flex-col justify-center items-center mx-auto">
-            <div className="grid grid-cols-3 gap-2">
-              {Array.from({ length: 15 }).map((_, i) => (
-                <div
-                  key={i}
-                  className={`w-2 h-2 rounded-[1px] transition-colors duration-1000 ${
-                    i % 4 === 0
-                      ? "bg-[#2FCA54] shadow-[0_0_4px_#2FCA54]"
-                      : i % 3 === 0
-                      ? "bg-[#111111]"
-                      : "bg-[#E5E5E5]"
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
+            {/* Dot Grid Card (Animated cycling pulse) */}
+            <motion.div variants={cardVariants} className="w-[96px] h-[140px] bg-white border border-[#EBEBEB] rounded-[24px] shadow-[0_4px_24px_rgba(0,0,0,0.06)] p-4 flex flex-col justify-center items-center mx-auto">
+              <DotGrid />
+            </motion.div>
 
-          {/* Skeletal Pill Card (Large) */}
-          <div className="w-[110px] h-[190px] border border-[#E0E0E0] bg-white/70 backdrop-blur-sm rounded-[28px] p-5 flex flex-col gap-3 justify-center mx-auto">
-            <div className="h-2.5 w-full bg-[#E5E5E5] rounded-full" />
-            <div className="h-2.5 w-2/3 bg-[#E5E5E5] rounded-full" />
-            <div className="flex gap-1 items-center my-1">
-              <div className="h-2 w-2 rounded-[1px] bg-[#2FCA54]" />
-              <div className="h-2.5 w-1/2 bg-[#E5E5E5] rounded-full" />
-            </div>
-            <div className="h-2.5 w-3/4 bg-[#E5E5E5] rounded-full" />
-            <div className="h-2.5 w-1/2 bg-[#E5E5E5] rounded-full" />
-          </div>
+            {/* Skeletal Pill Card (Large, with shimmer) */}
+            <motion.div variants={cardVariants} className="w-[110px] h-[190px] border border-[#E0E0E0] bg-white/80 backdrop-blur-sm rounded-[28px] p-5 flex flex-col gap-3 justify-center mx-auto">
+              <div className="h-2.5 w-full skel-bar rounded-full" />
+              <div className="h-2.5 w-2/3 skel-bar rounded-full" style={{ animationDelay: "0.15s" }} />
+              <div className="flex gap-1.5 items-center my-1">
+                <div className="h-2 w-2 rounded-[1px] bg-[#2FCA54] shadow-[0_0_4px_rgba(47,202,84,0.5)]" />
+                <div className="h-2.5 w-1/2 skel-bar rounded-full" style={{ animationDelay: "0.3s" }} />
+              </div>
+              <div className="h-2.5 w-3/4 skel-bar rounded-full" style={{ animationDelay: "0.45s" }} />
+              <div className="h-2.5 w-1/2 skel-bar rounded-full" style={{ animationDelay: "0.6s" }} />
+            </motion.div>
 
-          {/* Green Gradient Pill */}
-          <div className="w-[64px] h-[165px] bg-gradient-to-b from-[#2FCA54] via-[#7FA99B] to-[#111111] rounded-full shadow-sm mx-auto" />
-        </div>
+            {/* Green Gradient Pill */}
+            <motion.div variants={cardVariants} className="w-[64px] h-[165px] bg-gradient-to-b from-[#2FCA54] via-[#7FA99B] to-[#111111] rounded-full shadow-[0_4px_20px_rgba(47,202,84,0.12)] mx-auto" />
+          </motion.div>
+        </motion.div>
 
       </div>
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────
+ *  DOT GRID — Animated cycling data pulse
+ *  Each dot has a unique delay based on a diagonal wave pattern.
+ *  Green dots "activate" in a sweep, creating a data-flow effect.
+ * ──────────────────────────────────────────────────────── */
+function DotGrid() {
+  const cols = 3;
+  const rows = 5;
+  const total = cols * rows;
+
+  return (
+    <div className="grid grid-cols-3 gap-[6px]">
+      {Array.from({ length: total }).map((_, i) => {
+        const col = i % cols;
+        const row = Math.floor(i / cols);
+        // Diagonal wave delay: creates sweep from top-left to bottom-right
+        const waveDelay = (col + row) * 0.35;
+        // Cycle duration varies per dot for organic feel
+        const dur = 2.8 + (i % 3) * 0.4;
+
+        return (
+          <div
+            key={i}
+            className="w-2 h-2 rounded-[1px] bg-[#2FCA54]"
+            style={{
+              animation: `dot-pulse ${dur}s cubic-bezier(0.37, 0, 0.63, 1) ${waveDelay}s infinite`,
+              boxShadow: "0 0 4px rgba(47, 202, 84, 0.4)",
+            }}
+          />
+        );
+      })}
     </div>
   );
 }
