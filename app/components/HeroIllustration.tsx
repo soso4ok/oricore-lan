@@ -114,11 +114,7 @@ export default function HeroIllustration() {
         }
         .c-sq { animation: chaos-drift var(--dur) cubic-bezier(0.37,0,0.63,1) infinite; will-change: transform; }
 
-        @keyframes node-breathe {
-          0%, 100% { transform: scale(1); opacity: 1; }
-          50%      { transform: scale(1.08); opacity: 0.9; }
-        }
-        .node-core { animation: node-breathe 4s cubic-bezier(0.37,0,0.63,1) infinite; transform-origin: center; }
+
 
         @keyframes ring-rotate { to { transform: rotate(360deg); } }
 
@@ -222,7 +218,7 @@ export default function HeroIllustration() {
               })}
 
               {/* ── CENTER: Extraction node ── */}
-              <g className="node-core">
+              <g>
                 <rect
                   x={NODE_CX - NODE_R}
                   y={NODE_CY - NODE_R}
