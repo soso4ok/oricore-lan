@@ -169,7 +169,7 @@ export default function Home() {
             </h1>
             <div className="mb-10 w-24 h-[6px] bg-[#2FCA54]"></div>
             <p className="text-lg sm:text-xl md:text-[22px] text-[#333333] leading-[1.6] mb-12 max-w-2xl break-words">
-              Oricore analyzes undocumented enterprise codebases, maps dependencies, and recovers lost of institutional knowledge. We generate deterministic architectural blueprints so your team can modernize safely.
+              Oricore is a continuous legacy modernization platform. Using AST-based logic extraction and on-premise SLM ensembles, we map dependencies, recover lost institutional knowledge, and generate deterministic blueprints. Deliver PR-ready specifications, characterization tests, and DORA-compliant audit trails — without hallucinating code.
             </p>
 
             <div className="mb-0">
