@@ -23,23 +23,30 @@ const blinker = Blinker({
 });
 
 export const metadata: Metadata = {
-  title: "Oricore Systems — Legacy Code Archaeology",
+  title:
+    "Oricore — Enterprise Legacy Modernization Platform | AST Logic Extraction & DORA Compliance",
   description:
-    "We don't write your code. Our agents dive into undocumented legacy systems, extract the business logic, and output structured Jira tasks and Gherkin tests.",
+    "Map, extract, and modernize legacy codebases continuously. Oricore uses AST-based business logic extraction with on-premise SLMs to deliver PR-ready specifications, characterization tests, and DORA-compliant audit trails — without hallucinating code.",
   keywords: [
-    "legacy code analysis",
-    "COBOL migration",
-    "code archaeology",
+    "enterprise legacy modernization",
+    "automated reverse engineering",
+    "AST logic extraction",
+    "COBOL to Java migration",
+    "DORA compliance",
+    "NIS2 compliance",
+    "on-premise SLM",
+    "air-gapped code analysis",
     "business logic extraction",
-    "Jira generation",
-    "Gherkin tests",
-    "enterprise",
-    "digital archaeology",
+    "legacy code modernization platform",
+    "characterization tests",
+    "Gherkin scenarios",
+    "SBOM generation",
+    "technical debt reduction",
   ],
   openGraph: {
-    title: "Oricore Systems — Legacy Code Archaeology",
+    title: "Oricore — Enterprise Legacy Modernization Platform",
     description:
-      "Agents that extract blueprints from legacy spaghetti code. Structured output.",
+      "Continuous AST-based legacy code analysis. On-premise SLMs, DORA-compliant, zero hallucination. Map, extract, modernize.",
     type: "website",
   },
 };
