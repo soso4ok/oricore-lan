@@ -140,14 +140,8 @@ export default function Home() {
         className="relative pt-40 pb-20 md:pt-48 md:pb-32 border-b border-[#E0E0E0] overflow-hidden bg-[#FAFAFA]"
         aria-labelledby="hero-heading"
       >
-        {/* Background: Extraction Canvas Animation */}
-        <div
-          className="absolute inset-0 z-0 pointer-events-none select-none"
-          style={{
-            maskImage: "linear-gradient(to right, transparent 10%, rgba(0,0,0,0.15) 35%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.85) 100%)",
-            WebkitMaskImage: "linear-gradient(to right, transparent 10%, rgba(0,0,0,0.15) 35%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.85) 100%)",
-          }}
-        >
+        {/* Background Native Web Illustration */}
+        <div className="absolute top-0 bottom-0 right-0 w-full md:w-[40%] lg:w-[35%] z-0 pointer-events-none opacity-15 md:opacity-80 select-none flex items-center justify-center">
           <HeroIllustration />
         </div>
 
