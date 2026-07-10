@@ -1,6 +1,7 @@
 import PipelineCards from "./components/PipelineCards";
 import IntegrationWorkflow from "./components/IntegrationWorkflow";
 import LearnMoreButton from "./components/LearnMoreButton";
+import HeroIllustration from "./components/HeroIllustration";
 import {
   DynamicSovereigntyScroll,
   DynamicDebtCalculator,
@@ -139,25 +140,9 @@ export default function Home() {
         className="relative pt-40 pb-20 md:pt-48 md:pb-32 border-b border-[#E0E0E0] overflow-hidden bg-[#FAFAFA]"
         aria-labelledby="hero-heading"
       >
-        {/* Background Videos (Catalyst Illustration) */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <video
-            src="/videos/home-desktop.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover mix-blend-multiply hidden md:block"
-            style={{ objectPosition: '70% center' }}
-          />
-          <video
-            src="/videos/home-mobile.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover object-top mix-blend-multiply md:hidden"
-          />
+        {/* Background Native Web Illustration */}
+        <div className="absolute inset-y-0 right-0 w-full md:w-1/2 lg:w-[55%] z-0 pointer-events-none opacity-20 md:opacity-90 select-none">
+          <HeroIllustration />
         </div>
 
         <div className="max-w-[1600px] mx-auto relative z-10 px-6 sm:px-8 lg:px-16 flex flex-col lg:flex-row gap-16 lg:gap-12 items-start pointer-events-none">
