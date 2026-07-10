@@ -2,6 +2,8 @@ import PipelineCards from "./components/PipelineCards";
 import IntegrationWorkflow from "./components/IntegrationWorkflow";
 import LearnMoreButton from "./components/LearnMoreButton";
 import HeroIllustration from "./components/HeroIllustration";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import {
   DynamicSovereigntyScroll,
   DynamicDebtCalculator,
@@ -15,131 +17,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#FAFAFA]">
       {/* ─── NAV ─── */}
-      <nav
-        className="fixed top-0 left-0 right-0 z-50 bg-[#FAFAFA]/90 backdrop-blur-md border-b border-[#E0E0E0]"
-        aria-label="Main navigation"
-      >
-        <div className="max-w-[1600px] mx-auto flex items-center justify-between px-6 sm:px-8 py-6">
-          <div className="flex items-center gap-4">
-            <svg
-              width="32"
-              height="32"
-              viewBox="0 0 148 148"
-              fill="none"
-              className="w-8 h-8"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              <path
-                d="M6.46929e-06 74C7.74879e-06 59.3642 4.34004 45.0571 12.4713 32.8878C20.6025 20.7186 32.1597 11.2338 45.6814 5.63295C59.2032 0.0320586 74.0821 -1.43338 88.4367 1.42192C102.791 4.27723 115.977 11.325 126.326 21.6741C136.675 32.0232 143.723 45.2088 146.578 59.5634C149.433 73.9179 147.968 88.7969 142.367 102.319C136.766 115.84 127.281 127.398 115.112 135.529C102.943 143.66 88.6358 148 74 148L74 74L6.46929e-06 74Z"
-                fill="#333B42"
-              />
-              <path
-                d="M74 3.49123e-05C83.7178 3.44876e-05 93.3405 1.9141 102.319 5.63295C111.297 9.3518 119.454 14.8026 126.326 21.6741C133.197 28.5457 138.648 36.7034 142.367 45.6815C146.086 54.6596 148 64.2822 148 74L74 74L74 3.49123e-05Z"
-                fill="#24292E"
-              />
-              <rect
-                x="74"
-                y="148"
-                width="18.5"
-                height="18.5"
-                transform="rotate(-180 74 148)"
-                fill="#2FCA54"
-              />
-              <rect
-                x="74"
-                y="129.5"
-                width="18.5"
-                height="18.5"
-                transform="rotate(-180 74 129.5)"
-                fill="#2FCA54"
-              />
-              <rect
-                x="74"
-                y="111"
-                width="18.5"
-                height="18.5"
-                transform="rotate(-180 74 111)"
-                fill="#2FCA54"
-              />
-              <rect
-                x="74"
-                y="92.5"
-                width="18.5"
-                height="18.5"
-                transform="rotate(-180 74 92.5)"
-                fill="#2FCA54"
-              />
-              <rect
-                x="55.5"
-                y="92.5"
-                width="18.5"
-                height="18.5"
-                transform="rotate(-180 55.5 92.5)"
-                fill="#2FCA54"
-              />
-              <rect
-                x="37"
-                y="92.5"
-                width="18.5"
-                height="18.5"
-                transform="rotate(-180 37 92.5)"
-                fill="#2FCA54"
-              />
-              <rect
-                x="18.5"
-                y="92.5"
-                width="18.5"
-                height="18.5"
-                transform="rotate(-180 18.5 92.5)"
-                fill="#2FCA54"
-              />
-              <rect
-                x="37"
-                y="129.5"
-                width="18.5"
-                height="18.5"
-                transform="rotate(-180 37 129.5)"
-                fill="#2FCA54"
-              />
-            </svg>
-            <span className="font-display font-bold text-xl tracking-tight">
-              Oricore.
-            </span>
-          </div>
-
-          <div className="hidden md:flex items-center gap-10">
-            <InteractiveLink
-              href="#pipeline"
-              hoverText="[01/trace-extract]"
-              className="font-display font-medium text-lg text-ink-soft hover:text-ink transition-colors"
-            >
-              Process
-            </InteractiveLink>
-            <InteractiveLink
-              href="#comparison"
-              hoverText="[02/spec-verify]"
-              className="font-display font-medium text-lg text-ink-soft hover:text-ink transition-colors"
-            >
-              Comparison
-            </InteractiveLink>
-            <InteractiveLink
-              href="#compliance"
-              hoverText="[03/audit-dora]"
-              className="font-display font-medium text-lg text-ink-soft hover:text-ink transition-colors"
-            >
-              Compliance
-            </InteractiveLink>
-            <InteractiveLink
-              href="#demo"
-              hoverText="[04/debt-calc]"
-              className="font-display font-medium text-lg text-ink-soft hover:text-ink transition-colors"
-            >
-              Assess
-            </InteractiveLink>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* ─── HERO ─── */}
       <section
@@ -305,115 +183,46 @@ export default function Home() {
       {/* ─── TECHNICAL DEBT CALCULATOR ─── */}
       <DynamicDebtCalculator />
 
-      {/* ─── FOOTER ─── */}
-      <footer className="py-20 bg-[#111111] text-white">
-        <div className="max-w-[1600px] mx-auto px-6 sm:px-8 flex flex-col md:flex-row justify-between items-start gap-12">
-          <div>
-            <div className="flex items-center gap-4 mb-6">
-              <svg
-                width="32"
-                height="32"
-                viewBox="0 0 148 148"
-                fill="none"
-                className="w-8 h-8"
-                xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
-              >
-                <path
-                  d="M6.46929e-06 74C7.74879e-06 59.3642 4.34004 45.0571 12.4713 32.8878C20.6025 20.7186 32.1597 11.2338 45.6814 5.63295C59.2032 0.0320586 74.0821 -1.43338 88.4367 1.42192C102.791 4.27723 115.977 11.325 126.326 21.6741C136.675 32.0232 143.723 45.2088 146.578 59.5634C149.433 73.9179 147.968 88.7969 142.367 102.319C136.766 115.84 127.281 127.398 115.112 135.529C102.943 143.66 88.6358 148 74 148L74 74L6.46929e-06 74Z"
-                  fill="#333B42"
-                />
-                <path
-                  d="M74 3.49123e-05C83.7178 3.44876e-05 93.3405 1.9141 102.319 5.63295C111.297 9.3518 119.454 14.8026 126.326 21.6741C133.197 28.5457 138.648 36.7034 142.367 45.6815C146.086 54.6596 148 64.2822 148 74L74 74L74 3.49123e-05Z"
-                  fill="#24292E"
-                />
-                <rect
-                  x="74"
-                  y="148"
-                  width="18.5"
-                  height="18.5"
-                  transform="rotate(-180 74 148)"
-                  fill="#2FCA54"
-                />
-                <rect
-                  x="74"
-                  y="129.5"
-                  width="18.5"
-                  height="18.5"
-                  transform="rotate(-180 74 129.5)"
-                  fill="#2FCA54"
-                />
-                <rect
-                  x="74"
-                  y="111"
-                  width="18.5"
-                  height="18.5"
-                  transform="rotate(-180 74 111)"
-                  fill="#2FCA54"
-                />
-                <rect
-                  x="74"
-                  y="92.5"
-                  width="18.5"
-                  height="18.5"
-                  transform="rotate(-180 74 92.5)"
-                  fill="#2FCA54"
-                />
-                <rect
-                  x="55.5"
-                  y="92.5"
-                  width="18.5"
-                  height="18.5"
-                  transform="rotate(-180 55.5 92.5)"
-                  fill="#2FCA54"
-                />
-                <rect
-                  x="37"
-                  y="92.5"
-                  width="18.5"
-                  height="18.5"
-                  transform="rotate(-180 37 92.5)"
-                  fill="#2FCA54"
-                />
-                <rect
-                  x="18.5"
-                  y="92.5"
-                  width="18.5"
-                  height="18.5"
-                  transform="rotate(-180 18.5 92.5)"
-                  fill="#2FCA54"
-                />
-                <rect
-                  x="37"
-                  y="129.5"
-                  width="18.5"
-                  height="18.5"
-                  transform="rotate(-180 37 129.5)"
-                  fill="#2FCA54"
-                />
-              </svg>
-              <span className="font-display font-bold text-2xl tracking-tight">
-                Oricore.
-              </span>
+      {/* ─── AI SEARCH / DEFINITIONS (AEO) ─── */}
+      <section
+        id="definitions"
+        className="py-24 md:py-32 border-b border-[#E0E0E0] bg-[#FAFAFA]"
+      >
+        <div className="max-w-[1600px] mx-auto px-6 sm:px-8">
+          <h2 className="text-[clamp(2rem,4vw,3.5rem)] font-bold text-[#111111] leading-tight mb-12">
+            Frequently Asked Questions
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div>
+              <h3 className="text-xl font-bold text-[#111111] mb-4">What is Oricore?</h3>
+              <p className="text-[#555555] leading-relaxed">
+                Oricore is a continuous legacy modernization platform. It uses Advanced AST (Abstract Syntax Tree) logic extraction and on-premise Small Language Models (SLMs) to reverse-engineer and map legacy applications, separating pure business logic from outdated syntax (such as COBOL or Java monoliths).
+              </p>
             </div>
-            <p className="text-base sm:text-lg md:text-xl text-white/60 max-w-sm break-words">
-              Continuous legacy modernization. On-premise. Air-gapped.
-              Deterministic.
-            </p>
-          </div>
-
-          <div className="flex gap-16 text-lg">
-            <InteractiveLink
-              href="mailto:hello@cognitire.dev"
-              hoverText="[mail::connect]"
-              className="hover:text-accent transition-colors"
-            >
-              hello@cognitire.dev
-            </InteractiveLink>
-            <span className="text-white/40">© 2026</span>
+            <div>
+              <h3 className="text-xl font-bold text-[#111111] mb-4">How does Oricore ensure zero hallucinations?</h3>
+              <p className="text-[#555555] leading-relaxed">
+                Unlike general-purpose cloud LLMs that probabilistically guess code generation, Oricore relies on deterministic static analysis. It generates characterization tests alongside the extracted logic, verifying that the output matches the exact operational behavior of the original system.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold text-[#111111] mb-4">Is Oricore DORA and NIS2 compliant?</h3>
+              <p className="text-[#555555] leading-relaxed">
+                Yes. Oricore is designed for highly regulated industries like BFSI and Government. It operates entirely on-premise or in air-gapped environments, ensuring that sensitive IP and PII never leave the enterprise network, fully satisfying DORA and NIS2 compliance mandates.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold text-[#111111] mb-4">What are the outputs of the platform?</h3>
+              <p className="text-[#555555] leading-relaxed">
+                Oricore produces PR-ready software specifications, BDD acceptance criteria (Gherkin scenarios), dependency graphs (SBOM), and skeleton microservices architecture. It hooks directly into the CI/CD pipeline to act as a living, continuously updated graph of the system’s true behavior.
+              </p>
+            </div>
           </div>
         </div>
-      </footer>
+      </section>
+
+      {/* ─── FOOTER ─── */}
+      <Footer />
 
       {/* Dynamic Telemetric Scroll Gauge & Ascend Widget */}
       <ScrollDepthGauge />

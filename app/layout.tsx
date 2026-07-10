@@ -23,6 +23,7 @@ const blinker = Blinker({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://oricore.com"),
   title:
     "Oricore — Enterprise Legacy Modernization Platform | AST Logic Extraction & DORA Compliance",
   description:
@@ -43,12 +44,61 @@ export const metadata: Metadata = {
     "SBOM generation",
     "technical debt reduction",
   ],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Oricore — Enterprise Legacy Modernization Platform",
     description:
       "Continuous AST-based legacy code analysis. On-premise SLMs, DORA-compliant, zero hallucination. Map, extract, modernize.",
+    url: "https://oricore.com",
+    siteName: "Oricore",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Oricore Enterprise Legacy Modernization",
+      },
+    ],
+    locale: "en_US",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Oricore — Enterprise Legacy Modernization Platform",
+    description:
+      "Continuous AST-based legacy code analysis. On-premise SLMs, DORA-compliant, zero hallucination. Map, extract, modernize.",
+    images: ["/og-image.jpg"],
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://oricore.com/#organization",
+      name: "Oricore",
+      url: "https://oricore.com",
+      logo: "https://oricore.com/logo.svg",
+      description:
+        "Enterprise legacy modernization platform using continuous AST-based logic extraction.",
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://oricore.com/#software",
+      name: "Oricore Platform",
+      applicationCategory: "DeveloperApplication",
+      operatingSystem: "On-Premise, Linux, Windows",
+      description:
+        "Maps, extracts, and modernizes legacy codebases continuously using AST-based logic extraction with on-premise SLMs.",
+      url: "https://oricore.com",
+      publisher: {
+        "@id": "https://oricore.com/#organization",
+      },
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -61,7 +111,13 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${spaceGrotesk.variable} ${blinker.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        {children}
+      </body>
     </html>
   );
 }

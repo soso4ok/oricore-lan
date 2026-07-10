@@ -57,6 +57,24 @@ a {
   text-decoration: none;
 }
 
+/* ─── BUTTONS ────────────────────────────────── */
+
+.oricore-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-ink);
+  color: var(--color-bg);
+  font-weight: 500;
+  padding: 1.25rem 2.5rem;
+  transition: all 0.2s ease;
+}
+
+.oricore-btn:hover {
+  background-color: var(--color-accent);
+  color: var(--color-ink);
+}
+
 /* ─── FANCY HOVER LINKS (ORICORE LINK) ───────────────── */
 
 .oricore-link {
