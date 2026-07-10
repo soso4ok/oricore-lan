@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 
 const slides = [
   {
@@ -39,6 +39,7 @@ export default function SovereigntyScroll() {
 
   return (
     <section
+      id="sovereignty"
       ref={targetRef}
       className="relative h-[500vh] bg-[#111111] text-white"
       aria-label="Platform architecture and economics"
@@ -97,7 +98,7 @@ function SlideItem({
 }: {
   slide: { id: string; title: string; content: string };
   index: number;
-  progress: ReturnType<typeof useScroll>["scrollYProgress"];
+  progress: MotionValue<number>;
 }) {
   const titleBgPos = useTransform(
     progress,
@@ -167,7 +168,7 @@ function SlideItem({
   );
 }
 
-function ScrollProgressBar({ progress }: { progress: any }) {
+function ScrollProgressBar({ progress }: { progress: MotionValue<number> }) {
   const total = 24;
   return (
     <div className="shrink-0 px-8 md:px-32 mt-[25px] w-full max-w-4xl mx-auto">
@@ -197,7 +198,7 @@ function ProgressSquare({
 }: {
   index: number;
   total: number;
-  progress: any;
+  progress: MotionValue<number>;
 }) {
   const threshold = index / total;
 

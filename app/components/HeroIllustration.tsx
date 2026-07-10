@@ -35,7 +35,7 @@ function sr(seed: number) {
 function getChaosSquares() {
   const cols = 6;
   const rows = 5;
-  const baseX = 95;
+  const baseX = 144;
   const baseY = 50;
   const squares = [];
   for (let r = 0; r < rows; r++) {
@@ -57,7 +57,7 @@ function getChaosSquares() {
 function getOrderSquares() {
   const cols = 5;
   const rows = 4;
-  const baseX = 110;
+  const baseX = 160;
   const baseY = 660;
   const squares = [];
   for (let r = 0; r < rows; r++) {
