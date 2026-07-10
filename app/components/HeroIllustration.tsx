@@ -222,28 +222,16 @@ export default function HeroIllustration() {
               })}
 
               {/* ── CENTER: Extraction node ── */}
-              {/* Outer orbital ring */}
-              <g style={{ transformOrigin: `${NODE_CX}px ${NODE_CY}px`, animation: "ring-rotate 28s linear infinite" }}>
-                <circle cx={NODE_CX} cy={NODE_CY} r={NODE_R + 12} fill="none" stroke="#2FCA54" strokeWidth="0.5" strokeDasharray="4 8" opacity="0.35" />
-              </g>
-              {/* Inner ring */}
-              <circle cx={NODE_CX} cy={NODE_CY} r={NODE_R + 4} fill="none" stroke="#2FCA54" strokeWidth="0.6" opacity="0.15" />
-              {/* Core square */}
               <g className="node-core">
                 <rect
                   x={NODE_CX - NODE_R}
                   y={NODE_CY - NODE_R}
                   width={NODE_R * 2}
                   height={NODE_R * 2}
-                  rx="3"
+                  rx="4"
                   fill="#2FCA54"
                   filter="url(#gl)"
                 />
-                {/* 2×2 inner grid (Oricore logo motif) */}
-                <rect x={NODE_CX - 10} y={NODE_CY - 10} width="8" height="8" rx="1" fill="#111" opacity="0.25" />
-                <rect x={NODE_CX + 2}  y={NODE_CY - 10} width="8" height="8" rx="1" fill="#111" opacity="0.25" />
-                <rect x={NODE_CX - 10} y={NODE_CY + 2}  width="8" height="8" rx="1" fill="#111" opacity="0.25" />
-                <rect x={NODE_CX + 2}  y={NODE_CY + 2}  width="8" height="8" rx="1" fill="#FFF" opacity="0.35" />
               </g>
 
               {/* ── OUTPUT PATHS: Node → Order grid ── */}
