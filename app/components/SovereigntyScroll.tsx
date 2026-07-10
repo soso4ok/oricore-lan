@@ -45,7 +45,7 @@ export default function SovereigntyScroll() {
     >
       <div className="sticky top-0 h-screen flex flex-col overflow-hidden">
         {/* ── Fixed Header Zone ── */}
-        <div className="shrink-0 px-8 md:px-32 pt-20 md:pt-48 pb-4 md:pb-6 flex flex-col items-center text-center">
+        <div className="shrink-0 px-8 md:px-32 pt-20 md:pt-48 pb-0 flex flex-col items-center text-center">
           <h2 className="text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-[1] mb-4 tracking-tighter">
             On-Premise. Air-Gapped. Yours.
           </h2>
@@ -70,7 +70,7 @@ export default function SovereigntyScroll() {
           {/* Horizontal Track */}
           <motion.div
             style={{ x }}
-            className="flex w-[300vw] h-full items-center"
+            className="flex w-[300vw] h-full items-start pt-5"
           >
             {slides.map((slide, index) => (
               <SlideItem
@@ -149,7 +149,7 @@ function SlideItem({
   );
 
   return (
-    <div className="w-[100vw] h-full flex items-center justify-center px-8 md:px-32 shrink-0">
+    <div className="w-[100vw] h-full flex items-start justify-center px-8 md:px-32 shrink-0">
       <motion.div style={{ opacity, y }} className="w-full max-w-4xl flex flex-col items-center text-center">
         <motion.h3
           style={{
