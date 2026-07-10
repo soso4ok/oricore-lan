@@ -149,8 +149,8 @@ function SlideItem({
   );
 
   return (
-    <div className="w-[100vw] h-full flex items-center px-8 md:px-32 shrink-0">
-      <motion.div style={{ opacity, y }} className="w-full max-w-4xl">
+    <div className="w-[100vw] h-full flex items-center justify-center px-8 md:px-32 shrink-0">
+      <motion.div style={{ opacity, y }} className="w-full max-w-4xl flex flex-col items-center text-center">
         <motion.h3
           style={{
             backgroundImage:
