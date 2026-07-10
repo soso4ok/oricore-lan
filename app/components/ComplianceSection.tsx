@@ -45,14 +45,14 @@ export default function ComplianceSection() {
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
         >
-          <div className="pt-8 lg:pt-12 lg:pr-16">
+          <div className="pt-8 pb-8 lg:pt-12 lg:pb-12 lg:pr-16">
             <p className="text-[clamp(2.5rem,5vw,4.5rem)] font-bold text-[#111111] leading-[1] tracking-tighter break-words">
               Your code
               <br />
               never leaves.
             </p>
           </div>
-          <div className="pt-4 lg:pt-12 lg:pl-16 lg:border-l border-[#E0E0E0]">
+          <div className="pt-4 pb-8 lg:pt-12 lg:pb-12 lg:pl-16 lg:border-l border-[#E0E0E0]">
             <p className="text-lg sm:text-xl md:text-2xl text-[#555555] leading-relaxed max-w-2xl break-words">
               Ensemble of fine-tuned, localized Small Language Models running
               inside your on-premise infrastructure. Zero public API

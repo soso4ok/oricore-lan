@@ -19,6 +19,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: #FAFAFA;
   color: #111111;
@@ -52,6 +56,51 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+/* ─── FANCY HOVER LINKS (ORICORE LINK) ───────────────── */
+
+.oricore-link {
+  position: relative;
+  display: inline-grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  overflow: hidden;
+  height: 1.5em;
+  line-height: 1.5em;
+}
+
+.oricore-link-text {
+  grid-area: 1 / 1 / 2 / 2;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  transform: translateY(0);
+}
+
+.oricore-link-hover {
+  grid-area: 1 / 1 / 2 / 2;
+  color: #2FCA54;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.78em;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  transform: translateY(100%);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+}
+
+.oricore-link:hover .oricore-link-text {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.oricore-link:hover .oricore-link-hover {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+
 
 /* ─── KEYFRAMES ──────────────────────────────── */
 
