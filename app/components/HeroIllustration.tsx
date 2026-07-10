@@ -36,7 +36,7 @@ function getChaosSquares() {
   const cols = 6;
   const rows = 5;
   const baseX = 144;
-  const baseY = 50;
+  const baseY = 130;
   const squares = [];
   for (let r = 0; r < rows; r++) {
     for (let c = 0; c < cols; c++) {
@@ -58,7 +58,7 @@ function getOrderSquares() {
   const cols = 5;
   const rows = 4;
   const baseX = 160;
-  const baseY = 660;
+  const baseY = 740;
   const squares = [];
   for (let r = 0; r < rows; r++) {
     for (let c = 0; c < cols; c++) {
@@ -75,7 +75,7 @@ const orderSquares = getOrderSquares();
 
 /* Center extraction node */
 const NODE_CX = 240;
-const NODE_CY = 460;
+const NODE_CY = 540;
 const NODE_R = 26;
 
 /* Which chaos squares feed into the node */
