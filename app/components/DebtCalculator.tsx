@@ -69,7 +69,7 @@ export default function DebtCalculator() {
                     <div>
                       <label
                         htmlFor="debt-stack"
-                        className="block text-lg font-bold text-white mb-3"
+                        className="block text-lg font-bold text-white mb-3 text-center"
                       >
                         Describe your legacy stack
                       </label>
@@ -77,7 +77,7 @@ export default function DebtCalculator() {
                         id="debt-stack"
                         type="text"
                         placeholder="e.g. 2M lines of COBOL, Java 6 monolith, AS400 system..."
-                        className="w-full bg-[#111111] border border-[#333333] text-white p-5 text-lg focus:outline-none focus:border-[#2FCA54] transition-colors placeholder:text-[#555555]"
+                        className="w-full bg-[#111111] border border-[#333333] text-white p-5 text-lg focus:outline-none focus:border-[#2FCA54] transition-colors placeholder:text-[#555555] text-center"
                         value={stack}
                         onChange={(e) => setStack(e.target.value)}
                       />

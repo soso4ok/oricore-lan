@@ -45,7 +45,7 @@ export default function SovereigntyScroll() {
     >
       <div className="sticky top-0 h-screen flex flex-col overflow-hidden">
         {/* ── Fixed Header Zone ── */}
-        <div className="shrink-0 px-8 md:px-32 pt-16 md:pt-24 pb-8 md:pb-12">
+        <div className="shrink-0 px-8 md:px-32 pt-16 md:pt-24 pb-8 md:pb-12 flex flex-col items-center text-center">
           <h2 className="text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-[1] mb-4 tracking-tighter">
             On-Premise. Air-Gapped. Yours.
           </h2>
