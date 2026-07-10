@@ -43,9 +43,9 @@ export default function SovereigntyScroll() {
       className="relative h-[500vh] bg-[#111111] text-white"
       aria-label="Platform architecture and economics"
     >
-      <div className="sticky top-0 h-screen flex flex-col overflow-hidden">
+      <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
         {/* ── Fixed Header Zone ── */}
-        <div className="shrink-0 px-8 md:px-32 pt-20 md:pt-48 pb-0 flex flex-col items-center text-center">
+        <div className="shrink-0 px-8 md:px-32 pt-0 pb-0 flex flex-col items-center text-center">
           <h2 className="text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-[1] mb-4 tracking-tighter">
             On-Premise. Air-Gapped. Yours.
           </h2>
@@ -55,8 +55,8 @@ export default function SovereigntyScroll() {
           </p>
         </div>
 
-        {/* ── Slide Zone (takes remaining height) ── */}
-        <div className="flex-1 relative min-h-0">
+        {/* ── Slide Zone (takes content height) ── */}
+        <div className="relative h-[340px]">
           {/* Edge fades */}
           <div
             className="absolute top-0 left-0 bottom-0 w-16 md:w-48 bg-gradient-to-r from-[#111111] to-transparent z-20 pointer-events-none"
@@ -70,7 +70,7 @@ export default function SovereigntyScroll() {
           {/* Horizontal Track */}
           <motion.div
             style={{ x }}
-            className="flex w-[300vw] h-full items-start pt-5"
+            className="flex w-[300vw] h-full items-start pt-[25px]"
           >
             {slides.map((slide, index) => (
               <SlideItem
@@ -84,7 +84,7 @@ export default function SovereigntyScroll() {
         </div>
 
         {/* Progress bar at bottom */}
-        <div className="shrink-0 px-8 md:px-32 pb-8 md:pb-12">
+        <div className="shrink-0 px-8 md:px-32 mt-[25px]">
           <div className="h-1 bg-[#333333]">
             <motion.div
               className="h-full bg-[#2FCA54]"
