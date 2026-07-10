@@ -22,8 +22,8 @@ import { useEffect, useState } from "react";
  *    — Generous spacing, restraint over density
  * ──────────────────────────────────────────────────────── */
 
-const CELL = 14;
-const GAP = 5;
+const CELL = 22;
+const GAP = 10;
 
 /* Seeded pseudo-random for consistent layout across renders */
 function sr(seed: number) {
@@ -35,16 +35,16 @@ function sr(seed: number) {
 function getChaosSquares() {
   const cols = 6;
   const rows = 5;
-  const baseX = 100;
-  const baseY = 40;
+  const baseX = 95;
+  const baseY = 50;
   const squares = [];
   for (let r = 0; r < rows; r++) {
     for (let c = 0; c < cols; c++) {
       const i = r * cols + c;
       const gx = baseX + c * (CELL + GAP);
       const gy = baseY + r * (CELL + GAP);
-      const dx = (sr(i + 10) - 0.5) * 32;
-      const dy = (sr(i + 20) - 0.5) * 24;
+      const dx = (sr(i + 10) - 0.5) * 44;
+      const dy = (sr(i + 20) - 0.5) * 34;
       const rot = (sr(i + 30) - 0.5) * 20;
       const opacity = 0.2 + sr(i + 40) * 0.5;
       squares.push({ gx, gy, dx, dy, rot, opacity, i });
@@ -57,8 +57,8 @@ function getChaosSquares() {
 function getOrderSquares() {
   const cols = 5;
   const rows = 4;
-  const baseX = 108;
-  const baseY = 500;
+  const baseX = 110;
+  const baseY = 660;
   const squares = [];
   for (let r = 0; r < rows; r++) {
     for (let c = 0; c < cols; c++) {
@@ -74,9 +74,9 @@ const chaosSquares = getChaosSquares();
 const orderSquares = getOrderSquares();
 
 /* Center extraction node */
-const NODE_CX = 160;
-const NODE_CY = 340;
-const NODE_R = 18;
+const NODE_CX = 240;
+const NODE_CY = 460;
+const NODE_R = 26;
 
 /* Which chaos squares feed into the node */
 const feedIdx = [3, 7, 11, 16, 22, 27];
@@ -140,10 +140,10 @@ export default function HeroIllustration() {
 
       <div className="ill-float">
         <svg
-          width="320"
-          height="680"
-          viewBox="0 0 320 680"
-          className="w-[240px] sm:w-[280px] md:w-[300px] lg:w-[320px] h-auto"
+          width="480"
+          height="900"
+          viewBox="0 0 480 900"
+          className="w-[340px] sm:w-[400px] md:w-[440px] lg:w-[480px] h-auto"
           aria-hidden="true"
         >
           <defs>

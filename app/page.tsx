@@ -8,6 +8,8 @@ import {
   DynamicComparisonMatrix,
   DynamicComplianceSection,
 } from "./components/DynamicClientLoader";
+import InteractiveLink from "./components/InteractiveLink";
+import ScrollDepthGauge from "./components/ScrollDepthGauge";
 
 export default function Home() {
   return (
@@ -107,41 +109,46 @@ export default function Home() {
           </div>
 
           <div className="hidden md:flex items-center gap-10">
-            <a
+            <InteractiveLink
               href="#pipeline"
+              hoverText="[01/trace-extract]"
               className="font-display font-medium text-lg text-ink-soft hover:text-ink transition-colors"
             >
               Process
-            </a>
-            <a
+            </InteractiveLink>
+            <InteractiveLink
               href="#comparison"
+              hoverText="[02/spec-verify]"
               className="font-display font-medium text-lg text-ink-soft hover:text-ink transition-colors"
             >
               Comparison
-            </a>
-            <a
+            </InteractiveLink>
+            <InteractiveLink
               href="#compliance"
+              hoverText="[03/audit-dora]"
               className="font-display font-medium text-lg text-ink-soft hover:text-ink transition-colors"
             >
               Compliance
-            </a>
-            <a
+            </InteractiveLink>
+            <InteractiveLink
               href="#demo"
+              hoverText="[04/debt-calc]"
               className="font-display font-medium text-lg text-ink-soft hover:text-ink transition-colors"
             >
               Assess
-            </a>
+            </InteractiveLink>
           </div>
         </div>
       </nav>
 
       {/* ─── HERO ─── */}
       <section
+        id="hero"
         className="relative pt-40 pb-20 md:pt-48 md:pb-32 border-b border-[#E0E0E0] overflow-hidden bg-[#FAFAFA]"
         aria-labelledby="hero-heading"
       >
         {/* Background Native Web Illustration */}
-        <div className="absolute top-0 bottom-0 right-0 w-full md:w-[40%] lg:w-[35%] z-0 pointer-events-none opacity-15 md:opacity-80 select-none flex items-center justify-center">
+        <div className="absolute top-0 bottom-0 right-0 w-full md:w-[45%] lg:w-[42%] z-0 pointer-events-none opacity-15 md:opacity-80 select-none flex items-center justify-center">
           <HeroIllustration />
         </div>
 
@@ -396,16 +403,20 @@ export default function Home() {
           </div>
 
           <div className="flex gap-16 text-lg">
-            <a
+            <InteractiveLink
               href="mailto:hello@cognitire.dev"
+              hoverText="[mail::connect]"
               className="hover:text-accent transition-colors"
             >
               hello@cognitire.dev
-            </a>
+            </InteractiveLink>
             <span className="text-white/40">© 2026</span>
           </div>
         </div>
       </footer>
+
+      {/* Dynamic Telemetric Scroll Gauge & Ascend Widget */}
+      <ScrollDepthGauge />
     </main>
   );
 }
