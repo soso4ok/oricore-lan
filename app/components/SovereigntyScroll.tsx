@@ -84,14 +84,7 @@ export default function SovereigntyScroll() {
         </div>
 
         {/* Progress bar at bottom */}
-        <div className="shrink-0 px-8 md:px-32 mt-[25px]">
-          <div className="h-1 bg-[#333333]">
-            <motion.div
-              className="h-full bg-[#2FCA54]"
-              style={{ scaleX: scrollYProgress, transformOrigin: "0%" }}
-            />
-          </div>
-        </div>
+        <ScrollProgressBar progress={scrollYProgress} />
       </div>
     </section>
   );
@@ -171,5 +164,69 @@ function SlideItem({
         </p>
       </motion.div>
     </div>
+  );
+}
+
+function ScrollProgressBar({ progress }: { progress: any }) {
+  const total = 24;
+  return (
+    <div className="shrink-0 px-8 md:px-32 mt-[25px] w-full max-w-4xl mx-auto">
+      <div className="relative flex items-center justify-between w-full h-4">
+        {/* Background Line */}
+        <div className="absolute left-0 right-0 h-[1px] bg-[#333333] z-0" />
+        
+        {/* Progress Line */}
+        <motion.div
+          className="absolute left-0 right-0 h-[1px] bg-[#2FCA54] z-0"
+          style={{ scaleX: progress, transformOrigin: "0%" }}
+        />
+
+        {/* Audit Trail Nodes */}
+        {Array.from({ length: total }).map((_, i) => (
+          <ProgressSquare key={i} index={i} total={total - 1} progress={progress} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ProgressSquare({
+  index,
+  total,
+  progress,
+}: {
+  index: number;
+  total: number;
+  progress: any;
+}) {
+  const threshold = index / total;
+
+  const backgroundColor = useTransform(
+    progress,
+    [threshold - 0.03, threshold],
+    ["#333333", "#2FCA54"]
+  );
+
+  const scale = useTransform(
+    progress,
+    [threshold - 0.03, threshold, threshold + 0.03],
+    [1, 1.4, 1]
+  );
+
+  const boxShadow = useTransform(
+    progress,
+    [threshold - 0.03, threshold, threshold + 0.03],
+    [
+      "0 0 0px rgba(47, 202, 84, 0)",
+      "0 0 10px rgba(47, 202, 84, 0.7)",
+      "0 0 2px rgba(47, 202, 84, 0.2)",
+    ]
+  );
+
+  return (
+    <motion.div
+      style={{ backgroundColor, scale, boxShadow }}
+      className="w-2 h-2 rounded-[1px] z-10"
+    />
   );
 }
