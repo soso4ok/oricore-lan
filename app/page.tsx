@@ -165,14 +165,11 @@ export default function Home() {
               id="hero-heading"
               className="text-[clamp(3.5rem,6vw,6rem)] font-bold text-[#111111] leading-[0.95] tracking-tighter mb-8 break-words"
             >
-              Litigation Survey<br />Expert Witness.
+              Digital Archaeology for enterprise legacy modernization.
             </h1>
-            <h2 className="text-2xl sm:text-3xl text-[#111111] font-medium tracking-tight mb-8">
-              Research Designed for Scrutiny.
-            </h2>
             <div className="mb-10 w-24 h-[6px] bg-[#2FCA54]"></div>
             <p className="text-lg sm:text-xl md:text-[22px] text-[#333333] leading-[1.6] mb-12 max-w-2xl break-words">
-              Digital Archaeology for enterprise legacy modernization. Oricore analyzes undocumented enterprise codebases, maps dependencies, and recovers lost of institutional knowledge. We generate deterministic architectural blueprints so your team can modernize safely.
+              Oricore analyzes undocumented enterprise codebases, maps dependencies, and recovers lost of institutional knowledge. We generate deterministic architectural blueprints so your team can modernize safely.
             </p>
 
             <div className="mb-0">
