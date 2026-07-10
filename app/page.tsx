@@ -172,29 +172,17 @@ export default function Home() {
             </h2>
             <div className="mb-10 w-24 h-[6px] bg-[#2FCA54]"></div>
             <p className="text-lg sm:text-xl md:text-[22px] text-[#333333] leading-[1.6] mb-12 max-w-2xl break-words">
-              Catalyst Behavioral Sciences is led by Dr. David Neal, a testifying survey expert in intellectual property and false advertising litigation. He employs established, court-accepted methodologies—including Eveready, Squirt, Teflon, and patent apportionment.
+              Digital Archaeology for enterprise legacy modernization. Oricore analyzes undocumented enterprise codebases, maps dependencies, and recovers lost of institutional knowledge. We generate deterministic architectural blueprints so your team can modernize safely.
             </p>
 
             <div className="mb-0">
               <a
-                href="#contact"
+                href="#paradox"
                 className="inline-flex items-center justify-center bg-[#111111] text-white font-medium text-lg px-10 py-5 transition-colors hover:bg-[#1C1C1C]"
               >
-                Work With Dr. Neal
+                Learn More
               </a>
             </div>
-          </div>
-
-          <div className="w-full lg:w-2/5 flex flex-col justify-start border-l-0 lg:border-l-[6px] border-[#111111] lg:pl-12 pt-8 lg:pt-0 pointer-events-auto mix-blend-multiply">
-            <div className="text-[clamp(4.5rem,8vw,8rem)] font-bold text-[#111111] leading-[0.8] tracking-tighter mb-6">
-              80<span className="text-[#2FCA54]">+</span>
-            </div>
-            <p className="text-xl sm:text-2xl font-bold text-[#111111] leading-tight mb-4 break-words">
-              Federal & State Court Testimonies Nationwide.
-            </p>
-            <p className="text-base sm:text-lg md:text-xl text-[#555555] leading-relaxed break-words">
-              Surveys are designed to withstand Daubert scrutiny and cross-examination. Dr. Neal and the Catalyst team also conduct rigorous rebuttal critiques of opposing survey evidence before the NAD, TTAB, and ITC.
-            </p>
           </div>
         </div>
       </section>
