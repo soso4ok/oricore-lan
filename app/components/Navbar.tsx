@@ -30,7 +30,7 @@ export default function Navbar() {
             <rect x="37" y="129.5" width="18.5" height="18.5" transform="rotate(-180 37 129.5)" fill="#2FCA54"/>
           </svg>
           <span className="font-display font-bold text-xl tracking-tight text-[#111111]">
-            Oricore.
+            Apolast.
           </span>
         </Link>
 

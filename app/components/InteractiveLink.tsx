@@ -26,9 +26,9 @@ export default function InteractiveLink({
   };
 
   return (
-    <a href={href} onClick={handleClick} className={`oricore-link ${className}`}>
-      <span className="oricore-link-text">{children}</span>
-      <span className="oricore-link-hover" aria-hidden="true">
+    <a href={href} onClick={handleClick} className={`apolast-link ${className}`}>
+      <span className="apolast-link-text">{children}</span>
+      <span className="apolast-link-hover" aria-hidden="true">
         {hoverText}
       </span>
     </a>

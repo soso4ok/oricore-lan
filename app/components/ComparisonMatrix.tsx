@@ -5,52 +5,52 @@ import { motion } from "framer-motion";
 interface RowData {
   criterion: string;
   legacy: string;
-  oricore: string;
+  apolast: string;
 }
 
 const ROWS: RowData[] = [
   {
     criterion: "Extraction Method",
     legacy: "Regex pattern matching, line-by-line syntax translation",
-    oricore: "Advanced AST parsing with control-flow and data-flow analysis",
+    apolast: "Advanced AST parsing with control-flow and data-flow analysis",
   },
   {
     criterion: "Output Quality",
     legacy:
       '"JOBOL" — COBOL logic written in Java syntax. Unmaintainable from day one',
-    oricore:
+    apolast:
       "Clean, idiomatic business logic models decoupled from source language",
   },
   {
     criterion: "Verification",
     legacy: "Manual QA. Hope-based testing",
-    oricore:
+    apolast:
       "Automated Characterization Tests and Gherkin scenarios for functional parity",
   },
   {
     criterion: "Documentation",
     legacy: "Static PDF report delivered once, outdated within weeks",
-    oricore:
+    apolast:
       'Living Graph synced to your CI/CD pipeline — updated on every commit',
   },
   {
     criterion: "Data Residency",
     legacy:
       "Code sent to public cloud LLMs (OpenAI, Anthropic). Data crosses borders",
-    oricore:
+    apolast:
       "100% on-premise execution with air-gapped SLM ensembles. Zero external API calls",
   },
   {
     criterion: "Cost Model",
     legacy:
       "Per-token pricing through cloud LLM APIs. Costs scale unpredictably",
-    oricore:
+    apolast:
       "Fixed on-premise SLMs — up to 18× cheaper than routing enterprise tokens through public cloud",
   },
   {
     criterion: "Continuity",
     legacy: "One-time consulting engagement. Knowledge leaves with the team",
-    oricore:
+    apolast:
       "Continuous SaaS platform with CI-hooks. System graph persists and evolves",
   },
 ];
@@ -98,7 +98,7 @@ export default function ComparisonMatrix() {
                   Traditional Syntax Translation
                 </th>
                 <th className="py-5 text-lg font-bold text-[#111111] w-[39%]">
-                  Oricore — AST & Logic Extraction
+                  Apolast — AST & Logic Extraction
                 </th>
               </tr>
             </thead>
@@ -120,7 +120,7 @@ export default function ComparisonMatrix() {
                     {row.legacy}
                   </td>
                   <td className="py-6 text-base text-[#555555] leading-relaxed align-top group-hover:text-[#111111] transition-colors duration-200">
-                    {row.oricore}
+                    {row.apolast}
                   </td>
                 </motion.tr>
               ))}
@@ -154,10 +154,10 @@ export default function ComparisonMatrix() {
                 </div>
                 <div className="border-t border-[#E0E0E0] pt-3">
                   <p className="text-sm font-bold text-[#2FCA54] mb-1">
-                    Oricore
+                    Apolast
                   </p>
                   <p className="text-base text-[#555555] leading-relaxed">
-                    {row.oricore}
+                    {row.apolast}
                   </p>
                 </div>
               </div>

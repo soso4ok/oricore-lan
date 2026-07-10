@@ -27,7 +27,7 @@ export default function Footer() {
               <rect x="37" y="129.5" width="18.5" height="18.5" transform="rotate(-180 37 129.5)" fill="#2FCA54"/>
             </svg>
             <span className="font-display font-bold text-2xl tracking-tight">
-              Oricore.
+              Apolast.
             </span>
           </div>
           <p className="text-base sm:text-lg md:text-xl text-white/60 max-w-sm break-words">
@@ -44,7 +44,7 @@ export default function Footer() {
               hello@cognitire.dev
             </InteractiveLink>
           </div>
-          <span className="text-white/40">© 2026 Oricore</span>
+          <span className="text-white/40">© 2026 Apolast</span>
         </div>
       </div>
     </footer>

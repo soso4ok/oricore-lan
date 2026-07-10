@@ -4,7 +4,7 @@ import Footer from "../../components/Footer";
 import InteractiveLink from "../../components/InteractiveLink";
 
 export const metadata: Metadata = {
-  title: "BFSI Legacy Modernization | Oricore",
+  title: "BFSI Legacy Modernization | Apolast",
   description:
     "DORA and NIS2 compliant on-premise legacy modernization for Banking, Financial Services, and Insurance. Safely map and extract COBOL, Java, and Mainframe logic.",
   alternates: {
@@ -26,11 +26,11 @@ export default function BFSISolutions() {
             </h1>
             <div className="mb-10 w-24 h-[6px] bg-[#2FCA54]"></div>
             <p className="text-lg sm:text-xl md:text-[22px] text-[#333333] leading-[1.6] mb-12 break-words">
-              Banking, Financial Services, and Insurance (BFSI) institutions operate massive legacy portfolios that dictate global economies. Oricore allows you to securely map and extract core banking business rules directly on-premise, guaranteeing DORA and NIS2 compliance without hallucinating code.
+              Banking, Financial Services, and Insurance (BFSI) institutions operate massive legacy portfolios that dictate global economies. Apolast allows you to securely map and extract core banking business rules directly on-premise, guaranteeing DORA and NIS2 compliance without hallucinating code.
             </p>
             <a
               href="mailto:hello@cognitire.dev"
-              className="oricore-btn text-lg"
+              className="apolast-btn text-lg"
             >
               Request a BFSI Audit
             </a>
@@ -51,7 +51,7 @@ export default function BFSISolutions() {
               In the BFSI sector, PII and proprietary trading algorithms cannot be sent to cloud-based LLMs.
             </p>
             <p className="text-lg md:text-xl text-[#555555] leading-relaxed mb-12">
-              Oricore operates entirely on-premise. We use localized Small Language Models (SLMs) and deterministic AST parsing to map your architecture without ever making an external API call. This guarantees complete adherence to DORA and NIS2 mandates.
+              Apolast operates entirely on-premise. We use localized Small Language Models (SLMs) and deterministic AST parsing to map your architecture without ever making an external API call. This guarantees complete adherence to DORA and NIS2 mandates.
             </p>
             
             <a 

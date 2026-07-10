@@ -59,7 +59,7 @@ a {
 
 /* ─── BUTTONS ────────────────────────────────── */
 
-.oricore-btn {
+.apolast-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -70,14 +70,14 @@ a {
   transition: all 0.2s ease;
 }
 
-.oricore-btn:hover {
+.apolast-btn:hover {
   background-color: var(--color-accent);
   color: var(--color-ink);
 }
 
-/* ─── FANCY HOVER LINKS (ORICORE LINK) ───────────────── */
+/* ─── FANCY HOVER LINKS (APOLAST LINK) ───────────────── */
 
-.oricore-link {
+.apolast-link {
   position: relative;
   display: inline-grid;
   grid-template-columns: 1fr;
@@ -87,13 +87,13 @@ a {
   line-height: 1.5em;
 }
 
-.oricore-link-text {
+.apolast-link-text {
   grid-area: 1 / 1 / 2 / 2;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
   transform: translateY(0);
 }
 
-.oricore-link-hover {
+.apolast-link-hover {
   grid-area: 1 / 1 / 2 / 2;
   color: #2FCA54;
   font-family: var(--font-mono);
@@ -108,12 +108,12 @@ a {
   align-items: center;
 }
 
-.oricore-link:hover .oricore-link-text {
+.apolast-link:hover .apolast-link-text {
   transform: translateY(-100%);
   opacity: 0;
 }
 
-.oricore-link:hover .oricore-link-hover {
+.apolast-link:hover .apolast-link-hover {
   transform: translateY(0);
   opacity: 1;
 }

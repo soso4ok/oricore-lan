@@ -23,11 +23,11 @@ const blinker = Blinker({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://oricore.com"),
+  metadataBase: new URL("https://apolast.com"),
   title:
-    "Oricore — Enterprise Legacy Modernization Platform | AST Logic Extraction & DORA Compliance",
+    "Apolast — Enterprise Legacy Modernization Platform | AST Logic Extraction & DORA Compliance",
   description:
-    "Map, extract, and modernize legacy codebases continuously. Oricore uses AST-based business logic extraction with on-premise SLMs to deliver PR-ready specifications, characterization tests, and DORA-compliant audit trails — without hallucinating code.",
+    "Map, extract, and modernize legacy codebases continuously. Apolast uses AST-based business logic extraction with on-premise SLMs to deliver PR-ready specifications, characterization tests, and DORA-compliant audit trails — without hallucinating code.",
   keywords: [
     "enterprise legacy modernization",
     "automated reverse engineering",
@@ -48,17 +48,17 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Oricore — Enterprise Legacy Modernization Platform",
+    title: "Apolast — Enterprise Legacy Modernization Platform",
     description:
       "Continuous AST-based legacy code analysis. On-premise SLMs, DORA-compliant, zero hallucination. Map, extract, modernize.",
-    url: "https://oricore.com",
-    siteName: "Oricore",
+    url: "https://apolast.com",
+    siteName: "Apolast",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Oricore Enterprise Legacy Modernization",
+        alt: "Apolast Enterprise Legacy Modernization",
       },
     ],
     locale: "en_US",
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Oricore — Enterprise Legacy Modernization Platform",
+    title: "Apolast — Enterprise Legacy Modernization Platform",
     description:
       "Continuous AST-based legacy code analysis. On-premise SLMs, DORA-compliant, zero hallucination. Map, extract, modernize.",
     images: ["/og-image.jpg"],
@@ -78,24 +78,24 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://oricore.com/#organization",
-      name: "Oricore",
-      url: "https://oricore.com",
-      logo: "https://oricore.com/logo.svg",
+      "@id": "https://apolast.com/#organization",
+      name: "Apolast",
+      url: "https://apolast.com",
+      logo: "https://apolast.com/logo.svg",
       description:
         "Enterprise legacy modernization platform using continuous AST-based logic extraction.",
     },
     {
       "@type": "SoftwareApplication",
-      "@id": "https://oricore.com/#software",
-      name: "Oricore Platform",
+      "@id": "https://apolast.com/#software",
+      name: "Apolast Platform",
       applicationCategory: "DeveloperApplication",
       operatingSystem: "On-Premise, Linux, Windows",
       description:
         "Maps, extracts, and modernizes legacy codebases continuously using AST-based logic extraction with on-premise SLMs.",
-      url: "https://oricore.com",
+      url: "https://apolast.com",
       publisher: {
-        "@id": "https://oricore.com/#organization",
+        "@id": "https://apolast.com/#organization",
       },
     },
   ],

@@ -40,7 +40,7 @@ export default function Home() {
             </h1>
             <div className="mb-10 w-24 h-[6px] bg-[#2FCA54]"></div>
             <p className="text-lg sm:text-xl md:text-[22px] text-[#333333] leading-[1.6] mb-12 max-w-2xl break-words">
-              Oricore is a continuous legacy modernization platform. Using AST-based logic extraction and on-premise SLM ensembles, we map dependencies, recover lost institutional knowledge, and generate deterministic blueprints. Deliver PR-ready specifications, characterization tests, and DORA-compliant audit trails — without hallucinating code.
+              Apolast is a continuous legacy modernization platform. Using AST-based logic extraction and on-premise SLM ensembles, we map dependencies, recover lost institutional knowledge, and generate deterministic blueprints. Deliver PR-ready specifications, characterization tests, and DORA-compliant audit trails — without hallucinating code.
             </p>
 
             <div className="mb-0">
@@ -67,7 +67,7 @@ export default function Home() {
                 syntax. It compiles. It cannot be maintained.
               </p>
               <p className="text-lg sm:text-xl md:text-2xl text-[#555555] leading-relaxed max-w-lg break-words">
-                Oricore extracts clean, pure business logic directly through
+                Apolast extracts clean, pure business logic directly through
                 Advanced AST parsing — decoupling intent from implementation
                 language before any code is generated.
               </p>
@@ -194,27 +194,27 @@ export default function Home() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
-              <h3 className="text-xl font-bold text-[#111111] mb-4">What is Oricore?</h3>
+              <h3 className="text-xl font-bold text-[#111111] mb-4">What is Apolast?</h3>
               <p className="text-[#555555] leading-relaxed">
-                Oricore is a continuous legacy modernization platform. It uses Advanced AST (Abstract Syntax Tree) logic extraction and on-premise Small Language Models (SLMs) to reverse-engineer and map legacy applications, separating pure business logic from outdated syntax (such as COBOL or Java monoliths).
+                Apolast is a continuous legacy modernization platform. It uses Advanced AST (Abstract Syntax Tree) logic extraction and on-premise Small Language Models (SLMs) to reverse-engineer and map legacy applications, separating pure business logic from outdated syntax (such as COBOL or Java monoliths).
               </p>
             </div>
             <div>
-              <h3 className="text-xl font-bold text-[#111111] mb-4">How does Oricore ensure zero hallucinations?</h3>
+              <h3 className="text-xl font-bold text-[#111111] mb-4">How does Apolast ensure zero hallucinations?</h3>
               <p className="text-[#555555] leading-relaxed">
-                Unlike general-purpose cloud LLMs that probabilistically guess code generation, Oricore relies on deterministic static analysis. It generates characterization tests alongside the extracted logic, verifying that the output matches the exact operational behavior of the original system.
+                Unlike general-purpose cloud LLMs that probabilistically guess code generation, Apolast relies on deterministic static analysis. It generates characterization tests alongside the extracted logic, verifying that the output matches the exact operational behavior of the original system.
               </p>
             </div>
             <div>
-              <h3 className="text-xl font-bold text-[#111111] mb-4">Is Oricore DORA and NIS2 compliant?</h3>
+              <h3 className="text-xl font-bold text-[#111111] mb-4">Is Apolast DORA and NIS2 compliant?</h3>
               <p className="text-[#555555] leading-relaxed">
-                Yes. Oricore is designed for highly regulated industries like BFSI and Government. It operates entirely on-premise or in air-gapped environments, ensuring that sensitive IP and PII never leave the enterprise network, fully satisfying DORA and NIS2 compliance mandates.
+                Yes. Apolast is designed for highly regulated industries like BFSI and Government. It operates entirely on-premise or in air-gapped environments, ensuring that sensitive IP and PII never leave the enterprise network, fully satisfying DORA and NIS2 compliance mandates.
               </p>
             </div>
             <div>
               <h3 className="text-xl font-bold text-[#111111] mb-4">What are the outputs of the platform?</h3>
               <p className="text-[#555555] leading-relaxed">
-                Oricore produces PR-ready software specifications, BDD acceptance criteria (Gherkin scenarios), dependency graphs (SBOM), and skeleton microservices architecture. It hooks directly into the CI/CD pipeline to act as a living, continuously updated graph of the system’s true behavior.
+                Apolast produces PR-ready software specifications, BDD acceptance criteria (Gherkin scenarios), dependency graphs (SBOM), and skeleton microservices architecture. It hooks directly into the CI/CD pipeline to act as a living, continuously updated graph of the system’s true behavior.
               </p>
             </div>
           </div>

@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://oricore.com/sitemap.xml',
+    sitemap: 'https://apolast.com/sitemap.xml',
   };
 }

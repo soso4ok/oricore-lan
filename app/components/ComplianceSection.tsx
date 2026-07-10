@@ -126,7 +126,7 @@ export default function ComplianceSection() {
             <div className="lg:pl-16 lg:border-l border-[#E0E0E0]">
               <p className="text-base sm:text-lg md:text-xl text-[#555555] leading-relaxed max-w-2xl break-words">
                 All outputs are standard open formats — OpenAPI specs, Gherkin
-                scenarios, Git-native diffs. If you stop using Oricore tomorrow,
+                scenarios, Git-native diffs. If you stop using Apolast tomorrow,
                 your specifications and tests remain yours entirely.
               </p>
             </div>
