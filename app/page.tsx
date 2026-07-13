@@ -40,7 +40,7 @@ export default function Home() {
             </h1>
             <div className="mb-10 w-24 h-[6px] bg-[#2FCA54]"></div>
             <p className="text-lg sm:text-xl md:text-[22px] text-[#333333] leading-[1.6] mb-12 max-w-2xl break-words">
-              Apolast is a continuous legacy modernization platform. Using AST-based logic extraction and on-premise SLM ensembles, we map dependencies, recover lost institutional knowledge, and generate deterministic blueprints. Deliver PR-ready specifications, characterization tests, and DORA-compliant audit trails — without hallucinating code.
+              We read your legacy code (COBOL, Java, mainframe) and extract the business rules buried inside it. Everything runs on your infrastructure. Nothing touches a cloud API. You get PR-ready specs, characterization tests, and DORA-compliant audit trails — without hallucinated code.
             </p>
 
             <div className="mb-0">
@@ -67,9 +67,9 @@ export default function Home() {
                 syntax. It compiles. It cannot be maintained.
               </p>
               <p className="text-lg sm:text-xl md:text-2xl text-[#555555] leading-relaxed max-w-lg break-words">
-                Apolast extracts clean, pure business logic directly through
-                Advanced AST parsing — decoupling intent from implementation
-                language before any code is generated.
+                We don&apos;t translate syntax. We extract intent. The business
+                logic comes out clean, separated from the language it was
+                trapped in — before any new code gets written.
               </p>
             </div>
 
@@ -78,12 +78,10 @@ export default function Home() {
                 80<span className="text-[#2FCA54]">%</span>
               </div>
               <p className="text-xl sm:text-2xl md:text-[1.75rem] font-bold text-[#111111] leading-tight mb-6 break-words">
-                Of manual rewrites fail due to lost institutional knowledge.
+                Of legacy modernization rewrites fail to meet original goals (Standish Group).
               </p>
               <p className="text-base sm:text-lg md:text-xl text-[#555555] leading-relaxed break-words">
-                When dealing with million-line monoliths, the code itself is not
-                the primary issue — the undocumented business rules are. You
-                cannot rewrite what your team no longer understands.
+                Long-running databases from the Standish Group show that 80% of legacy modernization projects run over budget or fail entirely. The core issue is lost institutional knowledge — you cannot safely rewrite what your team no longer understands.
               </p>
             </div>
           </div>
@@ -98,9 +96,9 @@ export default function Home() {
         <div className="max-w-[1600px] mx-auto px-6 sm:px-8">
           <div className="mb-12 md:mb-20 max-w-3xl">
             <h2 className="text-[clamp(2rem,5vw,4.5rem)] font-bold text-[#111111] leading-tight break-words">
-              Four autonomous phases.
+              Four phases.
               <br />
-              One Living Graph.
+              One system graph that stays current.
             </h2>
             <p className="text-lg sm:text-xl md:text-2xl text-[#555555] leading-relaxed mt-6 break-words">
               Not a one-shot consulting report. A continuous SaaS platform that
@@ -136,9 +134,9 @@ export default function Home() {
                 Engineering Principles.
               </h2>
               <p className="text-lg sm:text-xl md:text-2xl text-[#555555] leading-relaxed max-w-xl break-words">
-                We design for stability, predictability, and human oversight.
-                Our platform serves enterprise engineering teams who cannot
-                afford abstraction layers that hallucinate.
+                Enterprise teams can&apos;t afford tools that guess. Our
+                platform doesn&apos;t guess. Every output is deterministic,
+                traceable, and verifiable against the source system.
               </p>
             </div>
 
@@ -148,10 +146,9 @@ export default function Home() {
                   Deterministic Output
                 </p>
                 <p className="text-base sm:text-lg md:text-xl text-[#555555] leading-relaxed break-words">
-                  Static analysis and deterministic extraction. No random
-                  guessing, no probabilistic completion. We parse your system
-                  exactly as it executes — every business rule is traceable to
-                  its source line.
+                  Static analysis. Deterministic extraction. We parse your
+                  system exactly as it executes — every business rule traces
+                  back to its source line. No probabilistic guessing.
                 </p>
               </div>
               <div className="pl-6 md:pl-8 border-l-4 border-[#2FCA54]">
@@ -159,9 +156,9 @@ export default function Home() {
                   Architecture-First
                 </p>
                 <p className="text-base sm:text-lg md:text-xl text-[#555555] leading-relaxed break-words">
-                  Generating code is trivial; understanding intent is hard. We
-                  focus on recovering the underlying architecture before a
-                  single line of modern code is written.
+                  Generating code is trivial. Understanding intent is hard.
+                  We recover the underlying architecture before a single line
+                  of modern code gets written.
                 </p>
               </div>
               <div className="pl-6 md:pl-8 border-l-4 border-[#111111]">
@@ -169,9 +166,9 @@ export default function Home() {
                   Zero Hallucination Guarantee
                 </p>
                 <p className="text-base sm:text-lg md:text-xl text-[#555555] leading-relaxed break-words">
-                  On-premise SLM ensembles fine-tuned on your codebase, not
-                  general-purpose cloud LLMs predicting what code &ldquo;might
-                  look like.&rdquo; Every output is verified against the
+                  Language models fine-tuned on your codebase, running on your
+                  hardware — not cloud LLMs predicting what code &ldquo;might
+                  look like.&rdquo; Every output gets verified against the
                   source system through automated characterization tests.
                 </p>
               </div>
@@ -196,25 +193,25 @@ export default function Home() {
             <div>
               <h3 className="text-xl font-bold text-[#111111] mb-4">What is Apolast?</h3>
               <p className="text-[#555555] leading-relaxed">
-                Apolast is a continuous legacy modernization platform. It uses Advanced AST (Abstract Syntax Tree) logic extraction and on-premise Small Language Models (SLMs) to reverse-engineer and map legacy applications, separating pure business logic from outdated syntax (such as COBOL or Java monoliths).
+                A platform that reads legacy code, extracts the business rules, and produces specs your team can actually ship. Runs on your servers. No cloud dependencies.
               </p>
             </div>
             <div>
-              <h3 className="text-xl font-bold text-[#111111] mb-4">How does Apolast ensure zero hallucinations?</h3>
+              <h3 className="text-xl font-bold text-[#111111] mb-4">How does it avoid hallucinating code?</h3>
               <p className="text-[#555555] leading-relaxed">
-                Unlike general-purpose cloud LLMs that probabilistically guess code generation, Apolast relies on deterministic static analysis. It generates characterization tests alongside the extracted logic, verifying that the output matches the exact operational behavior of the original system.
+                We don&apos;t use general-purpose cloud LLMs to guess what your code does. Apolast uses deterministic static analysis — AST parsing, control-flow graphs, data-flow tracking. Then it generates characterization tests to verify the output matches the original system&apos;s exact behavior. If it can&apos;t verify it, it doesn&apos;t ship it.
               </p>
             </div>
             <div>
-              <h3 className="text-xl font-bold text-[#111111] mb-4">Is Apolast DORA and NIS2 compliant?</h3>
+              <h3 className="text-xl font-bold text-[#111111] mb-4">Does it work in air-gapped environments?</h3>
               <p className="text-[#555555] leading-relaxed">
-                Yes. Apolast is designed for highly regulated industries like BFSI and Government. It operates entirely on-premise or in air-gapped environments, ensuring that sensitive IP and PII never leave the enterprise network, fully satisfying DORA and NIS2 compliance mandates.
+                Yes. Everything runs on-premise. No external API calls, no data leaving your network. Built for DORA and NIS2 regulated industries.
               </p>
             </div>
             <div>
-              <h3 className="text-xl font-bold text-[#111111] mb-4">What are the outputs of the platform?</h3>
+              <h3 className="text-xl font-bold text-[#111111] mb-4">What do I actually get out of it?</h3>
               <p className="text-[#555555] leading-relaxed">
-                Apolast produces PR-ready software specifications, BDD acceptance criteria (Gherkin scenarios), dependency graphs (SBOM), and skeleton microservices architecture. It hooks directly into the CI/CD pipeline to act as a living, continuously updated graph of the system’s true behavior.
+                PR-ready specifications, Gherkin test scenarios, dependency graphs (SBOM), and architecture blueprints — committed to your repo as merge-ready pull requests. The system graph hooks into your CI/CD pipeline and updates on every commit, so documentation never goes stale.
               </p>
             </div>
           </div>

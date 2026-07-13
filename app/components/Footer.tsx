@@ -31,7 +31,7 @@ export default function Footer() {
             </span>
           </div>
           <p className="text-base sm:text-lg md:text-xl text-white/60 max-w-sm break-words">
-            Continuous legacy modernization. On-premise. Air-gapped. Deterministic.
+            Legacy extraction. On your servers. No cloud. No guessing.
           </p>
         </div>
 
@@ -40,8 +40,8 @@ export default function Footer() {
             <InteractiveLink href="/solutions/bfsi" hoverText="[icp/bfsi]" className="hover:text-[#2FCA54] transition-colors">
               BFSI Solutions
             </InteractiveLink>
-            <InteractiveLink href="mailto:hello@cognitire.dev" hoverText="[mail::connect]" className="hover:text-[#2FCA54] transition-colors">
-              hello@cognitire.dev
+            <InteractiveLink href="mailto:hello@apolast.com" hoverText="[mail::connect]" className="hover:text-[#2FCA54] transition-colors">
+              hello@apolast.com
             </InteractiveLink>
           </div>
           <span className="text-white/40">© 2026 Apolast</span>

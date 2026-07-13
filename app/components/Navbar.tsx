@@ -44,7 +44,10 @@ export default function Navbar() {
           <InteractiveLink href="/solutions/bfsi" hoverText="[icp/bfsi]" className="font-display font-medium text-lg text-ink-soft hover:text-ink transition-colors">
             BFSI
           </InteractiveLink>
-          <InteractiveLink href="/#demo" hoverText="[04/debt-calc]" className="font-display font-medium text-lg text-ink-soft hover:text-ink transition-colors">
+          <InteractiveLink href="/pricing" hoverText="[05/pricing]" className="font-display font-medium text-lg text-ink-soft hover:text-ink transition-colors">
+            Pricing
+          </InteractiveLink>
+          <InteractiveLink href="/#demo" hoverText="[06/debt-calc]" className="font-display font-medium text-lg text-ink-soft hover:text-ink transition-colors">
             Assess
           </InteractiveLink>
         </div>

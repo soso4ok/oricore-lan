@@ -19,7 +19,7 @@ const PHASES = [
   {
     title: "Extract",
     description:
-      "We isolate embedded business rules through Advanced AST parsing — not superficial syntax translation. The result is clean, language-agnostic domain logic decoupled from its legacy host.",
+      "We isolate embedded business rules through AST parsing — not superficial syntax translation. The result is clean, language-agnostic domain logic decoupled from its legacy host.",
     icon: (
       <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
         <rect x="4" y="4" width="14" height="14" fill="#D8D8D8" />
@@ -45,7 +45,7 @@ const PHASES = [
   {
     title: "Sync",
     description:
-      "The system graph lives natively inside your CI/CD loop. CI-hooks update the Living Graph on every commit — so documentation, dependency maps, and risk assessments stay current, not stale.",
+      "CI-hooks update the system graph on every commit. Documentation, dependency maps, and risk assessments stay current — not stale artifacts from a one-time consulting run.",
     icon: (
       <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
         <rect x="4" y="4" width="14" height="14" fill="#2FCA54" />

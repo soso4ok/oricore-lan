@@ -30,10 +30,10 @@ export default function ComplianceSection() {
             Built for Regulated Enterprises.
           </h2>
           <p className="text-lg sm:text-xl md:text-2xl text-[#555555] leading-relaxed break-words">
-            European banking, insurance, and critical infrastructure operators
-            need more than a compliance checkbox. They need provable operational
-            resilience — and a modernization tool that never sends proprietary
-            code to a third-party API.
+            Banks, insurers, and critical infrastructure operators don&apos;t
+            just need a compliance checkbox. They need a modernization tool
+            that never sends proprietary code to a third-party API — and
+            can prove it didn&apos;t.
           </p>
         </motion.div>
 
@@ -54,10 +54,10 @@ export default function ComplianceSection() {
           </div>
           <div className="pt-4 pb-8 lg:pt-12 lg:pb-12 lg:pl-16 lg:border-l border-[#E0E0E0]">
             <p className="text-lg sm:text-xl md:text-2xl text-[#555555] leading-relaxed max-w-2xl break-words">
-              Ensemble of fine-tuned, localized Small Language Models running
-              inside your on-premise infrastructure. Zero public API
-              dependencies. No OpenAI. No Anthropic. No data crosses your
-              network perimeter. Every analysis runs air-gapped.
+              Every model runs on your hardware. Every analysis stays inside
+              your network perimeter. No OpenAI. No Anthropic. No external
+              API calls. Your regulators can audit the entire data flow
+              end-to-end.
             </p>
           </div>
         </motion.div>

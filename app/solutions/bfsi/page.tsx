@@ -26,10 +26,10 @@ export default function BFSISolutions() {
             </h1>
             <div className="mb-10 w-24 h-[6px] bg-[#2FCA54]"></div>
             <p className="text-lg sm:text-xl md:text-[22px] text-[#333333] leading-[1.6] mb-12 break-words">
-              Banking, Financial Services, and Insurance (BFSI) institutions operate massive legacy portfolios that dictate global economies. Apolast allows you to securely map and extract core banking business rules directly on-premise, guaranteeing DORA and NIS2 compliance without hallucinating code.
+              Banks run on COBOL. Insurance runs on mainframes. These systems process billions daily — and the people who wrote them are retiring. Apolast lets you securely map and extract core banking business rules on-premise, aligned with DORA and NIS2 mandates — without hallucinating code.
             </p>
             <a
-              href="mailto:hello@cognitire.dev"
+              href="mailto:hello@apolast.com"
               className="apolast-btn text-lg"
             >
               Request a BFSI Audit
@@ -51,7 +51,7 @@ export default function BFSISolutions() {
               In the BFSI sector, PII and proprietary trading algorithms cannot be sent to cloud-based LLMs.
             </p>
             <p className="text-lg md:text-xl text-[#555555] leading-relaxed mb-12">
-              Apolast operates entirely on-premise. We use localized Small Language Models (SLMs) and deterministic AST parsing to map your architecture without ever making an external API call. This guarantees complete adherence to DORA and NIS2 mandates.
+              Apolast runs entirely on your hardware. Localized language models and deterministic AST parsing map your architecture without ever making an external API call. No data leaves your network — fully aligned with DORA and NIS2 mandates.
             </p>
             
             <a 

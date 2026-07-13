@@ -45,12 +45,12 @@ export default function DebtCalculator() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div>
             <h2 className="text-[clamp(2.5rem,5vw,4rem)] font-bold leading-tight mb-8 break-words">
-              Estimate Your Technical Debt Exposure.
+              How deep is your legacy problem?
             </h2>
             <p className="text-lg sm:text-xl md:text-2xl text-[#CCCCCC] leading-relaxed max-w-lg mb-6 break-words">
-              Input your legacy stack to see how AST-based extraction compares
-              to manual rewrite costs. Includes estimated savings from
-              on-premise SLMs vs. public cloud LLM token pricing.
+              Tell us what you&apos;re running. We&apos;ll show you what
+              extraction looks like vs. a full rewrite — including what
+              on-premise models save you over cloud LLM token pricing.
             </p>
           </div>
 
