@@ -1,71 +1,76 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { DollarCoin, PoundCoin, ZlotyCoin } from "./PixelCoins";
+import Image from "next/image";
 
 /**
  * PricingCoins — Three pixel-art currency coins arranged asymmetrically
- * on the right side of the pricing hero.
+ * on the right side of the pricing hero. Each coin drifts on its own
+ * slow, staggered vertical path to create a sense of quiet weight —
+ * like coins settling through still air.
  *
- * Enhanced with:
- * - Redrawn SVGs for better contrast and readability
- * - Strong pixel-appropriate drop shadows
- * - Orbital drift paths
- * - Entrance slide-up with scale-in
+ * Animation approach: no spring physics, no bounce, no infinite spin.
+ * Just a slow sinusoidal vertical drift at different frequencies and
+ * amplitudes per coin, driven by requestAnimationFrame for smoothness.
+ * The motion is subtle enough to feel intentional, not decorative.
  */
 
 interface CoinConfig {
-  type: "dollar" | "zloty" | "pound";
+  src: string;
+  alt: string;
+  /** Size in px */
   size: number;
+  /** X offset from center in px (positive = right) */
   x: number;
+  /** Y offset from center in px (positive = down) */
   y: number;
-  driftAmpY: number;
-  driftAmpX: number;
+  /** Vertical drift amplitude in px */
+  driftAmp: number;
+  /** Drift cycle duration in ms */
   driftPeriod: number;
+  /** Initial phase offset (0–1) */
   phase: number;
+  /** Static rotation in degrees — slight tilt for asymmetry */
   rotation: number;
-  rotDrift: number;
+  /** Animation start delay in ms for staggered entrance */
   entranceDelay: number;
 }
 
 const COINS: CoinConfig[] = [
   {
-    type: "dollar",
+    src: "/coin-dolar.svg",
+    alt: "Dollar coin",
     size: 240,
     x: 20,
     y: -150,
-    driftAmpY: 18,
-    driftAmpX: 8,
+    driftAmp: 14,
     driftPeriod: 6200,
     phase: 0,
     rotation: -4,
-    rotDrift: 2.5,
     entranceDelay: 0,
   },
   {
-    type: "zloty",
+    src: "/coin-zloty.svg",
+    alt: "Złoty coin",
     size: 192,
     x: -120,
     y: 30,
-    driftAmpY: 14,
-    driftAmpX: 10,
+    driftAmp: 10,
     driftPeriod: 7800,
     phase: 0.33,
     rotation: 6,
-    rotDrift: 3,
     entranceDelay: 120,
   },
   {
-    type: "pound",
+    src: "/coin-pound-Recovered.svg",
+    alt: "Pound coin",
     size: 216,
     x: 70,
     y: 160,
-    driftAmpY: 16,
-    driftAmpX: 6,
+    driftAmp: 12,
     driftPeriod: 5400,
     phase: 0.66,
     rotation: -2,
-    rotDrift: 2,
     entranceDelay: 240,
   },
 ];
@@ -85,34 +90,18 @@ export default function PricingCoins() {
         const el = coinRefs.current[i];
         if (!el) return;
 
-        // Entrance: fade + slide up + scale in over 800ms
-        const entranceT = Math.min(
+        // Entrance fade — simple opacity ramp over 600ms after delay
+        const entranceProgress = Math.min(
           1,
-          Math.max(0, (elapsed - coin.entranceDelay) / 800)
+          Math.max(0, (elapsed - coin.entranceDelay) / 600)
         );
-        const eased = 1 - Math.pow(1 - entranceT, 3);
-        const entranceSlide = (1 - eased) * 50;
-        const entranceScale = 0.7 + eased * 0.3;
 
-        // Vertical drift
-        const tY = (elapsed + coin.phase * coin.driftPeriod) / coin.driftPeriod;
-        const yOffset = Math.sin(tY * Math.PI * 2) * coin.driftAmpY;
+        // Sinusoidal drift
+        const t = (elapsed + coin.phase * coin.driftPeriod) / coin.driftPeriod;
+        const yOffset = Math.sin(t * Math.PI * 2) * coin.driftAmp;
 
-        // Horizontal drift at different period for orbital path
-        const tX = (elapsed + coin.phase * coin.driftPeriod * 1.3) / (coin.driftPeriod * 1.7);
-        const xOffset = Math.cos(tX * Math.PI * 2) * coin.driftAmpX;
-
-        // Rotation oscillation
-        const tR = (elapsed + coin.phase * coin.driftPeriod) / (coin.driftPeriod * 2.1);
-        const rotOffset = Math.sin(tR * Math.PI * 2) * coin.rotDrift;
-
-        const totalY = yOffset + entranceSlide;
-        const totalRot = coin.rotation + rotOffset;
-        const totalScale = entranceScale;
-
-        el.style.opacity = String(eased);
-        el.style.transform = `translate(${xOffset}px, ${totalY}px) rotate(${totalRot}deg) scale(${totalScale})`;
-        el.style.filter = `drop-shadow(4px 6px 2px rgba(1, 18, 3, 0.3))`;
+        el.style.opacity = String(entranceProgress);
+        el.style.transform = `translateY(${yOffset}px) rotate(${coin.rotation}deg)`;
       });
 
       rafRef.current = requestAnimationFrame(animate);
@@ -133,7 +122,7 @@ export default function PricingCoins() {
     >
       {COINS.map((coin, i) => (
         <div
-          key={coin.type}
+          key={coin.src}
           ref={(el) => { coinRefs.current[i] = el; }}
           className="pricing-coin"
           style={{
@@ -143,12 +132,21 @@ export default function PricingCoins() {
             width: coin.size,
             height: coin.size,
             opacity: 0,
-            willChange: "transform, opacity, filter",
+            willChange: "transform, opacity",
           }}
         >
-          {coin.type === "dollar" && <DollarCoin size={coin.size} />}
-          {coin.type === "zloty" && <ZlotyCoin size={coin.size} />}
-          {coin.type === "pound" && <PoundCoin size={coin.size} />}
+          <Image
+            src={coin.src}
+            alt={coin.alt}
+            width={coin.size}
+            height={coin.size}
+            style={{
+              imageRendering: "pixelated",
+              width: "100%",
+              height: "100%",
+            }}
+            priority
+          />
         </div>
       ))}
     </div>
