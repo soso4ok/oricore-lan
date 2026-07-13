@@ -40,10 +40,10 @@ const COINS: CoinConfig[] = [
   {
     src: "/coin-dolar.svg",
     alt: "Dollar coin",
-    size: 120,
-    x: 10,
-    y: -90,
-    driftAmp: 10,
+    size: 240,
+    x: 20,
+    y: -150,
+    driftAmp: 14,
     driftPeriod: 6200,
     phase: 0,
     rotation: -4,
@@ -52,10 +52,10 @@ const COINS: CoinConfig[] = [
   {
     src: "/coin-zloty.svg",
     alt: "Złoty coin",
-    size: 96,
-    x: -70,
-    y: 20,
-    driftAmp: 7,
+    size: 192,
+    x: -120,
+    y: 30,
+    driftAmp: 10,
     driftPeriod: 7800,
     phase: 0.33,
     rotation: 6,
@@ -64,10 +64,10 @@ const COINS: CoinConfig[] = [
   {
     src: "/coin-pound-Recovered.svg",
     alt: "Pound coin",
-    size: 108,
-    x: 40,
-    y: 90,
-    driftAmp: 9,
+    size: 216,
+    x: 70,
+    y: 160,
+    driftAmp: 12,
     driftPeriod: 5400,
     phase: 0.66,
     rotation: -2,
@@ -118,7 +118,7 @@ export default function PricingCoins() {
     <div
       className="pricing-coins-stack"
       aria-hidden="true"
-      style={{ position: "relative", width: 280, height: 340 }}
+      style={{ position: "relative", width: 480, height: 560 }}
     >
       {COINS.map((coin, i) => (
         <div
