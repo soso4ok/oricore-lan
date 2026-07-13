@@ -1,23 +1,21 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Image from "next/image";
+import { DollarCoin, PoundCoin, ZlotyCoin } from "./PixelCoins";
 
 /**
  * PricingCoins — Three pixel-art currency coins arranged asymmetrically
  * on the right side of the pricing hero.
  *
  * Enhanced with:
- * - Visible green glow aura around each coin
+ * - Redrawn SVGs for better contrast and readability
  * - Strong pixel-appropriate drop shadows
- * - Wider orbital drift paths (not just up/down)
+ * - Orbital drift paths
  * - Entrance slide-up with scale-in
- * - Periodic shimmer flash on each coin (staggered)
  */
 
 interface CoinConfig {
-  src: string;
-  alt: string;
+  type: "dollar" | "zloty" | "pound";
   size: number;
   x: number;
   y: number;
@@ -28,14 +26,11 @@ interface CoinConfig {
   rotation: number;
   rotDrift: number;
   entranceDelay: number;
-  /** Glow intensity multiplier */
-  glow: number;
 }
 
 const COINS: CoinConfig[] = [
   {
-    src: "/coin-dolar.svg",
-    alt: "Dollar coin",
+    type: "dollar",
     size: 240,
     x: 20,
     y: -150,
@@ -46,11 +41,9 @@ const COINS: CoinConfig[] = [
     rotation: -4,
     rotDrift: 2.5,
     entranceDelay: 0,
-    glow: 1.2,
   },
   {
-    src: "/coin-zloty.svg",
-    alt: "Złoty coin",
+    type: "zloty",
     size: 192,
     x: -120,
     y: 30,
@@ -61,11 +54,9 @@ const COINS: CoinConfig[] = [
     rotation: 6,
     rotDrift: 3,
     entranceDelay: 120,
-    glow: 0.9,
   },
   {
-    src: "/coin-pound-Recovered.svg",
-    alt: "Pound coin",
+    type: "pound",
     size: 216,
     x: 70,
     y: 160,
@@ -76,7 +67,6 @@ const COINS: CoinConfig[] = [
     rotation: -2,
     rotDrift: 2,
     entranceDelay: 240,
-    glow: 1.0,
   },
 ];
 
@@ -116,29 +106,13 @@ export default function PricingCoins() {
         const tR = (elapsed + coin.phase * coin.driftPeriod) / (coin.driftPeriod * 2.1);
         const rotOffset = Math.sin(tR * Math.PI * 2) * coin.rotDrift;
 
-        // Glow pulse — breathing green aura
-        const tG = (elapsed + coin.phase * 4000) / 5000;
-        const glowStrength = 8 + Math.sin(tG * Math.PI * 2) * 5;
-        const glowAlpha = (0.3 + Math.sin(tG * Math.PI * 2) * 0.15) * coin.glow;
-
-        // Shimmer flash — brief brightness spike every ~4s per coin
-        const shimmerCycle = 4000 + i * 1300;
-        const shimmerPhase = ((elapsed + coin.entranceDelay * 10) % shimmerCycle) / shimmerCycle;
-        const shimmerBrightness = shimmerPhase < 0.08
-          ? 1 + 0.3 * Math.sin(shimmerPhase / 0.08 * Math.PI)
-          : 1;
-
         const totalY = yOffset + entranceSlide;
         const totalRot = coin.rotation + rotOffset;
         const totalScale = entranceScale;
 
         el.style.opacity = String(eased);
         el.style.transform = `translate(${xOffset}px, ${totalY}px) rotate(${totalRot}deg) scale(${totalScale})`;
-        el.style.filter = [
-          `drop-shadow(0 0 ${glowStrength}px rgba(47, 202, 84, ${glowAlpha}))`,
-          `drop-shadow(4px 6px 2px rgba(1, 18, 3, 0.3))`,
-          `brightness(${shimmerBrightness})`,
-        ].join(" ");
+        el.style.filter = `drop-shadow(4px 6px 2px rgba(1, 18, 3, 0.3))`;
       });
 
       rafRef.current = requestAnimationFrame(animate);
@@ -159,7 +133,7 @@ export default function PricingCoins() {
     >
       {COINS.map((coin, i) => (
         <div
-          key={coin.src}
+          key={coin.type}
           ref={(el) => { coinRefs.current[i] = el; }}
           className="pricing-coin"
           style={{
@@ -172,18 +146,9 @@ export default function PricingCoins() {
             willChange: "transform, opacity, filter",
           }}
         >
-          <Image
-            src={coin.src}
-            alt={coin.alt}
-            width={coin.size}
-            height={coin.size}
-            style={{
-              imageRendering: "pixelated",
-              width: "100%",
-              height: "100%",
-            }}
-            priority
-          />
+          {coin.type === "dollar" && <DollarCoin size={coin.size} />}
+          {coin.type === "zloty" && <ZlotyCoin size={coin.size} />}
+          {coin.type === "pound" && <PoundCoin size={coin.size} />}
         </div>
       ))}
     </div>
