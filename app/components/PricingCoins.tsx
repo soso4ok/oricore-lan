@@ -9,31 +9,35 @@ import Image from "next/image";
  * slow, staggered vertical path to create a sense of quiet weight —
  * like coins settling through still air.
  *
- * Animation approach: no spring physics, no bounce, no infinite spin.
- * Just a slow sinusoidal vertical drift at different frequencies and
- * amplitudes per coin, driven by requestAnimationFrame for smoothness.
- * The motion is subtle enough to feel intentional, not decorative.
+ * Enhanced with:
+ * - Pixel-art drop shadows for depth (not CSS box-shadow — that's slop)
+ * - Subtle horizontal drift layered on top of vertical for organic movement
+ * - Staggered entrance with slight upward slide, not just fade
+ * - Scale variation during drift for a parallax-like depth illusion
  */
 
 interface CoinConfig {
   src: string;
   alt: string;
-  /** Size in px */
   size: number;
-  /** X offset from center in px (positive = right) */
   x: number;
-  /** Y offset from center in px (positive = down) */
   y: number;
   /** Vertical drift amplitude in px */
-  driftAmp: number;
+  driftAmpY: number;
+  /** Horizontal drift amplitude in px — smaller, secondary axis */
+  driftAmpX: number;
   /** Drift cycle duration in ms */
   driftPeriod: number;
   /** Initial phase offset (0–1) */
   phase: number;
-  /** Static rotation in degrees — slight tilt for asymmetry */
+  /** Static rotation in degrees */
   rotation: number;
-  /** Animation start delay in ms for staggered entrance */
+  /** Subtle rotation drift amplitude in degrees */
+  rotDrift: number;
+  /** Animation start delay in ms */
   entranceDelay: number;
+  /** Z-depth hint: 0 = closest, 1 = furthest. Controls parallax-like scale pulse */
+  depth: number;
 }
 
 const COINS: CoinConfig[] = [
@@ -43,11 +47,14 @@ const COINS: CoinConfig[] = [
     size: 240,
     x: 20,
     y: -150,
-    driftAmp: 14,
+    driftAmpY: 14,
+    driftAmpX: 4,
     driftPeriod: 6200,
     phase: 0,
     rotation: -4,
+    rotDrift: 1.5,
     entranceDelay: 0,
+    depth: 0,
   },
   {
     src: "/coin-zloty.svg",
@@ -55,11 +62,14 @@ const COINS: CoinConfig[] = [
     size: 192,
     x: -120,
     y: 30,
-    driftAmp: 10,
+    driftAmpY: 10,
+    driftAmpX: 6,
     driftPeriod: 7800,
     phase: 0.33,
     rotation: 6,
+    rotDrift: 2,
     entranceDelay: 120,
+    depth: 0.5,
   },
   {
     src: "/coin-pound-Recovered.svg",
@@ -67,11 +77,14 @@ const COINS: CoinConfig[] = [
     size: 216,
     x: 70,
     y: 160,
-    driftAmp: 12,
+    driftAmpY: 12,
+    driftAmpX: 3,
     driftPeriod: 5400,
     phase: 0.66,
     rotation: -2,
+    rotDrift: 1,
     entranceDelay: 240,
+    depth: 0.3,
   },
 ];
 
@@ -90,18 +103,36 @@ export default function PricingCoins() {
         const el = coinRefs.current[i];
         if (!el) return;
 
-        // Entrance fade — simple opacity ramp over 600ms after delay
-        const entranceProgress = Math.min(
+        // Entrance: fade + slide up over 700ms after delay
+        const entranceT = Math.min(
           1,
-          Math.max(0, (elapsed - coin.entranceDelay) / 600)
+          Math.max(0, (elapsed - coin.entranceDelay) / 700)
         );
+        // Ease-out cubic for smooth deceleration
+        const eased = 1 - Math.pow(1 - entranceT, 3);
+        const entranceSlide = (1 - eased) * 30; // slides up 30px
 
-        // Sinusoidal drift
-        const t = (elapsed + coin.phase * coin.driftPeriod) / coin.driftPeriod;
-        const yOffset = Math.sin(t * Math.PI * 2) * coin.driftAmp;
+        // Primary vertical drift (sine)
+        const tY = (elapsed + coin.phase * coin.driftPeriod) / coin.driftPeriod;
+        const yOffset = Math.sin(tY * Math.PI * 2) * coin.driftAmpY;
 
-        el.style.opacity = String(entranceProgress);
-        el.style.transform = `translateY(${yOffset}px) rotate(${coin.rotation}deg)`;
+        // Secondary horizontal drift (cosine at different period for lissajous-like path)
+        const tX = (elapsed + coin.phase * coin.driftPeriod * 1.3) / (coin.driftPeriod * 1.7);
+        const xOffset = Math.cos(tX * Math.PI * 2) * coin.driftAmpX;
+
+        // Subtle rotation oscillation
+        const tR = (elapsed + coin.phase * coin.driftPeriod) / (coin.driftPeriod * 2.1);
+        const rotOffset = Math.sin(tR * Math.PI * 2) * coin.rotDrift;
+
+        // Micro scale pulse for depth (very subtle: 0.98–1.02 range)
+        const tS = (elapsed + coin.phase * 3000) / 9000;
+        const scalePulse = 1 + Math.sin(tS * Math.PI * 2) * 0.015 * (1 + coin.depth);
+
+        const totalY = yOffset + entranceSlide;
+        const totalRot = coin.rotation + rotOffset;
+
+        el.style.opacity = String(eased);
+        el.style.transform = `translate(${xOffset}px, ${totalY}px) rotate(${totalRot}deg) scale(${scalePulse})`;
       });
 
       rafRef.current = requestAnimationFrame(animate);
@@ -133,6 +164,7 @@ export default function PricingCoins() {
             height: coin.size,
             opacity: 0,
             willChange: "transform, opacity",
+            filter: `drop-shadow(${4 + coin.depth * 4}px ${6 + coin.depth * 6}px ${2 + coin.depth * 3}px rgba(1, 18, 3, 0.25))`,
           }}
         >
           <Image
