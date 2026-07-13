@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import PricingCoins from "../components/PricingCoins";
+import PixelServer from "../components/PixelServer";
 
 export const metadata: Metadata = {
   title: "Pricing | Apolast",
@@ -250,20 +251,25 @@ export default function PricingPage() {
       {/* ─── WHY THIS MODEL ─── */}
       <section className="py-24 md:py-32 border-b border-[#E0E0E0] bg-[#FAFAFA]">
         <div className="max-w-[1600px] mx-auto px-6 sm:px-8 lg:px-16">
-          <div className="max-w-3xl">
-            <h2 className="text-[clamp(2rem,4vw,3.5rem)] font-bold text-[#111111] leading-tight mb-10 break-words">
-              Flat-rate pricing model.
-            </h2>
-            <div className="space-y-8">
-              <p className="text-lg md:text-xl text-[#555555] leading-relaxed break-words">
-                Apolast deploys on-premises. Because the platform runs directly on your infrastructure with no external API dependencies, we do not charge for token consumption or request volume.
-              </p>
-              <p className="text-lg md:text-xl text-[#555555] leading-relaxed break-words">
-                Pricing is determined by the size and complexity of the codebase, the number of active engineers using the platform, and your deployment configuration.
-              </p>
-              <p className="text-lg md:text-xl text-[#111111] font-medium leading-relaxed break-words">
-                This model provides fixed annual costs for budgeting, ensures zero data egress for security compliance, and allows unlimited usage for engineering teams.
-              </p>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-center">
+            <div className="lg:col-span-7">
+              <h2 className="text-[clamp(2rem,4vw,3.5rem)] font-bold text-[#111111] leading-tight mb-10 break-words">
+                Flat-rate pricing model.
+              </h2>
+              <div className="space-y-8">
+                <p className="text-lg md:text-xl text-[#555555] leading-relaxed break-words">
+                  Apolast deploys on-premises. Because the platform runs directly on your infrastructure with no external API dependencies, we do not charge for token consumption or request volume.
+                </p>
+                <p className="text-lg md:text-xl text-[#555555] leading-relaxed break-words">
+                  Pricing is determined by the size and complexity of the codebase, the number of active engineers using the platform, and your deployment configuration.
+                </p>
+                <p className="text-lg md:text-xl text-[#111111] font-medium leading-relaxed break-words">
+                  This model provides fixed annual costs for budgeting, ensures zero data egress for security compliance, and allows unlimited usage for engineering teams.
+                </p>
+              </div>
+            </div>
+            <div className="lg:col-span-5 flex justify-center lg:justify-end">
+              <PixelServer />
             </div>
           </div>
         </div>
