@@ -75,6 +75,16 @@ a {
   color: var(--color-ink);
 }
 
+.cta-button {
+  background-color: #2FCA54 !important;
+  color: #111111 !important;
+}
+
+.cta-button:hover {
+  background-color: #ffffff !important;
+  color: #111111 !important;
+}
+
 /* ─── FANCY HOVER LINKS (APOLAST LINK) ───────────────── */
 
 .apolast-link {
