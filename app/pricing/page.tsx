@@ -346,7 +346,7 @@ export default function PricingPage() {
             </p>
             <a
               href="mailto:hello@apolast.com"
-              className="inline-flex items-center justify-center bg-[#2FCA54] text-[#111111] font-bold text-lg py-5 px-10 hover:bg-white transition-colors"
+              className="inline-flex items-center justify-center bg-[#2FCA54] text-[#111111] font-bold text-lg py-5 px-10 hover:bg-white hover:text-[#111111] transition-colors"
             >
               Schedule a technical review
             </a>
