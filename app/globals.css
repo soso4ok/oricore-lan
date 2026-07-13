@@ -82,14 +82,14 @@ a {
   display: inline-grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
-  overflow: hidden;
+  /* overflow: hidden removed to let main text be visible above */
   height: 1.5em;
   line-height: 1.5em;
 }
 
 .apolast-link-text {
   grid-area: 1 / 1 / 2 / 2;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   transform: translateY(0);
 }
 
@@ -110,7 +110,6 @@ a {
 
 .apolast-link:hover .apolast-link-text {
   transform: translateY(-100%);
-  opacity: 0;
 }
 
 .apolast-link:hover .apolast-link-hover {
