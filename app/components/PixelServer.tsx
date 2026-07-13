@@ -89,10 +89,13 @@ export default function PixelServer() {
       const phase = (elapsed % ledCycle) / ledCycle;
       const ledOpacity = phase < 0.75 ? 1 : 1 - ((phase - 0.75) / 0.25);
 
-      const leds = el.querySelectorAll<SVGRectElement>(".server-led");
-      leds.forEach((led) => {
-        led.setAttribute("opacity", String(0.4 + ledOpacity * 0.6));
-      });
+      const target = containerRef.current;
+      if (target) {
+        const leds = target.querySelectorAll<SVGRectElement>(".server-led");
+        leds.forEach((led) => {
+          led.setAttribute("opacity", String(0.4 + ledOpacity * 0.6));
+        });
+      }
 
       raf = requestAnimationFrame(animate);
     }
