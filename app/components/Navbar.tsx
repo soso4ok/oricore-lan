@@ -1,7 +1,20 @@
-import Link from 'next/link';
-import InteractiveLink from './InteractiveLink';
+"use client";
+
+import Link from "next/link";
+import { useState } from "react";
+import InteractiveLink from "./InteractiveLink";
+
+const navItems = [
+  { href: "/#pipeline", label: "Process", hoverText: "[01/trace-extract]" },
+  { href: "/#comparison", label: "Comparison", hoverText: "[02/spec-verify]" },
+  { href: "/solutions/bfsi", label: "BFSI", hoverText: "[icp/bfsi]" },
+  { href: "/pricing", label: "Pricing", hoverText: "[05/pricing]" },
+  { href: "/#demo", label: "Assess", hoverText: "[06/debt-calc]" },
+];
 
 export default function Navbar() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
     <nav
       className="fixed top-0 left-0 right-0 z-50 bg-[#FAFAFA]/90 backdrop-blur-md border-b border-[#E0E0E0]"
@@ -35,23 +48,60 @@ export default function Navbar() {
         </Link>
 
         <div className="hidden md:flex items-center gap-10">
-          <InteractiveLink href="/#pipeline" hoverText="[01/trace-extract]" className="font-display font-medium text-lg text-ink-soft hover:text-ink transition-colors">
-            Process
-          </InteractiveLink>
-          <InteractiveLink href="/#comparison" hoverText="[02/spec-verify]" className="font-display font-medium text-lg text-ink-soft hover:text-ink transition-colors">
-            Comparison
-          </InteractiveLink>
-          <InteractiveLink href="/solutions/bfsi" hoverText="[icp/bfsi]" className="font-display font-medium text-lg text-ink-soft hover:text-ink transition-colors">
-            BFSI
-          </InteractiveLink>
-          <InteractiveLink href="/pricing" hoverText="[05/pricing]" className="font-display font-medium text-lg text-ink-soft hover:text-ink transition-colors">
-            Pricing
-          </InteractiveLink>
-          <InteractiveLink href="/#demo" hoverText="[06/debt-calc]" className="font-display font-medium text-lg text-ink-soft hover:text-ink transition-colors">
-            Assess
-          </InteractiveLink>
+          {navItems.map((item) => (
+            <InteractiveLink
+              key={item.href}
+              href={item.href}
+              hoverText={item.hoverText}
+              className="font-display font-medium text-lg text-ink-soft hover:text-ink transition-colors"
+            >
+              {item.label}
+            </InteractiveLink>
+          ))}
         </div>
+
+        <button
+          type="button"
+          onClick={() => setIsMobileMenuOpen((previous) => !previous)}
+          className="md:hidden inline-flex items-center justify-center w-10 h-10 text-[#111111]"
+          aria-label="Toggle menu"
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-navigation"
+        >
+          <span className="sr-only">Open main menu</span>
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            strokeWidth="2"
+            aria-hidden="true"
+          >
+            {isMobileMenuOpen ? (
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            )}
+          </svg>
+        </button>
       </div>
+
+      {isMobileMenuOpen && (
+        <div id="mobile-navigation" className="md:hidden border-t border-[#E0E0E0] px-6 sm:px-8 py-4">
+          <div className="flex flex-col gap-4">
+            {navItems.map((item) => (
+              <Link
+                key={`mobile-${item.href}`}
+                href={item.href}
+                className="font-display font-medium text-base text-[#111111]"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
     </nav>
   );
 }
