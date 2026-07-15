@@ -62,7 +62,7 @@ const COINS: CoinConfig[] = [
     entranceDelay: 120,
   },
   {
-    src: "/coin-pound-Recovered.svg",
+    src: "/coin-pound.svg",
     alt: "Pound coin",
     size: 216,
     x: 70,

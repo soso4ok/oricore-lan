@@ -334,25 +334,6 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* ─── FINAL CTA ─── */}
-      <section className="py-24 md:py-32 bg-[#111111] text-white">
-        <div className="max-w-[1600px] mx-auto px-6 sm:px-8 lg:px-16">
-          <div className="max-w-2xl">
-            <h2 className="text-[clamp(2rem,4vw,3.5rem)] font-bold leading-tight mb-8 break-words">
-              Request a custom proposal.
-            </h2>
-            <p className="text-lg md:text-xl text-[#CCCCCC] leading-relaxed mb-12 break-words">
-              Provide your repository details, deployment requirements, and seat count. We will deliver a custom scope and cost estimate.
-            </p>
-            <a
-              href="mailto:hello@apolast.com"
-              className="inline-flex items-center justify-center bg-[#2FCA54] text-[#111111] hover:bg-white hover:text-[#111111] font-bold text-lg py-5 px-10 transition-colors"
-            >
-              Schedule a technical review
-            </a>
-          </div>
-        </div>
-      </section>
 
       <Footer />
     </main>

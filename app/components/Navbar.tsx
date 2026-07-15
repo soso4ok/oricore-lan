@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import InteractiveLink from "./InteractiveLink";
 
 const navItems = [
@@ -86,22 +87,31 @@ export default function Navbar() {
         </button>
       </div>
 
-      {isMobileMenuOpen && (
-        <div id="mobile-navigation" className="md:hidden border-t border-[#E0E0E0] px-6 sm:px-8 py-4">
-          <div className="flex flex-col gap-4">
-            {navItems.map((item) => (
-              <Link
-                key={`mobile-${item.href}`}
-                href={item.href}
-                className="font-display font-medium text-base text-[#111111]"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      )}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            id="mobile-navigation"
+            className="md:hidden border-t border-[#E0E0E0] px-6 sm:px-8 overflow-hidden"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
+            <div className="flex flex-col gap-4 py-4">
+              {navItems.map((item) => (
+                <Link
+                  key={`mobile-${item.href}`}
+                  href={item.href}
+                  className="font-display font-medium text-base text-[#111111]"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

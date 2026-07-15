@@ -105,7 +105,8 @@ export default function HeroIllustration() {
 
   return (
     <div className="relative w-full h-full flex items-center justify-center select-none overflow-hidden">
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         @keyframes chaos-drift {
           0%   { transform: translate(var(--dx), var(--dy)) rotate(var(--rot)); }
           33%  { transform: translate(calc(var(--dx) + 2px), calc(var(--dy) - 4px)) rotate(calc(var(--rot) + 1deg)); }
