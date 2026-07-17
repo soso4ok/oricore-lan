@@ -91,7 +91,7 @@ export default function Footer() {
                       hoverText="[01/trace-extract]"
                       className="text-base text-white/70 hover:text-white transition-colors"
                     >
-                      Process
+                      How It Works
                     </InteractiveLink>
                   </li>
                   <li>
@@ -100,7 +100,7 @@ export default function Footer() {
                       hoverText="[02/spec-verify]"
                       className="text-base text-white/70 hover:text-white transition-colors"
                     >
-                      Comparison
+                      Why Apolast
                     </InteractiveLink>
                   </li>
                   <li>
@@ -109,7 +109,7 @@ export default function Footer() {
                       hoverText="[06/debt-calc]"
                       className="text-base text-white/70 hover:text-white transition-colors"
                     >
-                      Debt Calculator
+                      Cost Calculator
                     </InteractiveLink>
                   </li>
                   <li>
@@ -118,7 +118,7 @@ export default function Footer() {
                       hoverText="[05/pricing]"
                       className="text-base text-white/70 hover:text-white transition-colors"
                     >
-                      Pricing
+                      Plans & Pricing
                     </InteractiveLink>
                   </li>
                 </ul>
@@ -145,7 +145,7 @@ export default function Footer() {
                       hoverText="[03/compliance]"
                       className="text-base text-white/70 hover:text-white transition-colors"
                     >
-                      DORA &amp; NIS2
+                      Regulatory Compliance
                     </InteractiveLink>
                   </li>
                   <li>
@@ -154,7 +154,7 @@ export default function Footer() {
                       hoverText="[04/on-prem]"
                       className="text-base text-white/70 hover:text-white transition-colors"
                     >
-                      On-Premise Deploy
+                      Air-Gapped Deployment
                     </InteractiveLink>
                   </li>
                 </ul>
@@ -174,6 +174,16 @@ export default function Footer() {
                     >
                       hello@apolast.com
                     </InteractiveLink>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.linkedin.com/company/apolast"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-base text-white/70 hover:text-white transition-colors"
+                    >
+                      LinkedIn
+                    </a>
                   </li>
                 </ul>
               </div>

@@ -48,9 +48,7 @@ export default function DebtCalculator() {
               How deep is your legacy problem?
             </h2>
             <p className="text-lg sm:text-xl md:text-2xl text-[#CCCCCC] leading-relaxed max-w-lg mb-6 break-words">
-              Tell us what you&apos;re running. We&apos;ll show you what
-              extraction looks like vs. a full rewrite — including what
-              on-premise models save you over cloud LLM token pricing.
+              Tell us what you&apos;re running. We&apos;ll show what can be extracted, what would require a rewrite, and the cost trade-offs between on-premises and cloud-based analysis.
             </p>
           </div>
 

@@ -244,7 +244,7 @@ export default function TermsPage() {
             {/* 16 */}
             <div>
               <h2 className="text-2xl font-bold text-[#111111] mb-4">16. Governing Law, Jurisdiction and Miscellaneous</h2>
-              <p className="mb-4">16.1 Governing law and jurisdiction shall be specified in the Order Form (e.g. laws of England and Wales for EU/UK enterprise contracts, Delaware or New York law for US enterprise contracts, Ukrainian law for contracts with the R&D hub).</p>
+              <p className="mb-4">16.1 Governing law and jurisdiction shall be specified in the Order Form. Contracts with foreign Enterprise clients are typically entered into by an Apolast holding or contracting entity (e.g., a US C-Corp or UK Ltd) subject to the laws of its respective jurisdiction (e.g., Delaware, New York, or England and Wales). The Ukrainian LLC (ТОВ) acts exclusively as an R&D center.</p>
               <p className="mb-4">16.2 No waiver of any provision shall be effective unless in writing. If any provision is found invalid or unenforceable, the remainder shall continue in full force.</p>
               <p className="mb-4">16.3 These Terms may only be varied in writing signed or electronically accepted by both Parties.</p>
               <p>16.4 A severability and “entire agreement” clause shall be interpreted to preserve the rest of the Agreement if any clause is held invalid.</p>

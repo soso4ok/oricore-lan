@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useCallback } from "react";
 
 interface InteractiveLinkProps {
   href: string;
@@ -15,6 +15,11 @@ export default function InteractiveLink({
   children,
   className = "",
 }: InteractiveLinkProps) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseEnter = useCallback(() => setIsHovered(true), []);
+  const handleMouseLeave = useCallback(() => setIsHovered(false), []);
+
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (href.startsWith("#")) {
       e.preventDefault();
@@ -26,7 +31,13 @@ export default function InteractiveLink({
   };
 
   return (
-    <a href={href} onClick={handleClick} className={`apolast-link ${className}`}>
+    <a
+      href={href}
+      onClick={handleClick}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className={`apolast-link ${isHovered ? "is-hovered" : ""} ${className}`}
+    >
       <span className="apolast-link-text">{children}</span>
       <span className="apolast-link-hover" aria-hidden="true">
         {hoverText}

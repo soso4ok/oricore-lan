@@ -40,7 +40,7 @@ export default function Home() {
             </h1>
             <div className="mb-10 w-24 h-[6px] bg-[#2FCA54]"></div>
             <p className="text-lg sm:text-xl md:text-[22px] text-[#333333] leading-[1.6] mb-12 max-w-2xl break-words">
-              We read your legacy code (COBOL, Java, mainframe) and extract the business rules buried inside it. Everything runs on your infrastructure. Nothing touches a cloud API. You get PR-ready specs, characterization tests, and DORA-compliant audit trails — without hallucinated code.
+              Our digital archaeology approach analyzes legacy applications (COBOL, Java, and mainframe systems) to recover documented business logic. Analysis is performed entirely within customer-managed infrastructure. Outputs include traceable specifications, characterization tests, and auditable artifacts suitable for enterprise legacy modernization workflows.
             </p>
 
             <div className="mb-0">
@@ -78,7 +78,7 @@ export default function Home() {
                 80<span className="text-[#2FCA54]">%</span>
               </div>
               <p className="text-xl sm:text-2xl md:text-[1.75rem] font-bold text-[#111111] leading-tight mb-6 break-words">
-                Of legacy modernization rewrites fail to meet original goals (Standish Group).
+                Of legacy modernization rewrites fail to meet original goals (<a href="https://www.standishgroup.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#2FCA54] transition-colors">Standish Group</a>).
               </p>
               <p className="text-base sm:text-lg md:text-xl text-[#555555] leading-relaxed break-words">
                 Long-running databases from the Standish Group show that 80% of legacy modernization projects run over budget or fail entirely. The core issue is lost institutional knowledge — you cannot safely rewrite what your team no longer understands.

@@ -82,15 +82,20 @@ a {
   display: inline-grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
-  /* overflow: hidden removed to let main text be visible above */
+  overflow: hidden;
   height: 1.5em;
   line-height: 1.5em;
+  /* Expand hit-area to prevent edge-of-element flicker */
+  padding: 4px 6px;
+  margin: -4px -6px;
 }
 
 .apolast-link-text {
   grid-area: 1 / 1 / 2 / 2;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   transform: translateY(0);
+  pointer-events: none;
+  will-change: transform;
 }
 
 .apolast-link-hover {
@@ -106,13 +111,15 @@ a {
   opacity: 0;
   display: flex;
   align-items: center;
+  pointer-events: none;
+  will-change: transform;
 }
 
-.apolast-link:hover .apolast-link-text {
+.apolast-link.is-hovered .apolast-link-text {
   transform: translateY(-100%);
 }
 
-.apolast-link:hover .apolast-link-hover {
+.apolast-link.is-hovered .apolast-link-hover {
   transform: translateY(0);
   opacity: 1;
 }
