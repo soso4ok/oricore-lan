@@ -121,12 +121,23 @@ export default function RootLayout({
           __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
+
+            var consent = "denied";
+            try {
+              if (localStorage.getItem("apolast_cookie_consent") === "granted") {
+                consent = "granted";
+              }
+            } catch(e) {}
+
             gtag('consent', 'default', {
-              'ad_storage': 'denied',
-              'ad_user_data': 'denied',
-              'ad_personalization': 'denied',
-              'analytics_storage': 'denied'
+              'ad_storage': consent,
+              'ad_user_data': consent,
+              'ad_personalization': consent,
+              'analytics_storage': consent,
+              'wait_for_update': 500
             });
+            
+            gtag('set', 'ads_data_redaction', true);
           `
         }} />
         
