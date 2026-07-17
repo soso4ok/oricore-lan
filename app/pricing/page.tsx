@@ -37,7 +37,7 @@ export default function PricingPage() {
               Apolast charges a one-time integration fee to deploy the platform and parse your codebase, followed by a flat annual subscription to keep your system graph, tests, and specifications up to date. Get a clear cost structure before the project begins.
             </p>
             <a
-              href="mailto:hello@apolast.com"
+              href="mailto:contact@apolast.com"
               className="apolast-btn text-lg"
             >
               Request a custom quote

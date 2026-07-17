@@ -22,7 +22,7 @@ export default function Footer() {
             </div>
             <div className="lg:col-span-5 flex items-end lg:justify-end">
               <a
-                href="mailto:hello@apolast.com"
+                href="mailto:contact@apolast.com"
                 className="inline-flex items-center justify-center bg-white !text-[#111111] hover:bg-[#2FCA54] hover:!text-[#111111] font-medium text-lg py-5 px-10 transition-colors duration-200"
               >
                 Request a technical review
@@ -168,11 +168,11 @@ export default function Footer() {
                 <ul className="space-y-3">
                   <li>
                     <InteractiveLink
-                      href="mailto:hello@apolast.com"
+                      href="mailto:contact@apolast.com"
                       hoverText="[mail::connect]"
                       className="text-base text-white/70 hover:text-white transition-colors"
                     >
-                      hello@apolast.com
+                      contact@apolast.com
                     </InteractiveLink>
                   </li>
                   <li>

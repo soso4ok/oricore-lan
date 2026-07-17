@@ -29,7 +29,7 @@ export default function BFSISolutions() {
               Banks run on COBOL. Insurance runs on mainframes. These systems process billions daily — and the people who wrote them are retiring. Apolast lets you securely map and extract core banking business rules on-premise, aligned with DORA and NIS2 mandates — without hallucinating code.
             </p>
             <a
-              href="mailto:hello@apolast.com"
+              href="mailto:contact@apolast.com"
               className="apolast-btn text-lg"
             >
               Request a BFSI Audit
