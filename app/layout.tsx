@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk, Blinker } from "next/font/google";
-import Script from "next/script";
 import CookieBanner from "./components/CookieBanner";
 import "./globals.css";
 
@@ -116,31 +115,64 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${spaceGrotesk.variable} ${blinker.variable}`}
     >
+      <head>
+        {/* 1. Consent defaults — must fire before any Google tag */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+
+var consent = "denied";
+try {
+  if (localStorage.getItem("apolast_cookie_consent") === "granted") {
+    consent = "granted";
+  }
+} catch(e) {}
+
+gtag('consent', 'default', {
+  'ad_storage': consent,
+  'ad_user_data': consent,
+  'ad_personalization': consent,
+  'analytics_storage': consent,
+  'wait_for_update': 500
+});
+
+gtag('set', 'ads_data_redaction', true);
+`,
+          }}
+        />
+        {/* 2. Google tag (gtag.js) — async external script */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-LFYKTHJ825"
+        />
+        {/* 3. GA4 config */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-LFYKTHJ825');
+`,
+          }}
+        />
+        {/* 4. Google Tag Manager */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MMKM83XF');
+`,
+          }}
+        />
+      </head>
       <body>
-        <Script id="consent-default" strategy="beforeInteractive" dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-
-            var consent = "denied";
-            try {
-              if (localStorage.getItem("apolast_cookie_consent") === "granted") {
-                consent = "granted";
-              }
-            } catch(e) {}
-
-            gtag('consent', 'default', {
-              'ad_storage': consent,
-              'ad_user_data': consent,
-              'ad_personalization': consent,
-              'analytics_storage': consent,
-              'wait_for_update': 500
-            });
-            
-            gtag('set', 'ads_data_redaction', true);
-          `
-        }} />
-        
+        {/* GTM noscript fallback */}
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-MMKM83XF"
@@ -150,29 +182,6 @@ export default function RootLayout({
           />
         </noscript>
 
-        <Script id="google-tag-manager" strategy="afterInteractive" dangerouslySetInnerHTML={{
-          __html: `
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-MMKM83XF');
-          `
-        }} />
-
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=G-LFYKTHJ825`}
-          strategy="afterInteractive"
-        />
-
-        <Script id="google-analytics" strategy="afterInteractive" dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-LFYKTHJ825');
-          `
-        }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
