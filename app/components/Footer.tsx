@@ -176,14 +176,15 @@ export default function Footer() {
                     </InteractiveLink>
                   </li>
                   <li>
-                    <a
+                    <InteractiveLink
                       href="https://www.linkedin.com/company/apolast"
+                      hoverText="[social::linkedin]"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-base text-white/70 hover:text-white transition-colors"
                     >
                       LinkedIn
-                    </a>
+                    </InteractiveLink>
                   </li>
                 </ul>
               </div>

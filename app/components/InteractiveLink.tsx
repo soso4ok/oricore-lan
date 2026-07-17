@@ -7,6 +7,8 @@ interface InteractiveLinkProps {
   hoverText: string;
   children: React.ReactNode;
   className?: string;
+  target?: string;
+  rel?: string;
 }
 
 export default function InteractiveLink({
@@ -14,6 +16,8 @@ export default function InteractiveLink({
   hoverText,
   children,
   className = "",
+  target,
+  rel,
 }: InteractiveLinkProps) {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -36,6 +40,8 @@ export default function InteractiveLink({
       onClick={handleClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      target={target}
+      rel={rel}
       className={`apolast-link ${isHovered ? "is-hovered" : ""} ${className}`}
     >
       <span className="apolast-link-text">{children}</span>
