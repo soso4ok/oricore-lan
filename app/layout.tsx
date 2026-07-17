@@ -117,6 +117,19 @@ export default function RootLayout({
       className={`${inter.variable} ${spaceGrotesk.variable} ${blinker.variable}`}
     >
       <body>
+        <Script id="consent-default" strategy="beforeInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('consent', 'default', {
+              'ad_storage': 'denied',
+              'ad_user_data': 'denied',
+              'ad_personalization': 'denied',
+              'analytics_storage': 'denied'
+            });
+          `}
+        </Script>
+        
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-MMKM83XF"
@@ -125,6 +138,7 @@ export default function RootLayout({
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
+
         <Script id="google-tag-manager" strategy="afterInteractive">
           {`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -134,22 +148,16 @@ export default function RootLayout({
             })(window,document,'script','dataLayer','GTM-MMKM83XF');
           `}
         </Script>
+
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=G-LFYKTHJ825`}
           strategy="afterInteractive"
         />
+
         <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
-            
-            gtag('consent', 'default', {
-              'ad_storage': 'denied',
-              'ad_user_data': 'denied',
-              'ad_personalization': 'denied',
-              'analytics_storage': 'denied'
-            });
-
             gtag('js', new Date());
             gtag('config', 'G-LFYKTHJ825');
           `}
