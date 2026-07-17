@@ -46,7 +46,7 @@ export default function PrivacyPage() {
             <div>
               <h2 className="text-2xl font-bold text-[#111111] mb-4">3. Identity of the Controller and Contact Details</h2>
               <p className="mb-4">3.1 For the activities covered by this Privacy Policy, Apolast (ТОВ) and/or the relevant holding or contracting entity identified in the applicable contract acts as data controller within the meaning of GDPR.</p>
-              <p>3.2 Contact details for privacy inquiries, including our Data Protection Officer (where required) and support team, can be reached directly via email at privacy@apolast.com.</p>
+              <p>3.2 Contact details for privacy inquiries, including our Data Protection Officer (where required) and support team, can be reached directly via email at contact@apolast.com.</p>
             </div>
 
             {/* 4 */}
@@ -169,7 +169,7 @@ export default function PrivacyPage() {
                 <li>g) right to object to processing based on legitimate interests or direct marketing;</li>
                 <li>h) rights related to automated decision‑making and profiling, where applicable.</li>
               </ul>
-              <p>12.2 Requests to exercise these rights can be submitted directly via email at privacy@apolast.com. Apolast will respond within the time limits set by law, typically one month.</p>
+              <p>12.2 Requests to exercise these rights can be submitted directly via email at contact@apolast.com. Apolast will respond within the time limits set by law, typically one month.</p>
             </div>
 
             {/* 13 */}
@@ -208,7 +208,7 @@ export default function PrivacyPage() {
             {/* 16 */}
             <div>
               <h2 className="text-2xl font-bold text-[#111111] mb-4">16. Contact and Complaints</h2>
-              <p className="mb-4">16.1 For questions about this Privacy Policy or Apolast’s data protection practices, individuals may contact Apolast directly at privacy@apolast.com.</p>
+              <p className="mb-4">16.1 For questions about this Privacy Policy or Apolast’s data protection practices, individuals may contact Apolast directly at contact@apolast.com.</p>
               <p>16.2 Data subjects have the right to lodge a complaint with their local data protection authority if they believe their rights have been infringed.</p>
             </div>
 
