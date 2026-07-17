@@ -153,6 +153,11 @@ export default function RootLayout({
             gtag('config', 'G-LFYKTHJ825');
           `}
         </Script>
+        <Script
+          type="text/javascript"
+          src="//cdn.cookie-script.com/s/f1193ee5f221d2bf11afdd571f2db1c3.js"
+          strategy="afterInteractive"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
