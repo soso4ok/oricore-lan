@@ -9,7 +9,7 @@ export default function PixelShield() {
   return (
     <Image
       src="/SH.svg"
-      alt=""
+      alt="Apolast pixel art shield representing code security and on-premise execution"
       width={308}
       height={308}
       aria-hidden="true"

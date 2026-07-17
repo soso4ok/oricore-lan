@@ -190,7 +190,7 @@ export default function SovereigntyScroll() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/SH.svg"
-              alt=""
+              alt="Apolast pixel art security shield representing on-premise air-gapped deployment"
               width={420}
               height={420}
               aria-hidden="true"
