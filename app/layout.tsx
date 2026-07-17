@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk, Blinker } from "next/font/google";
 import Script from "next/script";
+import CookieBanner from "./components/CookieBanner";
 import "./globals.css";
 
 const inter = Inter({
@@ -153,16 +154,12 @@ export default function RootLayout({
             gtag('config', 'G-LFYKTHJ825');
           `}
         </Script>
-        <Script
-          type="text/javascript"
-          src="//cdn.cookie-script.com/s/f1193ee5f221d2bf11afdd571f2db1c3.js"
-          strategy="afterInteractive"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         {children}
+        <CookieBanner />
       </body>
     </html>
   );
