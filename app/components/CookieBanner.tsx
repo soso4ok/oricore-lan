@@ -46,16 +46,16 @@ export default function CookieBanner() {
   if (!show) return null;
 
   return (
-    <div className="fixed bottom-6 left-6 right-6 sm:left-auto sm:w-[420px] z-50 bg-[var(--color-bg-alt)] border border-[var(--color-border)] shadow-2xl p-6 sm:p-8 flex flex-col gap-6 rounded-xl">
+    <div className="fixed bottom-6 left-6 right-6 sm:left-auto sm:w-[420px] z-50 bg-[#111111] border border-[#333333] shadow-2xl p-6 sm:p-8 flex flex-col gap-6 rounded-xl">
       <div>
-        <h3 className="text-xl font-bold text-[var(--color-ink)] mb-3 font-display tracking-tight">
+        <h3 className="text-xl font-bold text-[#FAFAFA] mb-3 font-display tracking-tight">
           Data & Privacy
         </h3>
-        <p className="text-base text-[var(--color-ink-soft)] leading-relaxed">
+        <p className="text-base text-[#AAAAAA] leading-relaxed">
           We use essential cookies to run the platform. With your consent, we use minimal analytics to improve the experience. We do not use third-party ad tracking networks. Read our{" "}
           <Link
             href="/privacy"
-            className="text-[var(--color-ink)] underline underline-offset-4 hover:text-[var(--color-accent)] transition-colors duration-200"
+            className="text-[#FAFAFA] underline underline-offset-4 hover:text-[#2FCA54] transition-colors duration-200"
           >
             Privacy Policy
           </Link>{" "}
@@ -66,13 +66,13 @@ export default function CookieBanner() {
       <div className="flex flex-col sm:flex-row gap-3">
         <button
           onClick={handleAccept}
-          className="flex-1 bg-[var(--color-ink)] text-[var(--color-bg)] hover:bg-[var(--color-accent)] hover:text-[var(--color-bg)] font-medium text-base py-3 px-5 transition-colors duration-200 cursor-pointer text-center rounded-lg"
+          className="flex-1 bg-[#FAFAFA] text-[#111111] hover:bg-[#2FCA54] hover:text-[#111111] font-medium text-base py-3 px-5 transition-colors duration-200 cursor-pointer text-center rounded-lg"
         >
           Accept all
         </button>
         <button
           onClick={handleReject}
-          className="flex-1 bg-transparent border border-[var(--color-ink-soft)] text-[var(--color-ink)] hover:border-[var(--color-ink-muted)] hover:text-[var(--color-ink)] font-medium text-base py-3 px-5 transition-colors duration-200 cursor-pointer text-center rounded-lg"
+          className="flex-1 bg-transparent border border-[#333333] text-[#FAFAFA] hover:border-[#666666] hover:text-white font-medium text-base py-3 px-5 transition-colors duration-200 cursor-pointer text-center rounded-lg"
         >
           Decline non-essential
         </button>

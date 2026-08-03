@@ -1,19 +1,14 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function ScrollDepthGauge() {
   const [visible, setVisible] = useState(false);
-  const visibleRef = useRef(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const nextVisible = window.scrollY > 200;
-      if (nextVisible === visibleRef.current) return;
-
-      visibleRef.current = nextVisible;
-      setVisible(nextVisible);
+      setVisible(window.scrollY > 200);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -38,7 +33,7 @@ export default function ScrollDepthGauge() {
           exit={{ opacity: 0, scale: 0.8 }}
           transition={{ duration: 0.2 }}
           aria-label="Scroll to top of the page"
-          className="fixed bottom-8 right-8 z-50 w-14 h-14 bg-[var(--color-ink)] text-[var(--color-bg)] border border-[var(--color-ink-soft)] flex items-center justify-center transition-colors duration-300 hover:bg-[var(--color-accent)] hover:text-[var(--color-ink)] hover:border-[var(--color-accent)] cursor-pointer"
+          className="fixed bottom-8 right-8 z-50 w-14 h-14 bg-[#111111] text-[#FAFAFA] border border-[#333333] flex items-center justify-center transition-colors duration-300 hover:bg-[#2FCA54] hover:text-[#111111] hover:border-[#2FCA54] cursor-pointer"
         >
           <svg
             width="20"
