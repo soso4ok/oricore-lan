@@ -20,7 +20,7 @@ const slides = [
     id: "economics",
     title: "18× Cost Reduction.",
     content:
-      "Running our models on your hardware costs a fraction of sending tokens to OpenAI. We've measured up to 18× lower cost compared to GPT-4 API pricing when analyzing a complex enterprise operational workflow. Fixed infrastructure cost. Predictable budgets.",
+      "Running our models on your hardware costs a fraction of sending tokens to OpenAI. We've measured up to 18× lower cost compared to GPT-4 API pricing when analyzing a 2-million line COBOL codebase. Fixed infrastructure cost. Predictable budgets.",
   },
 ];
 
@@ -86,7 +86,7 @@ export default function SovereigntyScroll() {
   return (
     <section
       id="sovereignty"
-      className="relative bg-[var(--color-bg)] text-[var(--color-ink)]"
+      className="relative bg-[#111111] text-white"
       aria-label="Platform architecture and economics"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -105,7 +105,7 @@ export default function SovereigntyScroll() {
               <h2 className="text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-[1] mb-5 tracking-tighter">
                 On-Premise. Air-Gapped. Yours.
               </h2>
-              <p className="text-lg md:text-xl text-[var(--color-ink-muted)] leading-relaxed">
+              <p className="text-lg md:text-xl text-[#999999] leading-relaxed">
                 Your code stays on your servers. Full stop.
               </p>
             </div>
@@ -131,10 +131,10 @@ export default function SovereigntyScroll() {
                   exit="exit"
                   className="max-w-3xl"
                 >
-                  <h3 className="text-[clamp(1.75rem,4vw,3rem)] font-bold leading-[1.1] tracking-tight mb-6 text-[var(--color-accent)]">
+                  <h3 className="text-[clamp(1.75rem,4vw,3rem)] font-bold leading-[1.1] tracking-tight mb-6 text-[#2FCA54]">
                     {slide.title}
                   </h3>
-                  <p className="text-lg md:text-xl text-[var(--color-ink-soft)] leading-[1.7]">
+                  <p className="text-lg md:text-xl text-[#AAAAAA] leading-[1.7]">
                     {slide.content}
                   </p>
                 </motion.div>
@@ -144,7 +144,7 @@ export default function SovereigntyScroll() {
               <div className="hidden md:flex flex-col gap-3 shrink-0 pt-2">
                 <button
                   onClick={() => paginate(-1)}
-                  className="w-10 h-10 flex items-center justify-center border border-[var(--color-border)] text-[var(--color-ink-muted)] hover:text-[var(--color-ink)] hover:border-[var(--color-accent)] transition-colors duration-200 cursor-pointer"
+                  className="w-10 h-10 flex items-center justify-center border border-[#333] text-[#666] hover:text-white hover:border-[#2FCA54] transition-colors duration-200 cursor-pointer"
                   aria-label="Previous slide"
                 >
                   <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
@@ -153,7 +153,7 @@ export default function SovereigntyScroll() {
                 </button>
                 <button
                   onClick={() => paginate(1)}
-                  className="w-10 h-10 flex items-center justify-center border border-[var(--color-border)] text-[var(--color-ink-muted)] hover:text-[var(--color-ink)] hover:border-[var(--color-accent)] transition-colors duration-200 cursor-pointer"
+                  className="w-10 h-10 flex items-center justify-center border border-[#333] text-[#666] hover:text-white hover:border-[#2FCA54] transition-colors duration-200 cursor-pointer"
                   aria-label="Next slide"
                 >
                   <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
@@ -176,8 +176,8 @@ export default function SovereigntyScroll() {
                   <div
                     className={`h-[2px] rounded-full transition-all duration-500 ${
                       i === current
-                        ? "w-12 bg-[var(--color-accent)]"
-                        : "w-6 bg-[var(--color-ink-muted)] group-hover:bg-[var(--color-ink-soft)]"
+                        ? "w-12 bg-[#2FCA54]"
+                        : "w-6 bg-[#333] group-hover:bg-[#555]"
                     }`}
                   />
                 </button>

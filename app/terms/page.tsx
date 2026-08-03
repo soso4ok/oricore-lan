@@ -12,25 +12,25 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <main className="min-h-screen bg-[var(--color-bg)]">
+    <main className="min-h-screen bg-[#FAFAFA]">
       <Navbar />
 
       <section className="pt-40 pb-20 md:pt-48 md:pb-28">
         <div className="max-w-[800px] mx-auto px-6 sm:px-8">
-          <h1 className="text-[clamp(3rem,5vw,4.5rem)] font-bold text-[var(--color-ink)] leading-[1.1] tracking-tight mb-8">
+          <h1 className="text-[clamp(3rem,5vw,4.5rem)] font-bold text-[#111111] leading-[1.1] tracking-tight mb-8">
             Terms of Service
           </h1>
-          <div className="mb-12 w-24 h-[6px] bg-[var(--color-accent)]"></div>
+          <div className="mb-12 w-24 h-[6px] bg-[#2FCA54]"></div>
 
-          <div className="space-y-10 text-[17px] leading-[1.7] text-[var(--color-ink-soft)]">
+          <div className="space-y-10 text-[17px] leading-[1.7] text-[#333333]">
             {/* 1 */}
             <div>
-              <h2 className="text-2xl font-bold text-[var(--color-ink)] mb-4">1. Definitions and Interpretation</h2>
+              <h2 className="text-2xl font-bold text-[#111111] mb-4">1. Definitions and Interpretation</h2>
               <p className="mb-4">1.1 In these Terms of Service (“Terms”):</p>
               <ul className="list-none space-y-3 pl-4 mb-4">
                 <li><strong>a) “Apolast”</strong> means the Apolast research and development entity organized as a limited liability company (ТОВ) under the laws of Ukraine, together with any affiliated holding or contracting entities identified in an Order Form or Enterprise Agreement.</li>
                 <li><strong>b) “Customer”</strong> means the business entity purchasing a license and subscription to the Software, as identified in the Order Form.</li>
-                <li><strong>c) “Software”</strong> means the proprietary Apolast platform, including its architecture mapping engines, orchestration frameworks, ensemble of Small Language Models (“SLMs”), CI/CD hooks, integrations and documentation, deployed on‑premise within Customer’s infrastructure.</li>
+                <li><strong>c) “Software”</strong> means the proprietary Apolast platform, including its Abstract Syntax Tree (“AST”) parsers, orchestration frameworks, ensemble of Small Language Models (“SLMs”), CI/CD hooks, integrations and documentation, deployed on‑premise within Customer’s infrastructure.</li>
                 <li><strong>d) “Services”</strong> means implementation, setup/audit, integration, training, support, compliance tooling and other professional services provided by Apolast under an Order Form.</li>
                 <li><strong>e) “Order Form”</strong> means a written or electronic ordering document executed by both Parties specifying the Subscription Term, license metrics, fees and any special conditions.</li>
                 <li><strong>f) “Subscription Term”</strong> means the initial and any renewal term of Customer’s subscription as stated in the Order Form.</li>
@@ -46,7 +46,7 @@ export default function TermsPage() {
 
             {/* 2 */}
             <div>
-              <h2 className="text-2xl font-bold text-[var(--color-ink)] mb-4">2. Basis of Contract and Scope</h2>
+              <h2 className="text-2xl font-bold text-[#111111] mb-4">2. Basis of Contract and Scope</h2>
               <p className="mb-4">2.1 These Terms, together with the Order Form and any schedules (including SLA and Data Processing Agreement, where applicable), form the entire agreement between Apolast and Customer for the licensing and use of the Software and provision of the Services.</p>
               <p className="mb-4">2.2 In case of conflict between these Terms and an Order Form, the Order Form shall prevail solely with respect to the conflicting provisions.</p>
               <p className="mb-4">2.3 The Software and Services are provided exclusively on a business‑to‑business (B2B) basis and are not intended for consumer use.</p>
@@ -55,7 +55,7 @@ export default function TermsPage() {
 
             {/* 3 */}
             <div>
-              <h2 className="text-2xl font-bold text-[var(--color-ink)] mb-4">3. License Grant and Restrictions</h2>
+              <h2 className="text-2xl font-bold text-[#111111] mb-4">3. License Grant and Restrictions</h2>
               <p className="mb-4">3.1 Subject to Customer’s continuous compliance with these Terms and timely payment of all fees, Apolast grants Customer a limited, non‑exclusive, non‑transferable (except as permitted in Clause 15), non‑sublicensable, revocable license during the Subscription Term to:</p>
               <ul className="list-none space-y-3 pl-4 mb-4">
                 <li>a) install, configure and operate the Software solely within Customer’s On‑Premise Deployment environment;</li>
@@ -75,7 +75,7 @@ export default function TermsPage() {
 
             {/* 4 */}
             <div>
-              <h2 className="text-2xl font-bold text-[var(--color-ink)] mb-4">4. Delivery, Deployment and Customer Environment</h2>
+              <h2 className="text-2xl font-bold text-[#111111] mb-4">4. Delivery, Deployment and Customer Environment</h2>
               <p className="mb-4">4.1 Following execution of the Order Form and payment of the initial setup fee, Apolast will make the Software packages and documentation available for On‑Premise Deployment.</p>
               <p className="mb-4">4.2 Customer is solely responsible for:</p>
               <ul className="list-none space-y-3 pl-4 mb-4">
@@ -88,10 +88,10 @@ export default function TermsPage() {
 
             {/* 5 */}
             <div>
-              <h2 className="text-2xl font-bold text-[var(--color-ink)] mb-4">5. Intellectual Property Rights</h2>
+              <h2 className="text-2xl font-bold text-[#111111] mb-4">5. Intellectual Property Rights</h2>
               <p className="mb-4">5.1 Apolast retains all right, title and interest, including all intellectual property rights, in and to:</p>
               <ul className="list-none space-y-3 pl-4 mb-4">
-                <li>a) the Software, including its system mappers, SLM ensemble, orchestration frameworks, “Living Graph” capabilities and CI/CD hooks;</li>
+                <li>a) the Software, including its AST parsers, SLM ensemble, orchestration frameworks, “Living Graph” capabilities and CI/CD hooks;</li>
                 <li>b) any generic templates, models, tools, methodologies and documentation used to deliver the Services;</li>
                 <li>c) Apolast trade names, trademarks, logos and branding.</li>
               </ul>
@@ -106,7 +106,7 @@ export default function TermsPage() {
 
             {/* 6 */}
             <div>
-              <h2 className="text-2xl font-bold text-[var(--color-ink)] mb-4">6. Services, Service Levels and Support</h2>
+              <h2 className="text-2xl font-bold text-[#111111] mb-4">6. Services, Service Levels and Support</h2>
               <p className="mb-4">6.1 Apolast may provide implementation, audit, integration, training, premium support and compliance advisory Services as described in the Order Form and its schedules.</p>
               <p className="mb-4">6.2 Any Service Level Agreement (SLA) relating to support (e.g. response and resolution times) or maintenance shall be set out in a separate SLA schedule and incorporated by reference.</p>
               <p className="mb-4">6.3 Unless expressly agreed, SLAs apply to support services and not to performance, correctness or particular business outcomes of AI‑Generated Output.</p>
@@ -115,7 +115,7 @@ export default function TermsPage() {
 
             {/* 7 */}
             <div>
-              <h2 className="text-2xl font-bold text-[var(--color-ink)] mb-4">7. Fees, Payment and Taxes</h2>
+              <h2 className="text-2xl font-bold text-[#111111] mb-4">7. Fees, Payment and Taxes</h2>
               <p className="mb-4">7.1 Customer shall pay:</p>
               <ul className="list-none space-y-3 pl-4 mb-4">
                 <li>a) a one‑time setup/audit fee as described in the Order Form;</li>
@@ -133,7 +133,7 @@ export default function TermsPage() {
 
             {/* 8 */}
             <div>
-              <h2 className="text-2xl font-bold text-[var(--color-ink)] mb-4">8. Compliance Tooling (DORA, NIS2, SBOM)</h2>
+              <h2 className="text-2xl font-bold text-[#111111] mb-4">8. Compliance Tooling (DORA, NIS2, SBOM)</h2>
               <p className="mb-4">8.1 The Parties acknowledge that the Software is intended to function as a compliance‑enabling tool, helping Customers subject to DORA to maintain real‑time visibility into IT assets, dependencies and change histories.</p>
               <p className="mb-4">8.2 The Software can generate dynamic SBOMs and related outputs to support NIS2 supply‑chain security and documentation requirements, including component inventories, vulnerability tracking and supplier risk assessments.</p>
               <p>8.3 Apolast does not warrant or guarantee that use of the Software or Services alone will cause Customer to be compliant with DORA, NIS2, PCI DSS, CRA or any other regulatory framework; Customer remains solely responsible for its overall compliance program.</p>
@@ -141,7 +141,7 @@ export default function TermsPage() {
 
             {/* 9 */}
             <div>
-              <h2 className="text-2xl font-bold text-[var(--color-ink)] mb-4">9. Data Protection, “Private AI” and Security</h2>
+              <h2 className="text-2xl font-bold text-[#111111] mb-4">9. Data Protection, “Private AI” and Security</h2>
               <p className="mb-4">9.1 Each Party shall comply with Applicable Data Protection Laws in connection with personal data processed under or in relation to these Terms.</p>
               <p className="mb-4">9.2 Default on‑premise model:</p>
               <ul className="list-none space-y-3 pl-4 mb-4">
@@ -161,7 +161,7 @@ export default function TermsPage() {
 
             {/* 10 */}
             <div>
-              <h2 className="text-2xl font-bold text-[var(--color-ink)] mb-4">10. Customer Responsibilities</h2>
+              <h2 className="text-2xl font-bold text-[#111111] mb-4">10. Customer Responsibilities</h2>
               <p className="mb-4">10.1 Customer is responsible for:</p>
               <ul className="list-none space-y-3 pl-4 mb-4">
                 <li>a) validating, testing and reviewing AI‑Generated Output and refactored services before deployment;</li>
@@ -174,7 +174,7 @@ export default function TermsPage() {
 
             {/* 11 */}
             <div>
-              <h2 className="text-2xl font-bold text-[var(--color-ink)] mb-4">11. Warranties</h2>
+              <h2 className="text-2xl font-bold text-[#111111] mb-4">11. Warranties</h2>
               <p className="mb-4">11.1 Apolast warrants that:</p>
               <ul className="list-none space-y-3 pl-4 mb-4">
                 <li>a) it has the authority to grant the license and provide the Services;</li>
@@ -190,7 +190,7 @@ export default function TermsPage() {
 
             {/* 12 */}
             <div>
-              <h2 className="text-2xl font-bold text-[var(--color-ink)] mb-4">12. Limitation of Liability</h2>
+              <h2 className="text-2xl font-bold text-[#111111] mb-4">12. Limitation of Liability</h2>
               <p className="mb-4">12.1 To the maximum extent permitted by law, Apolast’s aggregate liability arising out of or in connection with these Terms, the Software, Services or AI‑Generated Output shall not exceed the total fees paid by Customer to Apolast under the relevant Order Form in the twelve (12) months preceding the event giving rise to the claim.</p>
               <p className="mb-4">12.2 Apolast shall not be liable for any:</p>
               <ul className="list-none space-y-3 pl-4 mb-4">
@@ -203,7 +203,7 @@ export default function TermsPage() {
 
             {/* 13 */}
             <div>
-              <h2 className="text-2xl font-bold text-[var(--color-ink)] mb-4">13. Indemnities</h2>
+              <h2 className="text-2xl font-bold text-[#111111] mb-4">13. Indemnities</h2>
               <p className="mb-4">13.1 Apolast IP indemnity: Apolast will defend Customer against third‑party claims alleging that the unmodified Software infringes a valid copyright or patent in the jurisdiction specified in the Order Form, and will pay damages finally awarded or agreed in settlement, subject to Clause 12.</p>
               <p className="mb-4">13.2 Apolast’s obligations do not apply to claims arising from:</p>
               <ul className="list-none space-y-3 pl-4 mb-4">
@@ -216,7 +216,7 @@ export default function TermsPage() {
 
             {/* 14 */}
             <div>
-              <h2 className="text-2xl font-bold text-[var(--color-ink)] mb-4">14. Term, Termination and Suspension</h2>
+              <h2 className="text-2xl font-bold text-[#111111] mb-4">14. Term, Termination and Suspension</h2>
               <p className="mb-4">14.1 These Terms come into effect on the effective date of the first Order Form and continue for the Subscription Term and any renewals.</p>
               <p className="mb-4">14.2 Either Party may terminate:</p>
               <ul className="list-none space-y-3 pl-4 mb-4">
@@ -235,7 +235,7 @@ export default function TermsPage() {
 
             {/* 15 */}
             <div>
-              <h2 className="text-2xl font-bold text-[var(--color-ink)] mb-4">15. Assignment, Subcontracting and Third‑Party Beneficiaries</h2>
+              <h2 className="text-2xl font-bold text-[#111111] mb-4">15. Assignment, Subcontracting and Third‑Party Beneficiaries</h2>
               <p className="mb-4">15.1 Customer may not assign or transfer these Terms without Apolast’s prior written consent, except to an affiliate or in connection with a merger or sale of substantially all assets, subject to notice.</p>
               <p className="mb-4">15.2 Apolast may subcontract or use affiliates to perform any part of the Services, remaining responsible for their acts and omissions.</p>
               <p>15.3 These Terms do not confer any rights on third parties, save that Apolast affiliates may benefit from limitations of liability and IP protections.</p>
@@ -243,7 +243,7 @@ export default function TermsPage() {
 
             {/* 16 */}
             <div>
-              <h2 className="text-2xl font-bold text-[var(--color-ink)] mb-4">16. Governing Law, Jurisdiction and Miscellaneous</h2>
+              <h2 className="text-2xl font-bold text-[#111111] mb-4">16. Governing Law, Jurisdiction and Miscellaneous</h2>
               <p className="mb-4">16.1 Governing law and jurisdiction shall be specified in the Order Form. Contracts with foreign Enterprise clients are typically entered into by an Apolast holding or contracting entity (e.g., a US C-Corp or UK Ltd) subject to the laws of its respective jurisdiction (e.g., Delaware, New York, or England and Wales). The Ukrainian LLC (ТОВ) acts exclusively as an R&D center.</p>
               <p className="mb-4">16.2 No waiver of any provision shall be effective unless in writing. If any provision is found invalid or unenforceable, the remainder shall continue in full force.</p>
               <p className="mb-4">16.3 These Terms may only be varied in writing signed or electronically accepted by both Parties.</p>

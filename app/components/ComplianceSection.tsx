@@ -15,7 +15,7 @@ export default function ComplianceSection() {
   return (
     <section
       id="compliance"
-      className="py-24 md:py-32 bg-[var(--color-bg)] border-b border-[var(--color-border)]"
+      className="py-24 md:py-32 bg-[#F5F5F5] border-b border-[#E0E0E0]"
     >
       <div className="max-w-[1600px] mx-auto px-6 sm:px-8">
         {/* ── Lead statement ── */}
@@ -26,10 +26,10 @@ export default function ComplianceSection() {
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
         >
-          <h2 className="text-[clamp(2rem,5vw,4rem)] font-bold text-[var(--color-ink)] leading-tight mb-8 break-words">
+          <h2 className="text-[clamp(2rem,5vw,4rem)] font-bold text-[#111111] leading-tight mb-8 break-words">
             Built for Regulated Enterprises.
           </h2>
-          <p className="text-lg sm:text-xl md:text-2xl text-[var(--color-ink-muted)] leading-relaxed break-words">
+          <p className="text-lg sm:text-xl md:text-2xl text-[#555555] leading-relaxed break-words">
             Banks, insurers, and critical infrastructure operators don&apos;t
             just need a compliance checkbox. They need a modernization tool
             that never sends proprietary code to a third-party API — and
@@ -39,21 +39,21 @@ export default function ComplianceSection() {
 
         {/* ── Primary claim — large, dominant, editorial weight ── */}
         <motion.div
-          className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-6 lg:gap-0 mb-1 border-t-[6px] border-[var(--color-ink)]"
+          className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-6 lg:gap-0 mb-1 border-t-[6px] border-[#111111]"
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
         >
           <div className="pt-8 pb-8 lg:pt-12 lg:pb-12 lg:pr-16">
-            <p className="text-[clamp(2.5rem,5vw,4.5rem)] font-bold text-[var(--color-ink)] leading-[1] tracking-tighter break-words">
+            <p className="text-[clamp(2.5rem,5vw,4.5rem)] font-bold text-[#111111] leading-[1] tracking-tighter break-words">
               Your code
               <br />
               never leaves.
             </p>
           </div>
-          <div className="pt-4 pb-8 lg:pt-12 lg:pb-12 lg:pl-16 lg:border-l border-[var(--color-border)]">
-            <p className="text-lg sm:text-xl md:text-2xl text-[var(--color-ink-muted)] leading-relaxed max-w-2xl break-words">
+          <div className="pt-4 pb-8 lg:pt-12 lg:pb-12 lg:pl-16 lg:border-l border-[#E0E0E0]">
+            <p className="text-lg sm:text-xl md:text-2xl text-[#555555] leading-relaxed max-w-2xl break-words">
               Every model runs on your hardware. Every analysis stays inside
               your network perimeter. No OpenAI. No Anthropic. No external
               API calls. Your regulators can audit the entire data flow
@@ -63,22 +63,22 @@ export default function ComplianceSection() {
         </motion.div>
 
         {/* ── Supporting pillars — stacked, varying weight, not a grid of clones ── */}
-        <div className="border-t border-[var(--color-border)]">
+        <div className="border-t border-[#E0E0E0]">
           {/* DORA / NIS2 — gets a bold lead sentence */}
           <motion.div
-            className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-4 lg:gap-0 py-10 md:py-14 border-b border-[var(--color-border)]"
+            className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-4 lg:gap-0 py-10 md:py-14 border-b border-[#E0E0E0]"
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-60px" }}
           >
             <div className="lg:pr-16">
-              <p className="text-2xl sm:text-3xl font-bold text-[var(--color-ink)] leading-tight break-words">
+              <p className="text-2xl sm:text-3xl font-bold text-[#111111] leading-tight break-words">
                 DORA &amp; NIS2 aligned.
               </p>
             </div>
-            <div className="lg:pl-16 lg:border-l border-[var(--color-border)]">
-              <p className="text-base sm:text-lg md:text-xl text-[var(--color-ink-muted)] leading-relaxed max-w-2xl break-words">
+            <div className="lg:pl-16 lg:border-l border-[#E0E0E0]">
+              <p className="text-base sm:text-lg md:text-xl text-[#555555] leading-relaxed max-w-2xl break-words">
                 Cryptographic audit trails link every generated specification
                 back to its legacy source line. Immutable change logs and
                 operational resilience documentation — generated automatically
@@ -90,19 +90,19 @@ export default function ComplianceSection() {
 
           {/* SBOM */}
           <motion.div
-            className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-4 lg:gap-0 py-10 md:py-14 border-b border-[var(--color-border)]"
+            className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-4 lg:gap-0 py-10 md:py-14 border-b border-[#E0E0E0]"
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-60px" }}
           >
             <div className="lg:pr-16">
-              <p className="text-2xl sm:text-3xl font-bold text-[var(--color-ink)] leading-tight break-words">
+              <p className="text-2xl sm:text-3xl font-bold text-[#111111] leading-tight break-words">
                 SBOM on every cycle.
               </p>
             </div>
-            <div className="lg:pl-16 lg:border-l border-[var(--color-border)]">
-              <p className="text-base sm:text-lg md:text-xl text-[var(--color-ink-muted)] leading-relaxed max-w-2xl break-words">
+            <div className="lg:pl-16 lg:border-l border-[#E0E0E0]">
+              <p className="text-base sm:text-lg md:text-xl text-[#555555] leading-relaxed max-w-2xl break-words">
                 Every modernization cycle produces a complete Software Bill of
                 Materials. Know exactly what goes into your new system, traced
                 back to the legacy source line that produced it.
@@ -119,12 +119,12 @@ export default function ComplianceSection() {
             viewport={{ once: true, margin: "-60px" }}
           >
             <div className="lg:pr-16">
-              <p className="text-2xl sm:text-3xl font-bold text-[var(--color-ink)] leading-tight break-words">
+              <p className="text-2xl sm:text-3xl font-bold text-[#111111] leading-tight break-words">
                 Zero vendor lock-in.
               </p>
             </div>
-            <div className="lg:pl-16 lg:border-l border-[var(--color-border)]">
-              <p className="text-base sm:text-lg md:text-xl text-[var(--color-ink-muted)] leading-relaxed max-w-2xl break-words">
+            <div className="lg:pl-16 lg:border-l border-[#E0E0E0]">
+              <p className="text-base sm:text-lg md:text-xl text-[#555555] leading-relaxed max-w-2xl break-words">
                 All outputs are standard open formats — OpenAPI specs, Gherkin
                 scenarios, Git-native diffs. If you stop using Apolast tomorrow,
                 your specifications and tests remain yours entirely.
