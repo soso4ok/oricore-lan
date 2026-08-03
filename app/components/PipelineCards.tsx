@@ -6,7 +6,7 @@ const PHASES = [
   {
     title: "Trace",
     description:
-      "We map execution paths across your entire codebase using static analysis and control-flow graph construction. This reveals hidden dependencies, dead code, and critical risk nodes before modernization begins.",
+      "We map system architectures and workflows across your enterprise. This reveals hidden dependencies, operational risks, and critical nodes before modernization begins.",
     icon: (
       <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
         <rect x="4" y="4" width="14" height="14" fill="#D8D8D8" />
@@ -19,7 +19,7 @@ const PHASES = [
   {
     title: "Extract",
     description:
-      "We isolate embedded business rules through AST parsing — not superficial syntax translation. The result is clean, language-agnostic domain logic decoupled from its legacy host.",
+      "We isolate core operational models and functional requirements. The result is a clean, framework-agnostic system architecture decoupled from legacy technical debt.",
     icon: (
       <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
         <rect x="4" y="4" width="14" height="14" fill="#D8D8D8" />
@@ -51,7 +51,7 @@ const PHASES = [
         <rect x="4" y="4" width="14" height="14" fill="#2FCA54" />
         <rect x="22" y="4" width="14" height="14" fill="#2FCA54" />
         <rect x="4" y="22" width="14" height="14" fill="#2FCA54" />
-        <rect x="22" y="22" width="14" height="14" fill="#111111" />
+        <rect x="22" y="22" width="14" height="14" fill="var(--color-ink)" />
       </svg>
     ),
   },
@@ -76,7 +76,7 @@ export default function PipelineCards() {
       {PHASES.map((phase, i) => (
         <motion.div
           key={phase.title}
-          className="group relative bg-white border border-[#E0E0E0] p-10 hover:border-[#2FCA54] hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-500"
+          className="group relative bg-[var(--color-bg)] border border-[var(--color-border)] p-10 hover:border-[var(--color-accent)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-500"
           variants={cardVariants}
           initial="hidden"
           whileInView="visible"
@@ -89,10 +89,10 @@ export default function PipelineCards() {
             </div>
           </div>
           <div>
-            <h3 className="text-3xl font-bold text-[#111111] mb-4">
+            <h3 className="text-3xl font-bold text-[var(--color-ink)] mb-4">
               {phase.title}
             </h3>
-            <p className="text-lg text-[#555555] leading-relaxed">
+            <p className="text-lg text-[var(--color-ink-muted)] leading-relaxed">
               {phase.description}
             </p>
           </div>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk, Blinker } from "next/font/google";
+import Script from "next/script";
 import CookieBanner from "./components/CookieBanner";
 import "./globals.css";
 
@@ -27,17 +28,17 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.apolast.com"),
   title: "Apolast — Legacy Modernization Platform",
   description:
-    "Map, extract, and modernize legacy codebases with deterministic AST analysis. On-premise deployment, DORA-compliant, zero hallucination.",
+    "Map, model, and modernize legacy systems with deterministic operational intelligence. On-premise deployment, DORA-compliant, zero hallucination.",
   keywords: [
     "enterprise legacy modernization",
     "automated reverse engineering",
-    "AST logic extraction",
+    "Operational context modeling",
     "COBOL to Java migration",
     "DORA compliance",
     "NIS2 compliance",
     "on-premise SLM",
     "air-gapped code analysis",
-    "business logic extraction",
+    "system graph mapping",
     "legacy code modernization platform",
     "characterization tests",
     "Gherkin scenarios",
@@ -54,7 +55,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Apolast — Legacy Modernization Platform",
     description:
-      "Deterministic AST-based legacy code analysis. On-premise, DORA-compliant, zero hallucination.",
+      "Deterministic on-premise operational intelligence. On-premise, DORA-compliant, zero hallucination.",
     url: "https://www.apolast.com",
     siteName: "Apolast",
     images: [
@@ -72,7 +73,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Apolast — Legacy Modernization Platform",
     description:
-      "Deterministic AST-based legacy code analysis. On-premise, DORA-compliant, zero hallucination.",
+      "Deterministic on-premise operational intelligence. On-premise, DORA-compliant, zero hallucination.",
     images: ["/og-image.jpg"],
   },
 };
@@ -87,7 +88,7 @@ const jsonLd = {
       url: "https://www.apolast.com",
       logo: "https://www.apolast.com/logo.svg",
       description:
-        "Enterprise legacy modernization platform using continuous AST-based logic extraction.",
+        "Enterprise legacy modernization platform using continuous operational context mapping.",
     },
     {
       "@type": "SoftwareApplication",
@@ -96,7 +97,7 @@ const jsonLd = {
       applicationCategory: "DeveloperApplication",
       operatingSystem: "On-Premise, Linux, Windows",
       description:
-        "Maps, extracts, and modernizes legacy codebases continuously using AST-based logic extraction with on-premise SLMs.",
+        "Maps, models, and modernizes legacy systems continuously using continuous operational mapping with on-premise SLMs.",
       url: "https://www.apolast.com",
       publisher: {
         "@id": "https://www.apolast.com/#organization",
@@ -117,7 +118,9 @@ export default function RootLayout({
     >
       <head>
         {/* 1. Consent defaults — must fire before any Google tag */}
-        <script
+        <Script
+          id="consent-defaults"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
 window.dataLayer = window.dataLayer || [];
@@ -142,36 +145,8 @@ gtag('set', 'ads_data_redaction', true);
 `,
           }}
         />
-        {/* 2. Google tag (gtag.js) — async external script */}
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-LFYKTHJ825"
-        />
-        {/* 3. GA4 config */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-LFYKTHJ825');
-`,
-          }}
-        />
-        {/* 4. Google Tag Manager */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-MMKM83XF');
-`,
-          }}
-        />
       </head>
-      <body>
+      <body className="grain-overlay">
         {/* GTM noscript fallback */}
         <noscript>
           <iframe
@@ -182,12 +157,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           />
         </noscript>
 
-        <script
+        <Script
+          id="structured-data"
           type="application/ld+json"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         {children}
         <CookieBanner />
+        <Script
+          id="analytics-bootstrap"
+          strategy="lazyOnload"
+          dangerouslySetInnerHTML={{
+            __html: `
+var ga = document.createElement('script');
+ga.async = true;
+ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-LFYKTHJ825';
+document.head.appendChild(ga);
+gtag('js', new Date());
+gtag('config', 'G-LFYKTHJ825');
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MMKM83XF');
+`,
+          }}
+        />
       </body>
     </html>
   );

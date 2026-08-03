@@ -10,16 +10,16 @@ interface RowData {
 
 const ROWS: RowData[] = [
   {
-    criterion: "Extraction Method",
-    legacy: "Regex pattern matching, line-by-line syntax translation",
-    apolast: "Advanced AST parsing with control-flow and data-flow analysis",
+    criterion: "Analysis & Mapping",
+    legacy: "Superficial scanning and manual documentation",
+    apolast: "Continuous system mapping and deep dependency analysis",
   },
   {
     criterion: "Output Quality",
     legacy:
-      '"JOBOL" — COBOL logic written in Java syntax. Unmaintainable from day one',
+      'Technical debt — operational context lost in manual migrations. Unmaintainable from day one',
     apolast:
-      "Clean, idiomatic business logic models decoupled from source language",
+      "Clean, structured operational specifications decoupled from legacy debt",
   },
   {
     criterion: "Verification",
@@ -70,17 +70,16 @@ export default function ComparisonMatrix() {
   return (
     <section
       id="comparison"
-      className="py-24 md:py-32 bg-white border-b border-[#E0E0E0]"
+      className="py-24 md:py-32 bg-[var(--color-bg)] border-b border-[var(--color-border)]"
     >
       <div className="max-w-[1600px] mx-auto px-6 sm:px-8">
         <div className="mb-12 md:mb-20 max-w-3xl">
-          <h2 className="text-[clamp(2rem,5vw,4rem)] font-bold text-[#111111] leading-tight mb-8 break-words">
+          <h2 className="text-[clamp(2rem,5vw,4rem)] font-bold text-[var(--color-ink)] leading-tight mb-8 break-words">
             Vs. The Status Quo.
           </h2>
-          <p className="text-lg sm:text-xl md:text-2xl text-[#555555] leading-relaxed break-words">
-            Most legacy migration tools perform superficial syntax
-            translation — converting COBOL to Java line by line, producing what
-            engineers call &ldquo;JOBOL.&rdquo; The result compiles but cannot be
+          <p className="text-lg sm:text-xl md:text-2xl text-[var(--color-ink-muted)] leading-relaxed break-words">
+            Most legacy migration tools perform superficial lift-and-shift
+            operations without understanding operational context. The result compiles but cannot be
             maintained, extended, or reasoned about. We take a fundamentally
             different approach.
           </p>
@@ -90,15 +89,15 @@ export default function ComparisonMatrix() {
         <div className="hidden md:block overflow-x-auto">
           <table className="w-full border-collapse text-left">
             <thead>
-              <tr className="border-b-2 border-[#111111]">
-                <th className="py-5 pr-8 text-lg font-bold text-[#111111] w-[22%]">
+              <tr className="border-b-2 border-[var(--color-ink)]">
+                <th className="py-5 pr-8 text-lg font-bold text-[var(--color-ink)] w-[22%]">
                   Criterion
                 </th>
-                <th className="py-5 pr-8 text-lg font-bold text-[#999999] w-[39%]">
-                  Traditional Syntax Translation
+                <th className="py-5 pr-8 text-lg font-bold text-[var(--color-ink-muted)] w-[39%]">
+                  Traditional Legacy Migration
                 </th>
-                <th className="py-5 text-lg font-bold text-[#111111] w-[39%]">
-                  Apolast — AST & Logic Extraction
+                <th className="py-5 text-lg font-bold text-[var(--color-ink)] w-[39%]">
+                  Apolast — Operational Intelligence
                 </th>
               </tr>
             </thead>
@@ -106,20 +105,20 @@ export default function ComparisonMatrix() {
               {ROWS.map((row, i) => (
                 <motion.tr
                   key={row.criterion}
-                  className="border-b border-[#E0E0E0] group"
+                  className="border-b border-[var(--color-border)] group"
                   variants={rowVariants}
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, margin: "-40px" }}
                   custom={i}
                 >
-                  <td className="py-6 pr-8 text-base font-bold text-[#111111] align-top">
+                  <td className="py-6 pr-8 text-base font-bold text-[var(--color-ink)] align-top">
                     {row.criterion}
                   </td>
-                  <td className="py-6 pr-8 text-base text-[#999999] leading-relaxed align-top">
+                  <td className="py-6 pr-8 text-base text-[var(--color-ink-muted)] leading-relaxed align-top">
                     {row.legacy}
                   </td>
-                  <td className="py-6 text-base text-[#555555] leading-relaxed align-top group-hover:text-[#111111] transition-colors duration-200">
+                  <td className="py-6 text-base text-[var(--color-ink-muted)] leading-relaxed align-top group-hover:text-[var(--color-ink)] transition-colors duration-200">
                     {row.apolast}
                   </td>
                 </motion.tr>
@@ -133,30 +132,30 @@ export default function ComparisonMatrix() {
           {ROWS.map((row, i) => (
             <motion.div
               key={row.criterion}
-              className="border border-[#E0E0E0] bg-[#FAFAFA] p-6"
+              className="border border-[var(--color-border)] bg-[var(--color-bg)] p-6"
               variants={rowVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-40px" }}
               custom={i}
             >
-              <p className="font-bold text-lg text-[#111111] mb-4">
+              <p className="font-bold text-lg text-[var(--color-ink)] mb-4">
                 {row.criterion}
               </p>
               <div className="space-y-3">
                 <div>
-                  <p className="text-sm font-bold text-[#999999] mb-1">
+                  <p className="text-sm font-bold text-[var(--color-ink-muted)] mb-1">
                     Traditional Approach
                   </p>
-                  <p className="text-base text-[#999999] leading-relaxed">
+                  <p className="text-base text-[var(--color-ink-muted)] leading-relaxed">
                     {row.legacy}
                   </p>
                 </div>
-                <div className="border-t border-[#E0E0E0] pt-3">
-                  <p className="text-sm font-bold text-[#2FCA54] mb-1">
+                <div className="border-t border-[var(--color-border)] pt-3">
+                  <p className="text-sm font-bold text-[var(--color-accent)] mb-1">
                     Apolast
                   </p>
-                  <p className="text-base text-[#555555] leading-relaxed">
+                  <p className="text-base text-[var(--color-ink-muted)] leading-relaxed">
                     {row.apolast}
                   </p>
                 </div>

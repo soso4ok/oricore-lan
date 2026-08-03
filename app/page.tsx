@@ -1,227 +1,326 @@
-import PipelineCards from "./components/PipelineCards";
-import IntegrationWorkflow from "./components/IntegrationWorkflow";
-import LearnMoreButton from "./components/LearnMoreButton";
-import HeroIllustration from "./components/HeroIllustration";
+// Force rebuild to resolve HMR caching issue
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import ScrollReveal from "./components/ScrollReveal";
+import HeroSection from "./components/HeroSection";
 import {
   DynamicSovereigntyScroll,
   DynamicDebtCalculator,
   DynamicComparisonMatrix,
   DynamicComplianceSection,
 } from "./components/DynamicClientLoader";
-import InteractiveLink from "./components/InteractiveLink";
 import ScrollDepthGauge from "./components/ScrollDepthGauge";
+
+const PIPELINE_PHASES = [
+  {
+    num: "01",
+    title: "Trace",
+    body: "We map system architectures and workflows across your enterprise. This reveals hidden dependencies, operational risks, and critical nodes before modernization begins.",
+  },
+  {
+    num: "02",
+    title: "Extract",
+    body: "We isolate core operational models and functional requirements. The result is a clean, framework-agnostic system architecture decoupled from legacy technical debt.",
+  },
+  {
+    num: "03",
+    title: "Generate",
+    body: "PR-ready specifications, detailed Before/After Diffs, and automated Characterization Tests — including native Gherkin scenarios — to verify functional parity before a single line ships.",
+  },
+  {
+    num: "04",
+    title: "Sync",
+    body: "CI-hooks update the system graph on every commit. Documentation, dependency maps, and risk assessments stay current — not stale artifacts from a one-time consulting run.",
+  },
+] as const;
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#FAFAFA]">
-      {/* ─── NAV ─── */}
+    <main className="min-h-screen bg-[var(--color-bg)]">
       <Navbar />
 
       {/* ─── HERO ─── */}
-      <section
-        id="hero"
-        className="relative pt-40 pb-20 md:pt-48 md:pb-32 border-b border-[#E0E0E0] overflow-hidden bg-[#FAFAFA]"
-        aria-labelledby="hero-heading"
-      >
-        {/* Background Native Web Illustration */}
-        <div className="absolute top-0 bottom-0 right-0 w-full md:w-[45%] lg:w-[42%] z-0 pointer-events-none opacity-15 md:opacity-80 select-none flex items-center justify-center">
-          <HeroIllustration />
-        </div>
+      <HeroSection />
 
-        <div className="max-w-[1600px] mx-auto relative z-10 px-6 sm:px-8 lg:px-16 flex flex-col lg:flex-row gap-16 lg:gap-12 items-start pointer-events-none">
-          <div className="w-full lg:w-3/5 pointer-events-auto mix-blend-multiply">
-            <h1
-              id="hero-heading"
-              className="text-[clamp(3.5rem,6vw,6rem)] font-bold text-[#111111] leading-[0.95] tracking-tighter mb-8 break-words"
-            >
-              Digital Archaeology for enterprise legacy modernization.
-            </h1>
-            <div className="mb-10 w-24 h-[6px] bg-[#2FCA54]"></div>
-            <p className="text-lg sm:text-xl md:text-[22px] text-[#333333] leading-[1.6] mb-12 max-w-2xl break-words">
-              Our digital archaeology approach analyzes legacy applications (COBOL, Java, and mainframe systems) to recover documented business logic. Analysis is performed entirely within customer-managed infrastructure. Outputs include traceable specifications, characterization tests, and auditable artifacts suitable for enterprise legacy modernization workflows.
-            </p>
-
-            <div className="mb-0">
-              <LearnMoreButton />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── THE MODERNIZATION PARADOX ─── */}
-      <section
-        id="paradox"
-        className="py-24 md:py-32 border-b border-[#E0E0E0] bg-[#F5F5F5]"
-      >
-        <div className="max-w-[1600px] mx-auto px-6 sm:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div>
-              <h2 className="text-[clamp(2rem,5vw,4.5rem)] font-bold text-[#111111] leading-tight mb-8 break-words">
-                The Modernization Paradox.
+      {/* ─── NARRATIVE BREAK ─── */}
+      <section className="py-32 md:py-44 border-b border-[var(--color-border)]">
+        <div className="max-w-[1600px] mx-auto px-6 sm:px-8 lg:px-16">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-16 lg:gap-28 items-start">
+            <ScrollReveal delay={0}>
+              <h2 className="text-[clamp(2.5rem,5.5vw,5.5rem)] font-bold text-[var(--color-ink)] leading-[0.92] tracking-tighter">
+                The real cost of
+                <br />
+                modernization is
+                <br />
+                <span className="text-[var(--color-accent)]">lost context.</span>
               </h2>
-              <p className="text-lg sm:text-xl md:text-2xl text-[#555555] leading-relaxed max-w-lg mb-6 break-words">
-                Superficial syntax translators produce what engineers
-                call &ldquo;JOBOL&rdquo; — COBOL logic rewritten in Java
-                syntax. It compiles. It cannot be maintained.
-              </p>
-              <p className="text-lg sm:text-xl md:text-2xl text-[#555555] leading-relaxed max-w-lg break-words">
-                We don&apos;t translate syntax. We extract intent. The business
-                logic comes out clean, separated from the language it was
-                trapped in — before any new code gets written.
-              </p>
-            </div>
+            </ScrollReveal>
 
-            <div className="flex flex-col border-t-[8px] border-[#111111] pt-12 lg:pl-16 lg:border-t-0 lg:border-l-[8px] lg:pt-0 lg:pb-8">
-              <div className="text-[clamp(4.5rem,10vw,10rem)] font-bold text-[#111111] leading-[0.8] tracking-tighter mb-8">
-                80<span className="text-[#2FCA54]">%</span>
-              </div>
-              <p className="text-xl sm:text-2xl md:text-[1.75rem] font-bold text-[#111111] leading-tight mb-6 break-words">
-                Of legacy modernization rewrites fail to meet original goals (<a href="https://www.standishgroup.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#2FCA54] transition-colors">Standish Group</a>).
-              </p>
-              <p className="text-base sm:text-lg md:text-xl text-[#555555] leading-relaxed break-words">
-                Long-running databases from the Standish Group show that 80% of legacy modernization projects run over budget or fail entirely. The core issue is lost institutional knowledge — you cannot safely rewrite what your team no longer understands.
-              </p>
+            <div className="lg:pt-6">
+              <ScrollReveal delay={200}>
+                <p className="text-xl md:text-2xl text-[var(--color-ink-soft)] leading-[1.6] mb-10">
+                  Superficial migration creates technical debt. It compiles, but
+                  it cannot be maintained. The operational logic your business
+                  depends on gets buried — or worse, silently lost.
+                </p>
+              </ScrollReveal>
+              <ScrollReveal delay={350}>
+                <p className="text-xl md:text-2xl text-[var(--color-ink-muted)] leading-[1.6]">
+                  We separate true differentiation from technical debt. The
+                  operational logic is extracted cleanly, reducing migration risk
+                  while sustaining value beyond go-live.
+                </p>
+              </ScrollReveal>
             </div>
           </div>
+
+          {/* Single stat — editorial, not a bento grid */}
+          <ScrollReveal delay={100} className="mt-24 md:mt-32 pt-16 border-t border-[var(--color-border)]">
+            <div className="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-8 lg:gap-20 items-end">
+              <div className="text-[clamp(6rem,14vw,14rem)] font-bold text-[var(--color-ink)] leading-[0.75] tracking-tighter">
+                80<span className="text-[var(--color-accent)]">%</span>
+              </div>
+              <div className="pb-4 max-w-xl">
+                <p className="text-xl md:text-2xl font-bold text-[var(--color-ink)] leading-tight mb-4">
+                  Of enterprise migrations fail to meet original business
+                  objectives.
+                </p>
+                <p className="text-lg text-[var(--color-ink-muted)] leading-relaxed">
+                  The core issue is lost institutional knowledge — you cannot
+                  safely migrate what your organization no longer
+                  understands.{" "}
+                  <a
+                    href="https://www.standishgroup.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline decoration-[var(--color-border)] hover:decoration-[var(--color-accent)] underline-offset-4 transition-colors"
+                  >
+                    Standish Group
+                  </a>
+                </p>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
-      {/* ─── PIPELINE: 4-PHASE LIFECYCLE ─── */}
+      {/* ─── HOW IT WORKS — Cinematic vertical reveal ─── */}
       <section
         id="pipeline"
-        className="py-24 md:py-32 bg-[#F0F0F0] border-b border-[#E0E0E0]"
+        className="pipeline-section py-32 md:py-44 border-b border-[var(--color-border)] relative overflow-hidden"
+        aria-labelledby="pipeline-heading"
       >
-        <div className="max-w-[1600px] mx-auto px-6 sm:px-8">
-          <div className="mb-12 md:mb-20 max-w-3xl">
-            <h2 className="text-[clamp(2rem,5vw,4.5rem)] font-bold text-[#111111] leading-tight break-words">
-              Four phases.
-              <br />
-              One system graph that stays current.
-            </h2>
-            <p className="text-lg sm:text-xl md:text-2xl text-[#555555] leading-relaxed mt-6 break-words">
-              Not a one-shot consulting report. A continuous SaaS platform that
-              hooks into your repository and keeps your system documentation
-              current on every commit.
-            </p>
+        <div className="max-w-[1600px] mx-auto px-6 sm:px-8 lg:px-16 relative">
+          <h2
+            id="pipeline-heading"
+            className="pipeline-entrance pipeline-heading mb-20 md:mb-28 text-[clamp(2.5rem,5.5vw,5rem)] font-bold text-[var(--color-ink)] leading-[0.92] tracking-tighter max-w-4xl"
+          >
+            Four phases.
+            <br />
+            One living system graph.
+          </h2>
+
+          <div className="space-y-0">
+            {PIPELINE_PHASES.map((phase) => (
+              <article
+                key={phase.num}
+                className="pipeline-entrance pipeline-phase group grid grid-cols-1 lg:grid-cols-[120px_280px_1fr] gap-4 lg:gap-0 py-12 md:py-16 items-start border-t border-[var(--color-border)]"
+              >
+                <span className="font-mono text-[var(--color-accent)] text-lg lg:pt-1">
+                  {phase.num}
+                </span>
+                <h3 className="text-3xl md:text-4xl font-bold text-[var(--color-ink)] tracking-tight lg:pt-0 group-hover:text-[var(--color-accent)] transition-colors duration-500">
+                  {phase.title}
+                </h3>
+                <p className="text-lg md:text-xl text-[var(--color-ink-muted)] leading-[1.7] max-w-2xl lg:pl-12">
+                  {phase.body}
+                </p>
+              </article>
+            ))}
           </div>
-          <PipelineCards />
         </div>
       </section>
 
-      {/* ─── INTEGRATION WORKFLOW: PR-READY OUTPUTS ─── */}
-      <IntegrationWorkflow />
+      {/* ─── CONCRETE OUTPUTS ─── */}
+      <section
+        id="integration"
+        className="py-32 md:py-44 border-b border-[var(--color-border)]"
+      >
+        <div className="max-w-[1600px] mx-auto px-6 sm:px-8 lg:px-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-28">
+            <div className="lg:col-span-5">
+              <ScrollReveal>
+                <h2 className="text-[clamp(2.5rem,5vw,4.5rem)] font-bold text-[var(--color-ink)] leading-[0.92] tracking-tighter mb-8">
+                  Concrete outputs.
+                  <br />
+                  Not slide decks.
+                </h2>
+              </ScrollReveal>
+              <ScrollReveal delay={150}>
+                <p className="text-xl md:text-2xl text-[var(--color-ink-muted)] leading-[1.6]">
+                  Every extraction cycle produces artifacts that your engineering
+                  team can review, merge, and ship — not abstract consulting
+                  deliverables that expire on arrival.
+                </p>
+              </ScrollReveal>
+            </div>
 
-      {/* ─── VS. THE STATUS QUO (COMPARISON MATRIX) ─── */}
+            <div className="lg:col-span-7">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {[
+                  {
+                    title: "PR-Ready Specifications",
+                    desc: "Structured domain models committed directly to your repositories as merge-ready pull requests.",
+                  },
+                  {
+                    title: "Before/After Diffs",
+                    desc: "Detailed change previews showing how legacy logic maps to modernized equivalents.",
+                  },
+                  {
+                    title: "Characterization Tests",
+                    desc: "Automated test suites — including Gherkin scenarios — to verify functional parity.",
+                  },
+                  {
+                    title: "CI/CD Integration",
+                    desc: "CI-hooks keep the Living Graph synchronized on every commit. Documentation updates automatically.",
+                  },
+                ].map((item, i) => (
+                  <ScrollReveal key={item.title} delay={i * 100} variant="scale">
+                    <div className="p-8 md:p-10 border border-[var(--color-border)] bg-[var(--color-bg-alt)] hover:border-[var(--color-accent)] transition-colors duration-500 h-full">
+                      <h3 className="text-xl font-bold text-[var(--color-ink)] mb-4">
+                        {item.title}
+                      </h3>
+                      <p className="text-[var(--color-ink-muted)] leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </div>
+                  </ScrollReveal>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── COMPARISON ─── */}
       <DynamicComparisonMatrix />
 
-      {/* ─── ON-PREMISE SOVEREIGNTY SCROLL ─── */}
+      {/* ─── ON-PREMISE ─── */}
       <DynamicSovereigntyScroll />
 
-      {/* ─── BUILT FOR REGULATED ENTERPRISES ─── */}
+      {/* ─── COMPLIANCE ─── */}
       <DynamicComplianceSection />
 
-      {/* ─── ENGINEERING PRINCIPLES / TRUST ─── */}
+      {/* ─── PRINCIPLES — Asymmetric editorial layout ─── */}
       <section
         id="principles"
-        className="py-24 md:py-32 border-b border-[#E0E0E0] bg-white"
+        className="py-32 md:py-44 border-b border-[var(--color-border)]"
       >
-        <div className="max-w-[1600px] mx-auto px-6 sm:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-            <div>
-              <h2 className="text-[clamp(2rem,5vw,4.5rem)] font-bold text-[#111111] leading-tight mb-10 break-words">
-                Engineering Principles.
-              </h2>
-              <p className="text-lg sm:text-xl md:text-2xl text-[#555555] leading-relaxed max-w-xl break-words">
-                Enterprise teams can&apos;t afford tools that guess. Our
-                platform doesn&apos;t guess. Every output is deterministic,
-                traceable, and verifiable against the source system.
-              </p>
-            </div>
+        <div className="max-w-[1600px] mx-auto px-6 sm:px-8 lg:px-16">
+          <ScrollReveal className="mb-20 md:mb-28 max-w-3xl">
+            <h2 className="text-[clamp(2.5rem,5vw,4.5rem)] font-bold text-[var(--color-ink)] leading-[0.92] tracking-tighter mb-8">
+              Deploy strategically.
+              <br />
+              Integrate into operations.
+            </h2>
+            <p className="text-xl md:text-2xl text-[var(--color-ink-muted)] leading-[1.6]">
+              Align, plan, and execute your strategy using objective information
+              about the state of your enterprise.
+            </p>
+          </ScrollReveal>
 
-            <div className="space-y-16">
-              <div className="pl-6 md:pl-8 border-l-4 border-[#2FCA54]">
-                <p className="text-2xl sm:text-3xl text-[#111111] font-bold leading-relaxed mb-4 break-words">
-                  Deterministic Output
-                </p>
-                <p className="text-base sm:text-lg md:text-xl text-[#555555] leading-relaxed break-words">
-                  Static analysis. Deterministic extraction. We parse your
-                  system exactly as it executes — every business rule traces
-                  back to its source line. No probabilistic guessing.
-                </p>
-              </div>
-              <div className="pl-6 md:pl-8 border-l-4 border-[#2FCA54]">
-                <p className="text-2xl sm:text-3xl text-[#111111] font-bold leading-relaxed mb-4 break-words">
-                  Architecture-First
-                </p>
-                <p className="text-base sm:text-lg md:text-xl text-[#555555] leading-relaxed break-words">
-                  Generating code is trivial. Understanding intent is hard.
-                  We recover the underlying architecture before a single line
-                  of modern code gets written.
-                </p>
-              </div>
-              <div className="pl-6 md:pl-8 border-l-4 border-[#111111]">
-                <p className="text-2xl sm:text-3xl text-[#111111] font-bold leading-relaxed mb-4 break-words">
-                  Zero Hallucination Guarantee
-                </p>
-                <p className="text-base sm:text-lg md:text-xl text-[#555555] leading-relaxed break-words">
-                  Language models fine-tuned on your codebase, running on your
-                  hardware — not cloud LLMs predicting what code &ldquo;might
-                  look like.&rdquo; Every output gets verified against the
-                  source system through automated characterization tests.
-                </p>
-              </div>
-            </div>
+          <div className="space-y-0">
+            {[
+              {
+                title: "Actionable Intelligence",
+                body: "Understand how your processes truly run. Identify the most impactful opportunities to implement improvements and deploy modernization safely.",
+                accent: true,
+              },
+              {
+                title: "Design for Operations",
+                body: "Generating code is trivial. Understanding intent is hard. Redesign operations based on deep insight. Define workflows, outcomes, guardrails, and best practices.",
+                accent: true,
+              },
+              {
+                title: "Migrate with Confidence",
+                body: "Power your operations with real-time context, deploy it where it drives measurable impact, and integrate it seamlessly into existing workflows.",
+                accent: false,
+              },
+            ].map((item, i) => (
+              <ScrollReveal
+                key={item.title}
+                delay={i * 120}
+                className="border-t border-[var(--color-border)]"
+              >
+                <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-6 lg:gap-20 py-12 md:py-16">
+                  <h3 className="text-2xl md:text-3xl font-bold text-[var(--color-ink)] tracking-tight">
+                    {item.title}
+                  </h3>
+                  <p className="text-lg md:text-xl text-[var(--color-ink-muted)] leading-[1.7] max-w-2xl">
+                    {item.body}
+                  </p>
+                </div>
+              </ScrollReveal>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ─── TECHNICAL DEBT CALCULATOR ─── */}
+      {/* ─── DEBT CALCULATOR ─── */}
       <DynamicDebtCalculator />
 
-      {/* ─── AI SEARCH / DEFINITIONS (AEO) ─── */}
+      {/* ─── FAQ — Clean, minimal ─── */}
       <section
         id="definitions"
-        className="py-24 md:py-32 border-b border-[#E0E0E0] bg-[#FAFAFA]"
+        className="py-32 md:py-44 border-b border-[var(--color-border)]"
       >
-        <div className="max-w-[1600px] mx-auto px-6 sm:px-8">
-          <h2 className="text-[clamp(2rem,4vw,3.5rem)] font-bold text-[#111111] leading-tight mb-12">
-            Frequently Asked Questions
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div>
-              <h3 className="text-xl font-bold text-[#111111] mb-4">What is Apolast?</h3>
-              <p className="text-[#555555] leading-relaxed">
-                A platform that reads legacy code, extracts the business rules, and produces specs your team can actually ship. Runs on your servers. No cloud dependencies.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-xl font-bold text-[#111111] mb-4">How does it avoid hallucinating code?</h3>
-              <p className="text-[#555555] leading-relaxed">
-                We don&apos;t use general-purpose cloud LLMs to guess what your code does. Apolast uses deterministic static analysis — AST parsing, control-flow graphs, data-flow tracking. Then it generates characterization tests to verify the output matches the original system&apos;s exact behavior. If it can&apos;t verify it, it doesn&apos;t ship it.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-xl font-bold text-[#111111] mb-4">Does it work in air-gapped environments?</h3>
-              <p className="text-[#555555] leading-relaxed">
-                Yes. Everything runs on-premise. No external API calls, no data leaving your network. Built for DORA and NIS2 regulated industries.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-xl font-bold text-[#111111] mb-4">What do I actually get out of it?</h3>
-              <p className="text-[#555555] leading-relaxed">
-                PR-ready specifications, Gherkin test scenarios, dependency graphs (SBOM), and architecture blueprints — committed to your repo as merge-ready pull requests. The system graph hooks into your CI/CD pipeline and updates on every commit, so documentation never goes stale.
-              </p>
-            </div>
+        <div className="max-w-[1600px] mx-auto px-6 sm:px-8 lg:px-16">
+          <ScrollReveal>
+            <h2 className="text-[clamp(2.5rem,4vw,3.5rem)] font-bold text-[var(--color-ink)] leading-tight mb-16 md:mb-20">
+              Frequently asked questions
+            </h2>
+          </ScrollReveal>
+
+          <div className="space-y-0">
+            {[
+              {
+                q: "What is Apolast?",
+                a: "A platform that gives your enterprise the operational context it needs to succeed. It provides system clarity and continuous insights so you can transform your operations. Runs on your servers.",
+              },
+              {
+                q: "How does it ensure operational reliability?",
+                a: "Apolast uses deterministic validation to verify system behavior and requirements. If it can\u2019t verify it, it doesn\u2019t ship it.",
+              },
+              {
+                q: "Does it work in air-gapped environments?",
+                a: "Yes. Everything runs on-premise. No external API calls, no data leaving your network. Built for DORA and NIS2 regulated industries.",
+              },
+              {
+                q: "What do I actually get?",
+                a: "PR-ready specifications, Gherkin test scenarios, and architecture blueprints \u2014 committed to your repo. The system provides the operational clarity you need to orchestrate people and legacy tech.",
+              },
+            ].map((faq, i) => (
+              <ScrollReveal
+                key={faq.q}
+                delay={i * 80}
+                variant="fade"
+                className="border-t border-[var(--color-border)]"
+              >
+                <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-4 lg:gap-20 py-10 md:py-14">
+                  <h3 className="text-xl font-bold text-[var(--color-ink)]">
+                    {faq.q}
+                  </h3>
+                  <p className="text-lg text-[var(--color-ink-muted)] leading-relaxed max-w-2xl">
+                    {faq.a}
+                  </p>
+                </div>
+              </ScrollReveal>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ─── FOOTER ─── */}
       <Footer />
-
-      {/* Dynamic Telemetric Scroll Gauge & Ascend Widget */}
       <ScrollDepthGauge />
     </main>
   );
