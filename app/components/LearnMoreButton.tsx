@@ -26,7 +26,7 @@ export default function LearnMoreButton() {
     hover: {
       x: [0, 8, 0],
       scale: [1, 1.25, 1],
-      backgroundColor: ["#2FCA54", "#FFFFFF", "#2FCA54"],
+      backgroundColor: ["var(--color-accent)", "var(--color-bg)", "var(--color-accent)"],
       transition: {
         duration: 0.8,
         repeat: Infinity,
@@ -41,7 +41,7 @@ export default function LearnMoreButton() {
       onClick={handleScroll}
       initial="initial"
       whileHover="hover"
-      className="group relative inline-flex items-center gap-4 bg-[#111111] !text-white font-medium text-lg px-10 py-5 overflow-hidden transition-colors duration-300 hover:bg-[#1C1C1C]"
+      className="group relative inline-flex items-center gap-4 bg-[var(--color-ink)] !text-[var(--color-bg)] font-medium text-lg px-10 py-5 overflow-hidden transition-colors duration-300 hover:bg-[var(--color-ink-soft)]"
     >
       {/* Decorative diagonal cascading background squares */}
       <div className="absolute inset-0 grid grid-cols-6 grid-rows-3 opacity-0 group-hover:opacity-15 transition-opacity duration-300 pointer-events-none">
@@ -66,7 +66,7 @@ export default function LearnMoreButton() {
                   },
                 },
               }}
-              className="w-2.5 h-2.5 bg-[#2FCA54] mx-auto my-auto rounded-[1px]"
+              className="w-2.5 h-2.5 bg-[var(--color-accent)] mx-auto my-auto rounded-[1px]"
             />
           );
         })}
@@ -86,7 +86,7 @@ export default function LearnMoreButton() {
       </motion.div>
 
       {/* Bottom accent border line */}
-      <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-[#2FCA54] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+      <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-[var(--color-accent)] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
     </motion.a>
   );
 }

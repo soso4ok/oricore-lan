@@ -2,7 +2,7 @@ import InteractiveLink from "./InteractiveLink";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#111111] text-white" role="contentinfo">
+    <footer className="bg-[var(--color-bg)] text-[var(--color-ink)]" role="contentinfo">
       {/* ─── MAIN FOOTER ─── */}
       <div className="max-w-[1600px] mx-auto px-6 sm:px-8 lg:px-16">
         {/* Top section — large brand statement + CTA */}
@@ -12,7 +12,7 @@ export default function Footer() {
               <h2 className="text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-[0.95] tracking-tighter text-white mb-8">
                 Ready to map your
                 <br />
-                legacy codebase<span className="text-[#2FCA54]">?</span>
+                legacy codebase<span className="text-[var(--color-accent)]">?</span>
               </h2>
               <p className="text-lg md:text-xl text-white/50 max-w-lg leading-relaxed">
                 Send us your repository details and deployment requirements.
@@ -23,7 +23,7 @@ export default function Footer() {
             <div className="lg:col-span-5 flex items-end lg:justify-end">
               <a
                 href="mailto:hello@apolast.com"
-                className="inline-flex items-center justify-center bg-white !text-[#111111] hover:bg-[#2FCA54] hover:!text-[#111111] font-medium text-lg py-5 px-10 transition-colors duration-200"
+                className="inline-flex items-center justify-center bg-white !text-[var(--color-bg)] hover:bg-[var(--color-accent)] hover:!text-[var(--color-bg)] font-medium text-lg py-5 px-10 transition-colors duration-200"
               >
                 Request a technical review
               </a>
@@ -48,11 +48,11 @@ export default function Footer() {
                 >
                   <path
                     d="M6.46929e-06 74C7.74879e-06 59.3642 4.34004 45.0571 12.4713 32.8878C20.6025 20.7186 32.1597 11.2338 45.6814 5.63295C59.2032 0.0320586 74.0821 -1.43338 88.4367 1.42192C102.791 4.27723 115.977 11.325 126.326 21.6741C136.675 32.0232 143.723 45.2088 146.578 59.5634C149.433 73.9179 147.968 88.7969 142.367 102.319C136.766 115.84 127.281 127.398 115.112 135.529C102.943 143.66 88.6358 148 74 148L74 74L6.46929e-06 74Z"
-                    fill="#333B42"
+                    fill="currentColor"
                   />
                   <path
                     d="M74 3.49123e-05C83.7178 3.44876e-05 93.3405 1.9141 102.319 5.63295C111.297 9.3518 119.454 14.8026 126.326 21.6741C133.197 28.5457 138.648 36.7034 142.367 45.6815C146.086 54.6596 148 64.2822 148 74L74 74L74 3.49123e-05Z"
-                    fill="#24292E"
+                    fill="currentColor"
                   />
                   <rect x="74" y="148" width="18.5" height="18.5" transform="rotate(-180 74 148)" fill="#2FCA54" />
                   <rect x="74" y="129.5" width="18.5" height="18.5" transform="rotate(-180 74 129.5)" fill="#2FCA54" />

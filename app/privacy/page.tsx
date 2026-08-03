@@ -12,27 +12,27 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <main className="min-h-screen bg-[#FAFAFA]">
+    <main className="min-h-screen bg-[var(--color-bg)]">
       <Navbar />
 
       <section className="pt-40 pb-20 md:pt-48 md:pb-28">
         <div className="max-w-[800px] mx-auto px-6 sm:px-8">
-          <h1 className="text-[clamp(3rem,5vw,4.5rem)] font-bold text-[#111111] leading-[1.1] tracking-tight mb-8">
+          <h1 className="text-[clamp(3rem,5vw,4.5rem)] font-bold text-[var(--color-ink)] leading-[1.1] tracking-tight mb-8">
             Privacy Policy
           </h1>
-          <div className="mb-12 w-24 h-[6px] bg-[#2FCA54]"></div>
+          <div className="mb-12 w-24 h-[6px] bg-[var(--color-accent)]"></div>
 
-          <div className="space-y-10 text-[17px] leading-[1.7] text-[#333333]">
+          <div className="space-y-10 text-[17px] leading-[1.7] text-[var(--color-ink-soft)]">
             {/* 1 */}
             <div>
-              <h2 className="text-2xl font-bold text-[#111111] mb-4">1. Introduction</h2>
+              <h2 className="text-2xl font-bold text-[var(--color-ink)] mb-4">1. Introduction</h2>
               <p className="mb-4">1.1 Apolast is committed to protecting the privacy and security of personal data processed in connection with its B2B relationships and services.</p>
               <p>1.2 This Privacy Policy describes how Apolast, acting as data controller for certain activities, collects, uses and protects personal data, and explains the on‑premise, “Private AI / Zero Data Retention” nature of the Apolast Software.</p>
             </div>
 
             {/* 2 */}
             <div>
-              <h2 className="text-2xl font-bold text-[#111111] mb-4">2. Scope</h2>
+              <h2 className="text-2xl font-bold text-[var(--color-ink)] mb-4">2. Scope</h2>
               <p className="mb-4">2.1 This Privacy Policy applies to personal data relating to:</p>
               <ul className="list-none space-y-3 pl-4 mb-4">
                 <li>a) representatives of Customers, prospective customers, system integrators, suppliers, investors and other business partners;</li>
@@ -44,14 +44,14 @@ export default function PrivacyPage() {
 
             {/* 3 */}
             <div>
-              <h2 className="text-2xl font-bold text-[#111111] mb-4">3. Identity of the Controller and Contact Details</h2>
+              <h2 className="text-2xl font-bold text-[var(--color-ink)] mb-4">3. Identity of the Controller and Contact Details</h2>
               <p className="mb-4">3.1 For the activities covered by this Privacy Policy, Apolast (ТОВ) and/or the relevant holding or contracting entity identified in the applicable contract acts as data controller within the meaning of GDPR.</p>
               <p>3.2 Contact details for privacy inquiries, including our Data Protection Officer (where required) and support team, can be reached directly via email at privacy@apolast.com.</p>
             </div>
 
             {/* 4 */}
             <div>
-              <h2 className="text-2xl font-bold text-[#111111] mb-4">4. Categories of Personal Data</h2>
+              <h2 className="text-2xl font-bold text-[var(--color-ink)] mb-4">4. Categories of Personal Data</h2>
               <p className="mb-4">4.1 Apolast may collect and process the following categories of personal data about business contacts:</p>
               <ul className="list-none space-y-3 pl-4 mb-4">
                 <li>a) Identification data: name, position, employer, professional role.</li>
@@ -66,7 +66,7 @@ export default function PrivacyPage() {
 
             {/* 5 */}
             <div>
-              <h2 className="text-2xl font-bold text-[#111111] mb-4">5. Sources of Personal Data</h2>
+              <h2 className="text-2xl font-bold text-[var(--color-ink)] mb-4">5. Sources of Personal Data</h2>
               <p className="mb-4">5.1 Personal data is obtained from:</p>
               <ul className="list-none space-y-3 pl-4">
                 <li>a) direct interactions (emails, meetings, calls, events);</li>
@@ -79,7 +79,7 @@ export default function PrivacyPage() {
 
             {/* 6 */}
             <div>
-              <h2 className="text-2xl font-bold text-[#111111] mb-4">6. On‑Premise “Private AI” and Zero Data Retention</h2>
+              <h2 className="text-2xl font-bold text-[var(--color-ink)] mb-4">6. On‑Premise “Private AI” and Zero Data Retention</h2>
               <p className="mb-4">6.1 The Apolast Software is deployed on‑premise and processes Customer Codebase and related data entirely within Customer’s environment; by default, Customer’s proprietary code and end‑user personal data are not transmitted to Apolast‑controlled servers or public cloud LLMs.</p>
               <p className="mb-4">6.2 Apolast follows a “Private AI” and “Zero Data Retention” strategy:</p>
               <ul className="list-none space-y-3 pl-4">
@@ -91,7 +91,7 @@ export default function PrivacyPage() {
 
             {/* 7 */}
             <div>
-              <h2 className="text-2xl font-bold text-[#111111] mb-4">7. Purposes and Legal Bases</h2>
+              <h2 className="text-2xl font-bold text-[var(--color-ink)] mb-4">7. Purposes and Legal Bases</h2>
               <p className="mb-4">7.1 Apolast processes personal data for the following purposes and legal bases under GDPR:</p>
               <ul className="list-none space-y-3 pl-4 mb-4">
                 <li>a) Contract performance (Art. 6(1)(b) GDPR): managing pre‑contractual discussions, entering into and performing B2B contracts, issuing invoices, delivering Services.</li>
@@ -111,7 +111,7 @@ export default function PrivacyPage() {
 
             {/* 8 */}
             <div>
-              <h2 className="text-2xl font-bold text-[#111111] mb-4">8. Relation to DORA and NIS2 Compliance Tooling</h2>
+              <h2 className="text-2xl font-bold text-[var(--color-ink)] mb-4">8. Relation to DORA and NIS2 Compliance Tooling</h2>
               <p className="mb-4">8.1 Customers may deploy Apolast as part of internal compliance frameworks under DORA, for example to maintain IT asset inventories, dependency mapping and resilience testing capabilities.</p>
               <p className="mb-4">8.2 Customers may use SBOM generation and asset visibility features to support NIS2 supply‑chain security obligations, vendor risk assessments and documentation.</p>
               <p>8.3 Apolast does not determine Customer’s purposes for processing end‑user data within Customer’s environment; Customers remain responsible for their own data protection frameworks, notices and role definitions (controller/processor).</p>
@@ -119,7 +119,7 @@ export default function PrivacyPage() {
 
             {/* 9 */}
             <div>
-              <h2 className="text-2xl font-bold text-[#111111] mb-4">9. Data Sharing and Recipients</h2>
+              <h2 className="text-2xl font-bold text-[var(--color-ink)] mb-4">9. Data Sharing and Recipients</h2>
               <p className="mb-4">9.1 Apolast may share personal data, on a need‑to‑know basis, with:</p>
               <ul className="list-none space-y-3 pl-4 mb-4">
                 <li>a) Apolast group companies and holding entities for internal administration and contract fulfillment;</li>
@@ -133,7 +133,7 @@ export default function PrivacyPage() {
 
             {/* 10 */}
             <div>
-              <h2 className="text-2xl font-bold text-[#111111] mb-4">10. International Transfers</h2>
+              <h2 className="text-2xl font-bold text-[var(--color-ink)] mb-4">10. International Transfers</h2>
               <p className="mb-4">10.1 Where personal data is transferred outside the European Economic Area, Apolast will implement appropriate safeguards such as:</p>
               <ul className="list-none space-y-3 pl-4 mb-4">
                 <li>a) adequacy decisions under Art. 45 GDPR;</li>
@@ -145,7 +145,7 @@ export default function PrivacyPage() {
 
             {/* 11 */}
             <div>
-              <h2 className="text-2xl font-bold text-[#111111] mb-4">11. Data Retention</h2>
+              <h2 className="text-2xl font-bold text-[var(--color-ink)] mb-4">11. Data Retention</h2>
               <p className="mb-4">11.1 Apolast retains personal data only for as long as necessary for the purposes for which it was collected, taking into account:</p>
               <ul className="list-none space-y-3 pl-4 mb-4">
                 <li>a) contractual obligations and limitations periods;</li>
@@ -157,7 +157,7 @@ export default function PrivacyPage() {
 
             {/* 12 */}
             <div>
-              <h2 className="text-2xl font-bold text-[#111111] mb-4">12. Data Subject Rights</h2>
+              <h2 className="text-2xl font-bold text-[var(--color-ink)] mb-4">12. Data Subject Rights</h2>
               <p className="mb-4">12.1 Under GDPR and applicable data protection laws, individuals whose personal data Apolast processes may have the following rights (subject to conditions):</p>
               <ul className="list-none space-y-3 pl-4 mb-4">
                 <li>a) right to be informed;</li>
@@ -174,7 +174,7 @@ export default function PrivacyPage() {
 
             {/* 13 */}
             <div>
-              <h2 className="text-2xl font-bold text-[#111111] mb-4">13. Security Measures</h2>
+              <h2 className="text-2xl font-bold text-[var(--color-ink)] mb-4">13. Security Measures</h2>
               <p className="mb-4">13.1 Apolast implements appropriate technical and organisational measures to protect personal data, including:</p>
               <ul className="list-none space-y-3 pl-4 mb-4">
                 <li>a) role‑based access controls;</li>
@@ -188,7 +188,7 @@ export default function PrivacyPage() {
 
             {/* 14 */}
             <div>
-              <h2 className="text-2xl font-bold text-[#111111] mb-4">14. Cookies and Online Tracking</h2>
+              <h2 className="text-2xl font-bold text-[var(--color-ink)] mb-4">14. Cookies and Online Tracking</h2>
               <p className="mb-4">14.1 Apolast’s websites may use cookies and similar technologies to:</p>
               <ul className="list-none space-y-3 pl-4 mb-4">
                 <li>a) enable core site functionality and security;</li>
@@ -200,14 +200,14 @@ export default function PrivacyPage() {
 
             {/* 15 */}
             <div>
-              <h2 className="text-2xl font-bold text-[#111111] mb-4">15. Changes to this Privacy Policy</h2>
+              <h2 className="text-2xl font-bold text-[var(--color-ink)] mb-4">15. Changes to this Privacy Policy</h2>
               <p className="mb-4">15.1 Apolast may update this Privacy Policy to reflect changes in laws, services or processing activities. The current version will be published on Apolast’s website with the effective date indicated.</p>
               <p>15.2 Where changes are significant, Apolast may notify Customers via appropriate channels (e.g. email or customer portals).</p>
             </div>
 
             {/* 16 */}
             <div>
-              <h2 className="text-2xl font-bold text-[#111111] mb-4">16. Contact and Complaints</h2>
+              <h2 className="text-2xl font-bold text-[var(--color-ink)] mb-4">16. Contact and Complaints</h2>
               <p className="mb-4">16.1 For questions about this Privacy Policy or Apolast’s data protection practices, individuals may contact Apolast directly at privacy@apolast.com.</p>
               <p>16.2 Data subjects have the right to lodge a complaint with their local data protection authority if they believe their rights have been infringed.</p>
             </div>

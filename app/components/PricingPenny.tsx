@@ -7,9 +7,9 @@ export default function PricingPenny() {
    * 3 = green dollar sign (#2FCA54)
    */
   const COLORS: Record<number, string> = {
-    1: "#111111",
-    2: "#FFFFFF",
-    3: "#2FCA54",
+    1: "var(--color-border)",
+    2: "var(--color-bg)",
+    3: "var(--color-accent)",
   };
 
   // prettier-ignore

@@ -106,10 +106,10 @@ export default function GridAnimation() {
       {/* subtle grid bg */}
       <div className="absolute inset-0 opacity-[0.035]">
         {Array.from({ length: 10 }, (_, i) => (
-          <div key={`h${i}`} className="absolute left-0 right-0 h-px bg-[#111111]" style={{ top: `${(i + 1) * 10}%` }} />
+          <div key={`h${i}`} className="absolute left-0 right-0 h-px bg-[var(--color-border)]" style={{ top: `${(i + 1) * 10}%` }} />
         ))}
         {Array.from({ length: 14 }, (_, i) => (
-          <div key={`v${i}`} className="absolute top-0 bottom-0 w-px bg-[#111111]" style={{ left: `${(i + 1) * 7.14}%` }} />
+          <div key={`v${i}`} className="absolute top-0 bottom-0 w-px bg-[var(--color-border)]" style={{ left: `${(i + 1) * 7.14}%` }} />
         ))}
       </div>
 
